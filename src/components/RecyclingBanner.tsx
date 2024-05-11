@@ -3,7 +3,7 @@ import { Card } from "@/shadcn/ui/card";
 
 export function RecyclingBanner() {
   return (
-    <section className="w-full flex justify-center items-center flex-col mb-28">
+    <section className="w-full flex justify-center items-center flex-col">
       <Card className="w-full flex relative overflow-hidden h-96 bg-[hsl(var(--card-foreground))] rounded-3xl">
         <div className=" w-[50%] m-16">
           <p className="text-4xl invert">

@@ -30,7 +30,7 @@ export function ProductCard({ product }: { product: Product }) {
               <SheetTrigger asChild>
                 <Button
                   className="border border-[hsl(var(--primary))] font-bold text-xs p-2 h-8"
-                  variant="outline">
+                  variant="ghost">
                   Add To Cart
                 </Button>
               </SheetTrigger>
