@@ -1,0 +1,204 @@
+{
+    "products": [
+        {
+            "id": "ba352a9e-b744-4009-80e8-8280eddcc2f8",
+            "name": "Motorola Timeport 250",
+            "price": 2206,
+            "img": "./src/assets/imgs/iphone15-pro.png",
+            "description": "Cras mi pede, malesuada in, imperdiet et, commodo vulputate, justo. In blandit ultrices enim. Lorem ipsum dolor sit amet, consectetuer adipiscing elit.\n\nProin interdum mauris non ligula pellentesque ultrices. Phasellus id sapien in sapien iaculis congue. Vivamus metus arcu, adipiscing molestie, hendrerit at, vulputate vitae, nisl.",
+            "category": "Motorola",
+            "color": "Fuscia",
+            "size": "32GB"
+        },
+        {
+            "id": "ebf65aa1-aeda-487c-bcef-e7b1a41d4c0c",
+            "name": "Oppo Reno5 Pro+ 5G",
+            "price": 5158,
+            "img": "http://dummyimage.com/212x100.png/cc0000/ffffff",
+            "description": "In hac habitasse platea dictumst. Etiam faucibus cursus urna. Ut tellus.",
+            "category": "Oppo",
+            "color": "Khaki",
+            "size": "256GB"
+        },
+        {
+            "id": "b35aec44-b051-4857-8cde-74fb45b6df30",
+            "name": "Haier Z300",
+            "price": 4272,
+            "img": "http://dummyimage.com/223x100.png/cc0000/ffffff",
+            "description": "Morbi non lectus. Aliquam sit amet diam in magna bibendum imperdiet. Nullam orci pede, venenatis non, sodales sed, tincidunt eu, felis.\n\nFusce posuere felis sed lacus. Morbi sem mauris, laoreet ut, rhoncus aliquet, pulvinar sed, nisl. Nunc rhoncus dui vel sem.\n\nSed sagittis. Nam congue, risus semper porta volutpat, quam pede lobortis ligula, sit amet eleifend pede libero quis orci. Nullam molestie nibh in lectus.",
+            "category": "Haier",
+            "color": "Crimson",
+            "size": "512GB"
+        },
+        {
+            "id": "d263f595-4921-4c31-ad3e-1d781a7fad15",
+            "name": "Motorola Aura",
+            "price": 7964,
+            "img": "http://dummyimage.com/141x100.png/dddddd/000000",
+            "description": "Morbi non lectus. Aliquam sit amet diam in magna bibendum imperdiet. Nullam orci pede, venenatis non, sodales sed, tincidunt eu, felis.\n\nFusce posuere felis sed lacus. Morbi sem mauris, laoreet ut, rhoncus aliquet, pulvinar sed, nisl. Nunc rhoncus dui vel sem.",
+            "category": "Motorola",
+            "color": "Violet",
+            "size": "16GB"
+        },
+        {
+            "id": "b1191a36-a737-43f1-aa7a-d4e40753b906",
+            "name": "Realme C1",
+            "price": 4794,
+            "img": "http://dummyimage.com/102x100.png/5fa2dd/ffffff",
+            "description": "Pellentesque at nulla. Suspendisse potenti. Cras in purus eu magna vulputate luctus.",
+            "category": "Realme",
+            "color": "Orange",
+            "size": "128GB"
+        },
+        {
+            "id": "7ee6e0e3-ffa2-4bb6-a11b-4183959d3056",
+            "name": "XOLO Q800",
+            "price": 4792,
+            "img": "http://dummyimage.com/146x100.png/cc0000/ffffff",
+            "description": "Sed ante. Vivamus tortor. Duis mattis egestas metus.",
+            "category": "XOLO",
+            "color": "Aquamarine",
+            "size": "64GB"
+        },
+        {
+            "id": "cfe0b228-88d1-4ffe-8794-3d78c2be89be",
+            "name": "Lenovo Vibe X3 c78",
+            "price": 7325,
+            "img": "http://dummyimage.com/194x100.png/ff4444/ffffff",
+            "description": "Duis bibendum. Morbi non quam nec dui luctus rutrum. Nulla tellus.",
+            "category": "Lenovo",
+            "color": "Puce",
+            "size": "16GB"
+        },
+        {
+            "id": "6598e698-7811-48c1-9a71-2d1ef86bfc53",
+            "name": "i-mobile 518",
+            "price": 5635,
+            "img": "http://dummyimage.com/194x100.png/dddddd/000000",
+            "description": "Curabitur gravida nisi at nibh. In hac habitasse platea dictumst. Aliquam augue quam, sollicitudin vitae, consectetuer eget, rutrum at, lorem.\n\nInteger tincidunt ante vel ipsum. Praesent blandit lacinia erat. Vestibulum sed magna at nunc commodo placerat.",
+            "category": "i-mobile",
+            "color": "Turquoise",
+            "size": "256GB"
+        },
+        {
+            "id": "e9db8937-36a9-4c9a-a2e5-07289b952b0f",
+            "name": "Yezz Billy 4",
+            "price": 4004,
+            "img": "http://dummyimage.com/163x100.png/dddddd/000000",
+            "description": "Curabitur gravida nisi at nibh. In hac habitasse platea dictumst. Aliquam augue quam, sollicitudin vitae, consectetuer eget, rutrum at, lorem.",
+            "category": "Yezz",
+            "color": "Teal",
+            "size": "128GB"
+        },
+        {
+            "id": "14b43a05-d5a4-4a37-9160-b24e5253c001",
+            "name": "Bird M07",
+            "price": 7205,
+            "img": "http://dummyimage.com/185x100.png/cc0000/ffffff",
+            "description": "Praesent id massa id nisl venenatis lacinia. Aenean sit amet justo. Morbi ut odio.\n\nCras mi pede, malesuada in, imperdiet et, commodo vulputate, justo. In blandit ultrices enim. Lorem ipsum dolor sit amet, consectetuer adipiscing elit.\n\nProin interdum mauris non ligula pellentesque ultrices. Phasellus id sapien in sapien iaculis congue. Vivamus metus arcu, adipiscing molestie, hendrerit at, vulputate vitae, nisl.",
+            "category": "Bird",
+            "color": "Maroon",
+            "size": "256GB"
+        },
+        {
+            "id": "828c5fd6-6769-4f73-8417-cb0afb9500ca",
+            "name": "Xiaomi Redmi 9AT",
+            "price": 4750,
+            "img": "http://dummyimage.com/125x100.png/cc0000/ffffff",
+            "description": "Quisque porta volutpat erat. Quisque erat eros, viverra eget, congue eget, semper rutrum, nulla. Nunc purus.\n\nPhasellus in felis. Donec semper sapien a libero. Nam dui.\n\nProin leo odio, porttitor id, consequat in, consequat ut, nulla. Sed accumsan felis. Ut at dolor quis odio consequat varius.",
+            "category": "Xiaomi",
+            "color": "Purple",
+            "size": "32GB"
+        },
+        {
+            "id": "3a58ed65-a0c0-4184-bc21-4684e250c0d2",
+            "name": "Samsung C160",
+            "price": 4448,
+            "img": "http://dummyimage.com/159x100.png/5fa2dd/ffffff",
+            "description": "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Proin risus. Praesent lectus.",
+            "category": "Samsung",
+            "color": "Green",
+            "size": "32GB"
+        },
+        {
+            "id": "599660ac-ef49-4ef3-81ca-4059aca31fdd",
+            "name": "Lenovo A65",
+            "price": 7430,
+            "img": "http://dummyimage.com/155x100.png/dddddd/000000",
+            "description": "Phasellus sit amet erat. Nulla tempus. Vivamus in felis eu sapien cursus vestibulum.\n\nProin eu mi. Nulla ac enim. In tempor, turpis nec euismod scelerisque, quam turpis adipiscing lorem, vitae mattis nibh ligula nec sem.\n\nDuis aliquam convallis nunc. Proin at turpis a pede posuere nonummy. Integer non velit.",
+            "category": "Lenovo",
+            "color": "Aquamarine",
+            "size": "128GB"
+        },
+        {
+            "id": "8c190d34-fb64-45a6-a4a0-ddcbf6f45f43",
+            "name": "BlackBerry Volt",
+            "price": 1209,
+            "img": "http://dummyimage.com/151x100.png/cc0000/ffffff",
+            "description": "Phasellus sit amet erat. Nulla tempus. Vivamus in felis eu sapien cursus vestibulum.\n\nProin eu mi. Nulla ac enim. In tempor, turpis nec euismod scelerisque, quam turpis adipiscing lorem, vitae mattis nibh ligula nec sem.\n\nDuis aliquam convallis nunc. Proin at turpis a pede posuere nonummy. Integer non velit.",
+            "category": "BlackBerry",
+            "color": "Yellow",
+            "size": "512GB"
+        },
+        {
+            "id": "d9060f23-954d-405e-9103-f5e47e7fb4c2",
+            "name": "Motorola A1680",
+            "price": 6605,
+            "img": "http://dummyimage.com/144x100.png/5fa2dd/ffffff",
+            "description": "In sagittis dui vel nisl. Duis ac nibh. Fusce lacus purus, aliquet at, feugiat non, pretium quis, lectus.\n\nSuspendisse potenti. In eleifend quam a odio. In hac habitasse platea dictumst.",
+            "category": "Motorola",
+            "color": "Violet",
+            "size": "512GB"
+        },
+        {
+            "id": "eb69a390-6cc4-46ec-a49b-e548ab84d743",
+            "name": "Qtek 8060",
+            "price": 6906,
+            "img": "http://dummyimage.com/210x100.png/dddddd/000000",
+            "description": "Nullam porttitor lacus at turpis. Donec posuere metus vitae ipsum. Aliquam non mauris.\n\nMorbi non lectus. Aliquam sit amet diam in magna bibendum imperdiet. Nullam orci pede, venenatis non, sodales sed, tincidunt eu, felis.",
+            "category": "Qtek",
+            "color": "Blue",
+            "size": "32GB"
+        },
+        {
+            "id": "8c0d45db-e3ac-44ad-856c-dc0984094788",
+            "name": "Motorola Moto Maxx",
+            "price": 5990,
+            "img": "http://dummyimage.com/233x100.png/ff4444/ffffff",
+            "description": "Pellentesque at nulla. Suspendisse potenti. Cras in purus eu magna vulputate luctus.",
+            "category": "Motorola",
+            "color": "Violet",
+            "size": "64GB"
+        },
+        {
+            "id": "bdff40d6-5ecd-4ed5-8ba3-6642ae39ef4b",
+            "name": "Celkon C303",
+            "price": 2367,
+            "img": "http://dummyimage.com/158x100.png/cc0000/ffffff",
+            "description": "Phasellus sit amet erat. Nulla tempus. Vivamus in felis eu sapien cursus vestibulum.\n\nProin eu mi. Nulla ac enim. In tempor, turpis nec euismod scelerisque, quam turpis adipiscing lorem, vitae mattis nibh ligula nec sem.\n\nDuis aliquam convallis nunc. Proin at turpis a pede posuere nonummy. Integer non velit.",
+            "category": "Celkon",
+            "color": "Purple",
+            "size": "512GB"
+        },
+        {
+            "id": "cd361a91-2394-4c09-8391-7e0d762bc9f4",
+            "name": "NEC N900",
+            "price": 7504,
+            "img": "http://dummyimage.com/226x100.png/dddddd/000000",
+            "description": "Curabitur at ipsum ac tellus semper interdum. Mauris ullamcorper purus sit amet nulla. Quisque arcu libero, rutrum ac, lobortis vel, dapibus at, diam.",
+            "category": "NEC",
+            "color": "Red",
+            "size": "64GB"
+        },
+        {
+            "id": "d39c9d02-e04c-42ef-b1e9-5eaf3131a485",
+            "name": "Sony Xperia Z5 Dual",
+            "price": 885,
+            "img": "http://dummyimage.com/139x100.png/ff4444/ffffff",
+            "description": "Mauris enim leo, rhoncus sed, vestibulum sit amet, cursus id, turpis. Integer aliquet, massa id lobortis convallis, tortor risus dapibus augue, vel accumsan tellus nisi eu orci. Mauris lacinia sapien quis libero.\n\nNullam sit amet turpis elementum ligula vehicula consequat. Morbi a ipsum. Integer a nibh.",
+            "category": "Sony",
+            "color": "Khaki",
+            "size": "32GB"
+        }
+    ]
+}
