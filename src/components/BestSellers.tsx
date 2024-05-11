@@ -3,7 +3,7 @@ import { ProductCard } from "./ProductCard";
 
 export function BestSellers({ products }: { products: Product[] }) {
   return (
-    <section className="w-full flex justify-center items-center flex-col">
+    <section className="w-full flex justify-center items-center flex-col mb-28">
       <p className="text-5xl">
         <strong>
           Best Sellers

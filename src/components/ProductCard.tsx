@@ -9,7 +9,7 @@ export function ProductCard({ product }: { product: Product }) {
     <>
       <Card className="w-60 h-full relative">
         <CardContent className="flex flex-col items-center justify-center p-6">
-          <img className="h-48 object-contain" src={product.img} alt="" />
+          <img className="h-48 object-cover" src={product.img} alt="" />
           <div className="text-center w-full mt-6">
             <p className="text font-semibold">{product.name}</p>
             <span className="text-xs text-muted-foreground">

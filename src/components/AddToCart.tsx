@@ -5,8 +5,8 @@ import { Product } from "@/types";
 export function AddToCart({ product }: { product: Product }) {
   return (
     <Sheet>
-      <img src={product.img} alt="" />
-      <div className="text-center w-full mt-6">
+      <div className="text-center w-full mt-6 flex items-center flex-col">
+        <img className="h-96 object-cover" src={product.img} alt="" />
         <p className="text font-semibold">{product.name}</p>
         <span className="text-xs text-muted-foreground">
           64GB | 128GB | 256GB | 512GB
@@ -17,9 +17,9 @@ export function AddToCart({ product }: { product: Product }) {
           <span className="bg-yellow-600 h-3 w-3 border border-secondary-foreground rounded-full block"></span>
           <span className="bg-white h-3 w-3 border border-secondary-foreground rounded-full block"></span>
         </div>
+        <p className="mt-5">{product.description}</p>
+        <Button className="mt-5">Add To Cart</Button>
       </div>
-      <p className="mt-5">{product.description}</p>
-      <Button className="mt-5">Add To Cart</Button>
     </Sheet>
   );
 }

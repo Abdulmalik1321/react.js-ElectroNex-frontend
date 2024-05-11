@@ -9,6 +9,7 @@ import { Hero } from "./components/Hero";
 import { TopPicks } from "./components/TopPicks";
 import { Product } from "./types";
 import { BestSellers } from "./components/BestSellers";
+import { RecyclingBanner } from "./components/RecyclingBanner";
 
 function App() {
   const products: Product[] = JSON.parse(JSON.stringify(productsJson)).products;
@@ -19,6 +20,7 @@ function App() {
         <Hero />
         <TopPicks products={products} />
         <BestSellers products={products} />
+        <RecyclingBanner />
       </ThemeProvider>
     </div>
   );

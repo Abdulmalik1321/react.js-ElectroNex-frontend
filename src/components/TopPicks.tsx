@@ -1,5 +1,3 @@
-// import { Button } from "@/shadcn/ui/button";
-// import { Card, CardContent, CardFooter } from "@/shadcn/ui/card";
 import {
   Carousel,
   CarouselContent,
