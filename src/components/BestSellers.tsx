@@ -1,5 +1,5 @@
 import { Product } from "@/types";
-import { ProductCard } from "./ProductCard";
+import { ShopView } from "./ShopView";
 
 export function BestSellers({ products }: { products: Product[] }) {
   return (
@@ -10,12 +10,9 @@ export function BestSellers({ products }: { products: Product[] }) {
           <strong />
         </strong>
       </p>
+
       <div className="grid grid-cols-5 gap-5 mt-12">
-        {Array.from(products)
-          .slice(0, 10)
-          .map((product) => (
-            <ProductCard key={product.id} product={product} />
-          ))}
+        <ShopView products={products} numberOfProducts={10} />
       </div>
     </section>
   );

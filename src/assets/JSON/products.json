@@ -119,6 +119,126 @@
             "category": "Yezz",
             "color": "Teal",
             "size": "128GB"
+        },
+        {
+            "id": "14b43a05-d5a4-4a37-9160-b24e5253c001",
+            "name": "Apple iPhone 15 Pro",
+            "price": 7205,
+            "img": "./src/assets/imgs/Apple-iPhone-15-Pro.png",
+            "description": "Praesent id massa id nisl venenatis lacinia. Aenean sit amet justo. Morbi ut odio.\n\nCras mi pede, malesuada in, imperdiet et, commodo vulputate, justo. In blandit ultrices enim. Lorem ipsum dolor sit amet, consectetuer adipiscing elit.\n\nProin interdum mauris non ligula pellentesque ultrices. Phasellus id sapien in sapien iaculis congue. Vivamus metus arcu, adipiscing molestie, hendrerit at, vulputate vitae, nisl.",
+            "category": "Bird",
+            "color": "Maroon",
+            "size": "256GB"
+        },
+        {
+            "id": "828c5fd6-6769-4f73-8417-cb0afb9500ca",
+            "name": "Apple iPhone 14 Pro",
+            "price": 4750,
+            "img": "./src/assets/imgs/Apple-iPhone-14-Pro.png",
+            "description": "Quisque porta volutpat erat. Quisque erat eros, viverra eget, congue eget, semper rutrum, nulla. Nunc purus.\n\nPhasellus in felis. Donec semper sapien a libero. Nam dui.\n\nProin leo odio, porttitor id, consequat in, consequat ut, nulla. Sed accumsan felis. Ut at dolor quis odio consequat varius.",
+            "category": "Xiaomi",
+            "color": "Purple",
+            "size": "32GB"
+        },
+        {
+            "id": "3a58ed65-a0c0-4184-bc21-4684e250c0d2",
+            "name": "Apple iPhone 13 Pro",
+            "price": 4448,
+            "img": "./src/assets/imgs/Apple-iPhone-13-Pro.png",
+            "description": "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Proin risus. Praesent lectus.",
+            "category": "Samsung",
+            "color": "Green",
+            "size": "32GB"
+        },
+        {
+            "id": "ba352a9e-b744-4009-80e8-8280eddcc2f8",
+            "name": "Galaxy S21 FE 5G",
+            "price": 2206,
+            "img": "./src/assets/imgs/Galaxy-S21-FE-5G.webp",
+            "description": "Cras mi pede, malesuada in, imperdiet et, commodo vulputate, justo. In blandit ultrices enim. Lorem ipsum dolor sit amet, consectetuer adipiscing elit.\n\nProin interdum mauris non ligula pellentesque ultrices. Phasellus id sapien in sapien iaculis congue. Vivamus metus arcu, adipiscing molestie, hendrerit at, vulputate vitae, nisl.",
+            "category": "Motorola",
+            "color": "Fuscia",
+            "size": "32GB"
+        },
+        {
+            "id": "ebf65aa1-aeda-487c-bcef-e7b1a41d4c0c",
+            "name": "Galaxy A53 5G",
+            "price": 5158,
+            "img": "./src/assets/imgs/Galaxy-A53-5G.webp",
+            "description": "In hac habitasse platea dictumst. Etiam faucibus cursus urna. Ut tellus.",
+            "category": "Oppo",
+            "color": "Khaki",
+            "size": "256GB"
+        },
+        {
+            "id": "b35aec44-b051-4857-8cde-74fb45b6df30",
+            "name": "Galaxy S21 FE 5G",
+            "price": 4272,
+            "img": "./src/assets/imgs/Galaxy-S21-FF-5G.webp",
+            "description": "Morbi non lectus. Aliquam sit amet diam in magna bibendum imperdiet. Nullam orci pede, venenatis non, sodales sed, tincidunt eu, felis.\n\nFusce posuere felis sed lacus. Morbi sem mauris, laoreet ut, rhoncus aliquet, pulvinar sed, nisl. Nunc rhoncus dui vel sem.\n\nSed sagittis. Nam congue, risus semper porta volutpat, quam pede lobortis ligula, sit amet eleifend pede libero quis orci. Nullam molestie nibh in lectus.",
+            "category": "Haier",
+            "color": "Crimson",
+            "size": "512GB"
+        },
+        {
+            "id": "d263f595-4921-4c31-ad3e-1d781a7fad15",
+            "name": "Huawei Mate 40 Pro+",
+            "price": 7964,
+            "img": "./src/assets/imgs/Huawei-Mate-40-Pro+-(5G).png",
+            "description": "Morbi non lectus. Aliquam sit amet diam in magna bibendum imperdiet. Nullam orci pede, venenatis non, sodales sed, tincidunt eu, felis.\n\nFusce posuere felis sed lacus. Morbi sem mauris, laoreet ut, rhoncus aliquet, pulvinar sed, nisl. Nunc rhoncus dui vel sem.",
+            "category": "Motorola",
+            "color": "Violet",
+            "size": "16GB"
+        },
+        {
+            "id": "b1191a36-a737-43f1-aa7a-d4e40753b906",
+            "name": "HUAWEI P40 Pro xw",
+            "price": 4794,
+            "img": "./src/assets/imgs/HUAWEI-P40-Pro-5G.webp",
+            "description": "Pellentesque at nulla. Suspendisse potenti. Cras in purus eu magna vulputate luctus.",
+            "category": "Realme",
+            "color": "Orange",
+            "size": "128GB"
+        },
+        {
+            "id": "7ee6e0e3-ffa2-4bb6-a11b-4183959d3056",
+            "name": "Huawei nova 11",
+            "price": 4792,
+            "img": "./src/assets/imgs/Huawei-nova-11.webp",
+            "description": "Sed ante. Vivamus tortor. Duis mattis egestas metus.",
+            "category": "XOLO",
+            "color": "Aquamarine",
+            "size": "64GB"
+        },
+        {
+            "id": "cfe0b228-88d1-4ffe-8794-3d78c2be89be",
+            "name": "Motorola edge 40",
+            "price": 7325,
+            "img": "./src/assets/imgs/Motorola-edge-40.avif",
+            "description": "Duis bibendum. Morbi non quam nec dui luctus rutrum. Nulla tellus.",
+            "category": "Lenovo",
+            "color": "Puce",
+            "size": "16GB"
+        },
+        {
+            "id": "6598e698-7811-48c1-9a71-2d1ef86bfc53",
+            "name": "Motorola edge 30 neo",
+            "price": 5635,
+            "img": "./src/assets/imgs/Motorola-edge-30-neo.avif",
+            "description": "Curabitur gravida nisi at nibh. In hac habitasse platea dictumst. Aliquam augue quam, sollicitudin vitae, consectetuer eget, rutrum at, lorem.\n\nInteger tincidunt ante vel ipsum. Praesent blandit lacinia erat. Vestibulum sed magna at nunc commodo placerat.",
+            "category": "i-mobile",
+            "color": "Turquoise",
+            "size": "256GB"
+        },
+        {
+            "id": "e9db8937-36a9-4c9a-a2e5-07289b952b0f",
+            "name": "Asus ROG Phone 7",
+            "price": 4004,
+            "img": "./src/assets/imgs/Asus-ROG-Phone-7.webp",
+            "description": "Curabitur gravida nisi at nibh. In hac habitasse platea dictumst. Aliquam augue quam, sollicitudin vitae, consectetuer eget, rutrum at, lorem.",
+            "category": "Yezz",
+            "color": "Teal",
+            "size": "128GB"
         }
     ]
 }

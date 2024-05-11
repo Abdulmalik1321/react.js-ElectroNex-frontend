@@ -1,6 +1,7 @@
 import { Button } from "@/shadcn/ui/button";
 import { ModeToggle } from "../shadcn/mode-toggle";
 import { Separator } from "@/shadcn/ui/separator";
+import { Link } from "react-router-dom";
 
 export function NavBar() {
   return (
@@ -15,17 +16,17 @@ export function NavBar() {
           <Button
             className="text-xl text-[vlc(--primary-foreground)]"
             variant="link">
-            Home
+            <Link to={"/"}>Home</Link>
           </Button>
           <Button
             className="text-xl text-[vlc(--primary-foreground)]"
             variant="link">
-            Shope
+            <Link to={"/shop"}>Shop</Link>
           </Button>
           <Button
             className="text-xl text-[vlc(--primary-foreground)]"
             variant="link">
-            Contact Us
+            <Link to={"/contact-us"}>Contact Us</Link>
           </Button>
         </div>
         <div className="flex items-end gap-2">
