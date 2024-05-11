@@ -12,7 +12,7 @@ import { Product } from "@/types";
 
 export function TopPicks({ products }: { products: Product[] }) {
   return (
-    <section className="mt-28 mb-48 w-full flex justify-between items-center">
+    <section className="mt-28 mb-28 w-full flex justify-between items-center">
       <div className="w-1/4">
         <p className="text-5xl">
           <strong>

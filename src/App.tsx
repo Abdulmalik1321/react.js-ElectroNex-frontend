@@ -8,15 +8,17 @@ import { NavBar } from "./components/NavBar";
 import { Hero } from "./components/Hero";
 import { TopPicks } from "./components/TopPicks";
 import { Product } from "./types";
+import { BestSellers } from "./components/BestSellers";
 
 function App() {
   const products: Product[] = JSON.parse(JSON.stringify(productsJson)).products;
   return (
     <div className="md:w-[80%] flex flex-col justify-start items-start xxs:w-[95%] h-[10000px]">
-      <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
+      <ThemeProvider defaultTheme="system" storageKey="vite-ui-theme">
         <NavBar />
         <Hero />
         <TopPicks products={products} />
+        <BestSellers products={products} />
       </ThemeProvider>
     </div>
   );

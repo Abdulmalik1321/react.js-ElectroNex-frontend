@@ -80,7 +80,7 @@ export function Hero() {
           </CardFooter>
         </Card>
       </div>
-      <h1 className="scroll-m-20 pb-2 text-3xl font-normal mt-5">
+      <h1 className="scroll-m-20 pb-2 text-3xl font-normal mt-5 text-center">
         Where Quality Meets Sustainability – From the latest{" "}
         <strong>Smartphones</strong> 📱 to high-performance{" "}
         <strong>Laptops</strong> 💻. We offer a wide range of brand new products
