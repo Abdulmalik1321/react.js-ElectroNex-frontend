@@ -19,6 +19,6 @@ export const initialState: any = {
 export function budgetReducer(state: any, action: any) {
   switch (action.type) {
     case "add_income": // add_income
-      return {};
+      return { state };
   }
 }
