@@ -7,6 +7,7 @@ import { Button } from "./shadcn/ui/button";
 import "./App.css";
 import { ThemeProvider } from "./shadcn/theme-provider";
 import { ModeToggle } from "./shadcn/mode-toggle";
+import { NavBar } from "./components/NavBar";
 
 function App() {
   // const getProducts = async () => {
@@ -28,8 +29,7 @@ function App() {
   return (
     <div className="md:w-[80%] flex flex-col justify-start items-start xxs:w-[95%] h-[10000px]">
       <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
-        <ModeToggle />
-        <Button>test</Button>
+        <NavBar />
       </ThemeProvider>
     </div>
   );
