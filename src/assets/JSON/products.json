@@ -146,9 +146,7 @@
             "price": 4448,
             "img": "./src/assets/imgs/Apple-iPhone-13-Pro.png",
             "description": "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Proin risus. Praesent lectus.",
-            "category": "Samsung",
-            "color": "Green",
-            "size": "32GB"
+            "category": "Samsung"
         },
         {
             "id": "ba352a9e-b744-4009-80e8-8280eddcc2f8",

@@ -4,6 +4,8 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
 import { Home } from "./pages/Home";
 import { Shop } from "./pages/Shop";
+import { Login } from "./pages/Login";
+
 import { ThemeProvider } from "./shadcn/theme-provider";
 import { shopReducer, initialState } from "./reducer/shopReducer";
 
@@ -11,7 +13,6 @@ export const shopContext = createContext<any>(null);
 
 export function Router() {
   const [state, dispatch] = useReducer(shopReducer, initialState);
-
   const router = createBrowserRouter([
     {
       path: "/",
@@ -20,6 +21,10 @@ export function Router() {
     {
       path: "/shop",
       element: <Shop />,
+    },
+    {
+      path: "/login",
+      element: <Login handelLogin={dispatch} />,
     },
   ]);
   return (

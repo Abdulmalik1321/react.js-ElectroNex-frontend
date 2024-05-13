@@ -1,0 +1,122 @@
+// import Image from "next/image";
+// import Link from "next/link";
+
+import api from "@/api";
+import { Button } from "@/shadcn/ui/button";
+import { Input } from "@/shadcn/ui/input";
+import { Label } from "@/shadcn/ui/label";
+
+import { LoginInfo, LoginProps } from "@/types";
+import { LocalStorage } from "@/utils";
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+
+export function Login({ handelLogin }: LoginProps) {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const navigate = useNavigate();
+
+  const login = async (loginInfo: LoginInfo) => {
+    try {
+      const res = await api.post("/users/signin", loginInfo);
+      const userData = await api.get(`/users/email/${loginInfo.email}`, {
+        headers: {
+          Authorization: `Bearer ${res.data}`,
+        },
+      });
+      userData.data.token = res.data;
+
+      return userData.data;
+    } catch (error) {
+      console.error(error);
+      return Promise.reject(new Error("Something went wrong"));
+    }
+  };
+
+  const handelInput = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const value = e.target.value;
+    const type = e.target.type;
+    if (type === "email") setEmail(value);
+    if (type === "password") setPassword(value);
+  };
+
+  const handelSubmit = async () => {
+    const res = await login({ email: email, password: password });
+    LocalStorage("userInfo", res);
+
+    handelLogin({
+      type: "login",
+      payload: res,
+    });
+    navigate("/");
+  };
+
+  return (
+    <main className="w-full lg:grid lg:min-h-full lg:grid-cols-2 xl:min-h-full">
+      <div className="hidden bg-muted lg:block relative">
+        <h1 className="text-5xl absolute top-10 left-10 z-10">
+          Electronics<strong>Hub</strong>
+        </h1>
+        <img
+          src="./src/assets/imgs/iphone15-pro.jpeg"
+          alt="Image"
+          className="h-dvh w-full object-cover dark:brightness-[0.2] dark:grayscale"
+        />
+      </div>
+      <div className="flex items-center justify-center py-12">
+        <div className="mx-auto grid w-[350px] gap-6">
+          <div className="grid gap-2 text-center">
+            <h1 className="text-3xl font-bold">Login</h1>
+            <p className="text-balance text-muted-foreground">
+              Enter your email below to login to your account
+            </p>
+          </div>
+          <div className="grid gap-4">
+            <div className="grid gap-2">
+              <Label htmlFor="email">Email</Label>
+              <Input
+                id="email"
+                type="email"
+                placeholder="m@example.com"
+                required
+                onChange={handelInput}
+              />
+            </div>
+            <div className="grid gap-2">
+              <div className="flex items-center">
+                <Label htmlFor="password">Password</Label>
+                <Button
+                  variant="link"
+                  //   href="/forgot-password"
+                  className="ml-auto inline-block text-sm underline">
+                  Forgot your password?
+                </Button>
+              </div>
+              <Input
+                id="password"
+                type="password"
+                required
+                onChange={handelInput}
+              />
+            </div>
+            <Button onClick={handelSubmit} type="submit" className="w-full">
+              Login
+            </Button>
+            <Button variant="outline" className="w-full">
+              Login with Google
+            </Button>
+          </div>
+          <div className="mt-4 text-center text-sm">
+            Don&apos;t have an account?{" "}
+            <Button
+              variant="link"
+              // href="#"
+              className="underline">
+              Sign up
+            </Button>
+          </div>
+        </div>
+      </div>
+    </main>
+  );
+}
