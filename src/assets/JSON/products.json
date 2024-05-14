@@ -6,9 +6,9 @@
             "price": 7205,
             "img": "./src/assets/imgs/Apple-iPhone-15-Pro.png",
             "description": "Praesent id massa id nisl venenatis lacinia. Aenean sit amet justo. Morbi ut odio.\n\nCras mi pede, malesuada in, imperdiet et, commodo vulputate, justo. In blandit ultrices enim. Lorem ipsum dolor sit amet, consectetuer adipiscing elit.\n\nProin interdum mauris non ligula pellentesque ultrices. Phasellus id sapien in sapien iaculis congue. Vivamus metus arcu, adipiscing molestie, hendrerit at, vulputate vitae, nisl.",
-            "category": "Bird",
+            "Brand": "Bird",
             "color": "Maroon",
-            "size": "256GB"
+            "size": "64GB | 128GB | 256GB | 512GB            "
         },
         {
             "id": "828c5fd6-6769-4f73-8417-cb0afb9500ca",
@@ -16,7 +16,7 @@
             "price": 4750,
             "img": "./src/assets/imgs/Apple-iPhone-14-Pro.png",
             "description": "Quisque porta volutpat erat. Quisque erat eros, viverra eget, congue eget, semper rutrum, nulla. Nunc purus.\n\nPhasellus in felis. Donec semper sapien a libero. Nam dui.\n\nProin leo odio, porttitor id, consequat in, consequat ut, nulla. Sed accumsan felis. Ut at dolor quis odio consequat varius.",
-            "category": "Xiaomi",
+            "Brand": "Xiaomi",
             "color": "Purple",
             "size": "32GB"
         },
@@ -26,7 +26,7 @@
             "price": 4448,
             "img": "./src/assets/imgs/Apple-iPhone-13-Pro.png",
             "description": "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Proin risus. Praesent lectus.",
-            "category": "Samsung",
+            "Brand": "Samsung",
             "color": "Green",
             "size": "32GB"
         },
@@ -36,7 +36,7 @@
             "price": 2206,
             "img": "./src/assets/imgs/Galaxy-S21-FE-5G.webp",
             "description": "Cras mi pede, malesuada in, imperdiet et, commodo vulputate, justo. In blandit ultrices enim. Lorem ipsum dolor sit amet, consectetuer adipiscing elit.\n\nProin interdum mauris non ligula pellentesque ultrices. Phasellus id sapien in sapien iaculis congue. Vivamus metus arcu, adipiscing molestie, hendrerit at, vulputate vitae, nisl.",
-            "category": "Motorola",
+            "Brand": "Motorola",
             "color": "Fuscia",
             "size": "32GB"
         },
@@ -46,7 +46,7 @@
             "price": 5158,
             "img": "./src/assets/imgs/Galaxy-A53-5G.webp",
             "description": "In hac habitasse platea dictumst. Etiam faucibus cursus urna. Ut tellus.",
-            "category": "Oppo",
+            "Brand": "Oppo",
             "color": "Khaki",
             "size": "256GB"
         },
@@ -56,7 +56,7 @@
             "price": 4272,
             "img": "./src/assets/imgs/Galaxy-S21-FF-5G.webp",
             "description": "Morbi non lectus. Aliquam sit amet diam in magna bibendum imperdiet. Nullam orci pede, venenatis non, sodales sed, tincidunt eu, felis.\n\nFusce posuere felis sed lacus. Morbi sem mauris, laoreet ut, rhoncus aliquet, pulvinar sed, nisl. Nunc rhoncus dui vel sem.\n\nSed sagittis. Nam congue, risus semper porta volutpat, quam pede lobortis ligula, sit amet eleifend pede libero quis orci. Nullam molestie nibh in lectus.",
-            "category": "Haier",
+            "Brand": "Haier",
             "color": "Crimson",
             "size": "512GB"
         },
@@ -66,7 +66,7 @@
             "price": 7964,
             "img": "./src/assets/imgs/Huawei-Mate-40-Pro+-(5G).png",
             "description": "Morbi non lectus. Aliquam sit amet diam in magna bibendum imperdiet. Nullam orci pede, venenatis non, sodales sed, tincidunt eu, felis.\n\nFusce posuere felis sed lacus. Morbi sem mauris, laoreet ut, rhoncus aliquet, pulvinar sed, nisl. Nunc rhoncus dui vel sem.",
-            "category": "Motorola",
+            "Brand": "Motorola",
             "color": "Violet",
             "size": "16GB"
         },
@@ -76,7 +76,7 @@
             "price": 4794,
             "img": "./src/assets/imgs/HUAWEI-P40-Pro-5G.webp",
             "description": "Pellentesque at nulla. Suspendisse potenti. Cras in purus eu magna vulputate luctus.",
-            "category": "Realme",
+            "Brand": "Realme",
             "color": "Orange",
             "size": "128GB"
         },
@@ -86,7 +86,7 @@
             "price": 4792,
             "img": "./src/assets/imgs/Huawei-nova-11.webp",
             "description": "Sed ante. Vivamus tortor. Duis mattis egestas metus.",
-            "category": "XOLO",
+            "Brand": "XOLO",
             "color": "Aquamarine",
             "size": "64GB"
         },
@@ -96,7 +96,7 @@
             "price": 7325,
             "img": "./src/assets/imgs/Motorola-edge-40.avif",
             "description": "Duis bibendum. Morbi non quam nec dui luctus rutrum. Nulla tellus.",
-            "category": "Lenovo",
+            "Brand": "Lenovo",
             "color": "Puce",
             "size": "16GB"
         },
@@ -106,7 +106,7 @@
             "price": 5635,
             "img": "./src/assets/imgs/Motorola-edge-30-neo.avif",
             "description": "Curabitur gravida nisi at nibh. In hac habitasse platea dictumst. Aliquam augue quam, sollicitudin vitae, consectetuer eget, rutrum at, lorem.\n\nInteger tincidunt ante vel ipsum. Praesent blandit lacinia erat. Vestibulum sed magna at nunc commodo placerat.",
-            "category": "i-mobile",
+            "Brand": "i-mobile",
             "color": "Turquoise",
             "size": "256GB"
         },
@@ -116,7 +116,7 @@
             "price": 4004,
             "img": "./src/assets/imgs/Asus-ROG-Phone-7.webp",
             "description": "Curabitur gravida nisi at nibh. In hac habitasse platea dictumst. Aliquam augue quam, sollicitudin vitae, consectetuer eget, rutrum at, lorem.",
-            "category": "Yezz",
+            "Brand": "Yezz",
             "color": "Teal",
             "size": "128GB"
         },
@@ -126,7 +126,7 @@
             "price": 7205,
             "img": "./src/assets/imgs/Apple-iPhone-15-Pro.png",
             "description": "Praesent id massa id nisl venenatis lacinia. Aenean sit amet justo. Morbi ut odio.\n\nCras mi pede, malesuada in, imperdiet et, commodo vulputate, justo. In blandit ultrices enim. Lorem ipsum dolor sit amet, consectetuer adipiscing elit.\n\nProin interdum mauris non ligula pellentesque ultrices. Phasellus id sapien in sapien iaculis congue. Vivamus metus arcu, adipiscing molestie, hendrerit at, vulputate vitae, nisl.",
-            "category": "Bird",
+            "Brand": "Bird",
             "color": "Maroon",
             "size": "256GB"
         },
@@ -136,7 +136,7 @@
             "price": 4750,
             "img": "./src/assets/imgs/Apple-iPhone-14-Pro.png",
             "description": "Quisque porta volutpat erat. Quisque erat eros, viverra eget, congue eget, semper rutrum, nulla. Nunc purus.\n\nPhasellus in felis. Donec semper sapien a libero. Nam dui.\n\nProin leo odio, porttitor id, consequat in, consequat ut, nulla. Sed accumsan felis. Ut at dolor quis odio consequat varius.",
-            "category": "Xiaomi",
+            "Brand": "Xiaomi",
             "color": "Purple",
             "size": "32GB"
         },
@@ -146,7 +146,7 @@
             "price": 4448,
             "img": "./src/assets/imgs/Apple-iPhone-13-Pro.png",
             "description": "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Proin risus. Praesent lectus.",
-            "category": "Samsung"
+            "Brand": "Samsung"
         },
         {
             "id": "ba352a9e-b744-4009-80e8-8280eddcc2f8",
@@ -154,7 +154,7 @@
             "price": 2206,
             "img": "./src/assets/imgs/Galaxy-S21-FE-5G.webp",
             "description": "Cras mi pede, malesuada in, imperdiet et, commodo vulputate, justo. In blandit ultrices enim. Lorem ipsum dolor sit amet, consectetuer adipiscing elit.\n\nProin interdum mauris non ligula pellentesque ultrices. Phasellus id sapien in sapien iaculis congue. Vivamus metus arcu, adipiscing molestie, hendrerit at, vulputate vitae, nisl.",
-            "category": "Motorola",
+            "Brand": "Motorola",
             "color": "Fuscia",
             "size": "32GB"
         },
@@ -164,7 +164,7 @@
             "price": 5158,
             "img": "./src/assets/imgs/Galaxy-A53-5G.webp",
             "description": "In hac habitasse platea dictumst. Etiam faucibus cursus urna. Ut tellus.",
-            "category": "Oppo",
+            "Brand": "Oppo",
             "color": "Khaki",
             "size": "256GB"
         },
@@ -174,7 +174,7 @@
             "price": 4272,
             "img": "./src/assets/imgs/Galaxy-S21-FF-5G.webp",
             "description": "Morbi non lectus. Aliquam sit amet diam in magna bibendum imperdiet. Nullam orci pede, venenatis non, sodales sed, tincidunt eu, felis.\n\nFusce posuere felis sed lacus. Morbi sem mauris, laoreet ut, rhoncus aliquet, pulvinar sed, nisl. Nunc rhoncus dui vel sem.\n\nSed sagittis. Nam congue, risus semper porta volutpat, quam pede lobortis ligula, sit amet eleifend pede libero quis orci. Nullam molestie nibh in lectus.",
-            "category": "Haier",
+            "Brand": "Haier",
             "color": "Crimson",
             "size": "512GB"
         },
@@ -184,7 +184,7 @@
             "price": 7964,
             "img": "./src/assets/imgs/Huawei-Mate-40-Pro+-(5G).png",
             "description": "Morbi non lectus. Aliquam sit amet diam in magna bibendum imperdiet. Nullam orci pede, venenatis non, sodales sed, tincidunt eu, felis.\n\nFusce posuere felis sed lacus. Morbi sem mauris, laoreet ut, rhoncus aliquet, pulvinar sed, nisl. Nunc rhoncus dui vel sem.",
-            "category": "Motorola",
+            "Brand": "Motorola",
             "color": "Violet",
             "size": "16GB"
         },
@@ -194,7 +194,7 @@
             "price": 4794,
             "img": "./src/assets/imgs/HUAWEI-P40-Pro-5G.webp",
             "description": "Pellentesque at nulla. Suspendisse potenti. Cras in purus eu magna vulputate luctus.",
-            "category": "Realme",
+            "Brand": "Realme",
             "color": "Orange",
             "size": "128GB"
         },
@@ -204,7 +204,7 @@
             "price": 4792,
             "img": "./src/assets/imgs/Huawei-nova-11.webp",
             "description": "Sed ante. Vivamus tortor. Duis mattis egestas metus.",
-            "category": "XOLO",
+            "Brand": "XOLO",
             "color": "Aquamarine",
             "size": "64GB"
         },
@@ -214,7 +214,7 @@
             "price": 7325,
             "img": "./src/assets/imgs/Motorola-edge-40.avif",
             "description": "Duis bibendum. Morbi non quam nec dui luctus rutrum. Nulla tellus.",
-            "category": "Lenovo",
+            "Brand": "Lenovo",
             "color": "Puce",
             "size": "16GB"
         },
@@ -224,7 +224,7 @@
             "price": 5635,
             "img": "./src/assets/imgs/Motorola-edge-30-neo.avif",
             "description": "Curabitur gravida nisi at nibh. In hac habitasse platea dictumst. Aliquam augue quam, sollicitudin vitae, consectetuer eget, rutrum at, lorem.\n\nInteger tincidunt ante vel ipsum. Praesent blandit lacinia erat. Vestibulum sed magna at nunc commodo placerat.",
-            "category": "i-mobile",
+            "Brand": "i-mobile",
             "color": "Turquoise",
             "size": "256GB"
         },
@@ -234,7 +234,7 @@
             "price": 4004,
             "img": "./src/assets/imgs/Asus-ROG-Phone-7.webp",
             "description": "Curabitur gravida nisi at nibh. In hac habitasse platea dictumst. Aliquam augue quam, sollicitudin vitae, consectetuer eget, rutrum at, lorem.",
-            "category": "Yezz",
+            "Brand": "Yezz",
             "color": "Teal",
             "size": "128GB"
         }

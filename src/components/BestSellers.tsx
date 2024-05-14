@@ -1,5 +1,6 @@
 import { Product } from "@/types";
 import { ShopView } from "./ShopView";
+import { SkeletonCard } from "./SkeletonCard";
 
 export function BestSellers({ products }: { products: Product[] }) {
   return (
@@ -12,7 +13,11 @@ export function BestSellers({ products }: { products: Product[] }) {
       </p>
 
       <div className="grid grid-cols-5 gap-5 mt-12">
-        <ShopView products={products} numberOfProducts={10} />
+        {products.length === 0 ? (
+          [...Array(10)].map((i) => <SkeletonCard key={i} />)
+        ) : (
+          <ShopView products={products} numberOfProducts={10} />
+        )}
       </div>
     </section>
   );

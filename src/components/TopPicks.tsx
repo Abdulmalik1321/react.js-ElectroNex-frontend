@@ -7,6 +7,7 @@ import {
 } from "@/shadcn/ui/carousel";
 import { ProductCard } from "./ProductCard";
 import { Product } from "@/types";
+import { SkeletonCard } from "./SkeletonCard";
 
 export function TopPicks({ products }: { products: Product[] }) {
   return (
@@ -28,13 +29,17 @@ export function TopPicks({ products }: { products: Product[] }) {
 
       <Carousel className="w-3/4 flex items-center">
         <CarouselContent className="-ml-1">
-          {Array.from(products).map((product, index) => (
-            <CarouselItem
-              key={index}
-              className="pl-1  md:basis-1/2 lg:basis-1/4">
-              <ProductCard product={product} />
-            </CarouselItem>
-          ))}
+          {products.length === 0
+            ? [...Array(10)].map((i) => (
+                <SkeletonCard customClass="ml-1 mr-[14px]" key={i} />
+              ))
+            : Array.from(products).map((product, index) => (
+                <CarouselItem
+                  key={index}
+                  className="pl-1 md:basis-1/2 lg:basis-1/4">
+                  <ProductCard product={product} />
+                </CarouselItem>
+              ))}
         </CarouselContent>
         <CarouselPrevious />
         <CarouselNext />

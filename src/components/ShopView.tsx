@@ -13,7 +13,7 @@ export function ShopView({
       {Array.from(products)
         .slice(0, numberOfProducts)
         .map((product) => (
-          <ProductCard key={product.id} product={product} />
+          <ProductCard key={product.name} product={product} />
         ))}
     </>
   );

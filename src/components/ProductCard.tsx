@@ -3,23 +3,34 @@ import { Card, CardContent, CardFooter } from "@/shadcn/ui/card";
 import { Sheet, SheetContent, SheetTrigger } from "@/shadcn/ui/sheet";
 import { AddToCart } from "./AddToCart";
 import { Product } from "@/types";
+import { SkeletonCard } from "./SkeletonCard";
 
 export function ProductCard({ product }: { product: Product }) {
+  const sizes = product.sizes.sort((a, b) => {
+    const sizeA = parseInt(a.replace("TB", "000"));
+    const sizeB = parseInt(b.replace("TB", "000"));
+    return sizeA - sizeB;
+  });
+  const displaySizes = sizes.length > 3 ? [...sizes.slice(0, 3), "..."] : sizes;
   return (
     <>
-      <Card className="w-60 h-full relative">
+      <Card className="w-60 h-full relative flex flex-col justify-between">
         <CardContent className="flex flex-col items-center justify-center p-6">
-          <img className="h-48 object-cover" src={product.img} alt="" />
+          <img className="h-48 object-cover" src={product.image} alt="" />
           <div className="text-center w-full mt-6">
             <p className="text font-semibold">{product.name}</p>
             <span className="text-xs text-muted-foreground">
-              64GB | 128GB | 256GB | 512GB
+              {displaySizes.join(" | ")}
             </span>
             <div className="flex justify-center gap-1 mt-2 mb-2">
-              <span className="bg-red-600 h-3 w-3 border border-secondary-foreground rounded-full block"></span>
-              <span className="bg-gray-600 h-3 w-3 border border-secondary-foreground rounded-full block"></span>
-              <span className="bg-yellow-600 h-3 w-3 border border-secondary-foreground rounded-full block"></span>
-              <span className="bg-white h-3 w-3 border border-secondary-foreground rounded-full block"></span>
+              {product.colors.map((color) => {
+                return (
+                  <span
+                    key={color}
+                    style={{ backgroundColor: color }}
+                    className={`h-3 w-3 border border-secondary-foreground rounded-full block`}></span>
+                );
+              })}
             </div>
           </div>
         </CardContent>

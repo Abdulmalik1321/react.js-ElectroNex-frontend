@@ -1,4 +1,3 @@
-import productsJson from "../assets/JSON/products.json";
 import userTokensJson from "../assets/JSON/appSettings.json";
 
 import { Product } from "@/types";
@@ -12,7 +11,7 @@ type Reducer = {
 
 export const initialState: Reducer = {
   userInfo: LocalStorage("userInfo"),
-  products: JSON.parse(JSON.stringify(productsJson)).products,
+  products: [],
   userTokens: JSON.parse(JSON.stringify(userTokensJson)).tokens,
 };
 
@@ -27,6 +26,14 @@ export function shopReducer(state: any, action: any) {
       return {
         ...state,
         userInfo: null,
+      };
+
+    case "PRODUCTS_INIT":
+      console.log(action.payload);
+
+      return {
+        ...state,
+        products: action.payload,
       };
     default:
       return;
