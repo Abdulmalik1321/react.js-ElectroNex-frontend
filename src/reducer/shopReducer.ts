@@ -23,6 +23,11 @@ export function shopReducer(state: any, action: any) {
         ...state,
         userInfo: action.payload,
       };
+    case "logout":
+      return {
+        ...state,
+        userInfo: null,
+      };
     default:
       return;
   }

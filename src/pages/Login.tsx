@@ -1,19 +1,20 @@
-// import Image from "next/image";
-// import Link from "next/link";
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 import api from "@/api";
 import { Button } from "@/shadcn/ui/button";
 import { Input } from "@/shadcn/ui/input";
 import { Label } from "@/shadcn/ui/label";
+import { LoadingButton } from "@/shadcn/ui/loadingbutton";
+import { Badge } from "@/shadcn/ui/badge";
 
 import { LoginInfo, LoginProps } from "@/types";
 import { LocalStorage } from "@/utils";
-import { useState } from "react";
-import { useNavigate } from "react-router-dom";
 
 export function Login({ handelLogin }: LoginProps) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [error, setError] = useState(null);
   const navigate = useNavigate();
 
   const login = async (loginInfo: LoginInfo) => {
@@ -27,8 +28,9 @@ export function Login({ handelLogin }: LoginProps) {
       userData.data.token = res.data;
 
       return userData.data;
-    } catch (error) {
-      console.error(error);
+    } catch (error: any) {
+      setLoading(false);
+      setError(error.response.data || "Something went wrong");
       return Promise.reject(new Error("Something went wrong"));
     }
   };
@@ -51,6 +53,8 @@ export function Login({ handelLogin }: LoginProps) {
     navigate("/");
   };
 
+  const [loading, setLoading] = useState(false);
+
   return (
     <main className="w-full lg:grid lg:min-h-full lg:grid-cols-2 xl:min-h-full">
       <div className="hidden bg-muted lg:block relative">
@@ -70,6 +74,11 @@ export function Login({ handelLogin }: LoginProps) {
             <p className="text-balance text-muted-foreground">
               Enter your email below to login to your account
             </p>
+            {error && (
+              <Badge className="justify-center" variant="destructive">
+                {error}
+              </Badge>
+            )}
           </div>
           <div className="grid gap-4">
             <div className="grid gap-2">
@@ -99,9 +108,16 @@ export function Login({ handelLogin }: LoginProps) {
                 onChange={handelInput}
               />
             </div>
-            <Button onClick={handelSubmit} type="submit" className="w-full">
+            <LoadingButton
+              loading={loading}
+              onClick={() => {
+                setLoading(true);
+                handelSubmit();
+              }}
+              type="submit"
+              className="w-full">
               Login
-            </Button>
+            </LoadingButton>
             <Button variant="outline" className="w-full">
               Login with Google
             </Button>

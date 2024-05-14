@@ -16,7 +16,7 @@ export type LoginInfo = {
 
 export type ActionType =
   | { type: "login"; payload: { email: string; password: string } }
-  | { type: "add_expense"; payload: FormData }
+  | { type: "logout" }
   | { type: "edit_income"; payload: FormData }
   | { type: "edit_expense"; payload: FormData }
   | { type: "setTotalSaving"; payload: number }

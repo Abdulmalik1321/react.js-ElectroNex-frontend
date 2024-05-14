@@ -15,7 +15,7 @@ import { shopContext } from "../Router";
 // import { Product } from "@/types";
 
 export function Home() {
-  const { state } = useContext(shopContext);
+  const { state, dispatch } = useContext(shopContext);
 
   console.log(state);
 
@@ -41,7 +41,7 @@ export function Home() {
 
   return (
     <main className="md:w-[80%] flex flex-col justify-center items-center xxs:w-[95%]">
-      <NavBar userInfo={state.userInfo} />
+      <NavBar />
       <Hero />
       <TopPicks products={state.products} />
       <BestSellers products={state.products} />

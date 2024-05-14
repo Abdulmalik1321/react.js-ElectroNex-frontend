@@ -8,6 +8,8 @@ import { Login } from "./pages/Login";
 
 import { ThemeProvider } from "./shadcn/theme-provider";
 import { shopReducer, initialState } from "./reducer/shopReducer";
+import { Profile } from "./pages/Profile";
+import { Dashboard } from "./pages/Dashboard";
 
 export const shopContext = createContext<any>(null);
 
@@ -25,6 +27,14 @@ export function Router() {
     {
       path: "/login",
       element: <Login handelLogin={dispatch} />,
+    },
+    {
+      path: "/profile",
+      element: <Profile />,
+    },
+    {
+      path: "/dashboard",
+      element: <Dashboard />,
     },
   ]);
   return (
