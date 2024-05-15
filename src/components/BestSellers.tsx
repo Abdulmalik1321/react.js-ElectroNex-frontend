@@ -33,7 +33,7 @@ export function BestSellers() {
         </strong>
       </p>
 
-      <div className="grid grid-cols-5 gap-5 mt-12">
+      <div className="grid grid-cols-4 gap-5 mt-12">
         {!data ? (
           !error ? (
             [...Array(10)].map((i) => <SkeletonCard key={i} />)
@@ -41,7 +41,7 @@ export function BestSellers() {
             <p className="ml-1 text-red-500">{error.message}</p>
           )
         ) : (
-          <ShopView products={data} numberOfProducts={10} />
+          <ShopView products={data} numberOfProducts={8} />
         )}
       </div>
     </section>

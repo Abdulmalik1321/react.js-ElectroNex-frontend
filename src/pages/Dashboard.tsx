@@ -101,7 +101,7 @@ export function Dashboard() {
               </div>
             </div>
             <TabsContent value="all">
-              <Card x-chunk="dashboard-06-chunk-0">
+              <Card x-chunk="dashboard-06-chunk-0" className="bg-background">
                 <CardHeader className="flex justify-between flex-row">
                   <div>
                     <CardTitle>Products</CardTitle>
