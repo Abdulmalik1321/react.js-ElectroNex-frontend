@@ -31,11 +31,13 @@ import {
   DropdownMenuTrigger,
 } from "@/shadcn/ui/dropdown-menu";
 import { shopContext } from "../Router";
+import { Review } from "@/components/Reviews";
+import { LocalStorage } from "@/utils";
 
 export function ProductDetails() {
   const params = useParams();
   const navigate = useNavigate();
-  const { state } = useContext(shopContext);
+  const { state, dispatch } = useContext(shopContext);
 
   const getProducts = async () => {
     try {
@@ -149,16 +151,22 @@ export function ProductDetails() {
     navigate(`/products/${params.productId}/${color}/${params.size}`);
   };
 
-  const selectedStock = () => {
-    console.log(lowestPriceProduct);
-  };
-
-  const addToCart = (stock: Stocks) => {
-    console.log(stock);
+  const addToCart = (cartItem: Stocks) => {
+    cartItem.productName = data.name;
+    cartItem.cartItemId = Date.now();
+    if (state.cart === null) {
+      LocalStorage("cart", [cartItem]);
+    } else {
+      LocalStorage("cart", [...state.cart, cartItem]);
+    }
+    dispatch({
+      type: "addToCart",
+      payload: cartItem,
+    });
   };
 
   return (
-    <div className="md:w-[80%] flex flex-col justify-start items-center xxs:w-[95%]">
+    <main className="md:w-[80%] flex flex-col justify-start items-center xxs:w-[95%]">
       <NavBar />
 
       <div className="grid grid-cols-7 h-full w-full items-center gap-12">
@@ -216,7 +224,6 @@ export function ProductDetails() {
                     <Button
                       onClick={() => {
                         navigateColor(color);
-                        selectedStock;
                       }}
                       variant="outline"
                       className="w-18 h-12 group"
@@ -355,7 +362,7 @@ export function ProductDetails() {
                                       adipisicing elit. Cupiditate illum magni
                                       vero molestias. Quis earum provident velit
                                       pariatur eum iure dolorum aut accusantium
-                                      unde, nesciunt ab, quas eaque dolores quo?
+                                      unde, nesciunt ab, quas eaque
                                     </p>
                                     <SheetClose asChild>
                                       <Badge
@@ -380,12 +387,18 @@ export function ProductDetails() {
                 </SheetContent>
               </Sheet>
 
-              <Button onClick={selectedStock}>Add To Cart</Button>
+              <Button
+                onClick={() => {
+                  addToCart(lowestPriceProduct);
+                }}>
+                Add To Cart
+              </Button>
             </div>
           </div>
         </div>
         {error && <p className="text-red-500">{error.message}</p>}
       </div>
-    </div>
+      <Review />
+    </main>
   );
 }

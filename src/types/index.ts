@@ -20,6 +20,8 @@ export type Stocks = {
   url: string;
   userName: string;
   condition: string;
+  productName: string;
+  cartItemId: number;
 };
 export type LoginInfo = {
   email: string;
@@ -29,8 +31,8 @@ export type LoginInfo = {
 export type ActionType =
   | { type: "login"; payload: { email: string; password: string } }
   | { type: "logout" }
-  | { type: "edit_income"; payload: FormData }
-  | { type: "edit_expense"; payload: FormData }
+  | { type: "addToCart"; payload: Stocks }
+  | { type: "removeFromCart"; payload: Stocks[] }
   | { type: "setTotalSaving"; payload: number }
   | { type: "totalIncome"; payload: number }
   | { type: "totalExpense"; payload: number }

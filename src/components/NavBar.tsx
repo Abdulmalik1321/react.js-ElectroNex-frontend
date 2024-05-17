@@ -16,10 +16,14 @@ import {
   Settings,
   ShoppingCart,
   User,
+  X,
 } from "lucide-react";
 import { LocalStorage } from "@/utils";
 import { shopContext } from "../Router";
 import { useContext } from "react";
+import { Stocks } from "@/types";
+import { Card } from "@/shadcn/ui/card";
+import { Badge } from "@/shadcn/ui/badge";
 
 export function NavBar() {
   const { state, dispatch } = useContext(shopContext);
@@ -31,6 +35,20 @@ export function NavBar() {
       type: "logout",
     });
     navigate("/");
+  };
+
+  const removeFromCart = (cartItemId: number) => {
+    const newCart = state.cart.filter((item: Stocks) => {
+      item.cartItemId !== cartItemId;
+    });
+
+    console.log(newCart);
+
+    LocalStorage("cart", newCart);
+    dispatch({
+      type: "removeFromCart",
+      payload: newCart,
+    });
   };
   return (
     <div className="w-full top-0 sticky z-10">
@@ -109,11 +127,51 @@ export function NavBar() {
                   </DropdownMenuItem>
                 </DropdownMenuContent>
               </DropdownMenu>
-              <Link to={"/"}>
-                <Button>
-                  <ShoppingCart />
-                </Button>
-              </Link>
+
+              {/* .................................... */}
+
+              <DropdownMenu>
+                <DropdownMenuTrigger asChild>
+                  <Button>
+                    <ShoppingCart />
+                  </Button>
+                </DropdownMenuTrigger>
+                <DropdownMenuContent align="end">
+                  {/* .................................... */}
+
+                  {state.cart?.map((cartItem: Stocks) => {
+                    return (
+                      <DropdownMenuItem
+                        key={cartItem.cartItemId}
+                        className="gap-5">
+                        <Card
+                          className="size-16 bg-contain"
+                          style={{
+                            backgroundImage: `url(${cartItem.url})`,
+                          }}
+                        />
+                        <div className="text-left">
+                          <p>{cartItem.productName}</p>
+                          <Badge className="rounded-sm mt-1" variant="outline">
+                            {cartItem.price.toFixed(2).toLocaleString()} SAR
+                          </Badge>
+                        </div>
+                        <Button
+                          onClick={() => {
+                            removeFromCart(cartItem.cartItemId);
+                          }}
+                          variant="default">
+                          <X />
+                        </Button>
+                      </DropdownMenuItem>
+                    );
+                  })}
+                  <DropdownMenuItem>
+                    <Button className="w-full">Checkout</Button>
+                  </DropdownMenuItem>
+                  {/* .................................... */}
+                </DropdownMenuContent>
+              </DropdownMenu>
             </>
           ) : (
             <Link to={"/login"}>
