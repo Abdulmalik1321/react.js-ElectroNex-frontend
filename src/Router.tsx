@@ -11,6 +11,8 @@ import { shopReducer, initialState } from "./reducer/shopReducer";
 import { Profile } from "./pages/Profile";
 import { Dashboard } from "./pages/Dashboard";
 import { ProductDetails } from "./pages/ProductDetails";
+import { Wishlist } from "./pages/Wishlist";
+import { WishlistDetails } from "./pages/WishlistDetails";
 
 export const shopContext = createContext<any>(null);
 
@@ -40,6 +42,14 @@ export function Router() {
     {
       path: "/products/:productId/:color/:size",
       element: <ProductDetails />,
+    },
+    {
+      path: "/wishlist",
+      element: <Wishlist />,
+    },
+    {
+      path: "/wishlist/:wishlistId",
+      element: <WishlistDetails />,
     },
   ]);
   return (

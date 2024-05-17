@@ -5,10 +5,15 @@ import { Button } from "@/shadcn/ui/button";
 import { Card, CardContent } from "@/shadcn/ui/card";
 import { Product, Stocks } from "@/types";
 import { useQuery } from "@tanstack/react-query";
-import { Check, X } from "lucide-react";
-import { useEffect, useState } from "react";
+import { Banknote, Check, ListPlus, X } from "lucide-react";
+import { useContext, useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/shadcn/ui/accordion";
 import {
   Sheet,
   SheetClose,
@@ -19,10 +24,18 @@ import {
   SheetTitle,
   SheetTrigger,
 } from "@/shadcn/ui/sheet";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "@/shadcn/ui/dropdown-menu";
+import { shopContext } from "../Router";
 
 export function ProductDetails() {
   const params = useParams();
   const navigate = useNavigate();
+  const { state } = useContext(shopContext);
 
   const getProducts = async () => {
     try {
@@ -34,11 +47,46 @@ export function ProductDetails() {
     }
   };
 
-  // Queries
-  const { data, error } = useQuery<Product>({
-    queryKey: ["ProductDetails"],
-    queryFn: getProducts,
-  });
+  const getWishlists = async () => {
+    try {
+      const res = await api.get(`/wishlist`);
+      return res.data;
+    } catch (error) {
+      console.error(error);
+      return Promise.reject(new Error("Something went wrong"));
+    }
+  };
+
+  const addToWishlists = async (WishlistId: string, productId: string) => {
+    console.log(WishlistId, productId);
+
+    try {
+      const res = await api.put(`/wishlist/${WishlistId}/${productId}`, {
+        headers: { Authorization: `Bearer ${state.userInfo.token}` },
+      });
+      return res.data;
+    } catch (error) {
+      console.error(error);
+      return Promise.reject(new Error("Something went wrong"));
+    }
+  };
+
+  const queryMultiple = () => {
+    const res1 = useQuery<Product>({
+      queryKey: ["ProductDetails"],
+      queryFn: getProducts,
+    });
+    const res2 = useQuery<any>({
+      queryKey: ["WishList"],
+      queryFn: getWishlists,
+    });
+    return [res1, res2];
+  };
+
+  const [
+    { data: data, error: error },
+    { data: wishlistData, error: wishlistError },
+  ] = queryMultiple();
 
   const [displayImg, setDisplayImg] = useState<string>();
   const [images, setImages] = useState<string[]>([]);
@@ -51,7 +99,7 @@ export function ProductDetails() {
     let displayImgTemp: string | undefined;
     const imagesTemp: string[] = [];
 
-    data?.stocks.forEach((stock) => {
+    data?.stocks.forEach((stock: any) => {
       if (stock.color === params.color) {
         if (stock.isMain && stock.condition === "new") {
           displayImgTemp = stock.url;
@@ -71,7 +119,7 @@ export function ProductDetails() {
 
     if (data) {
       const lowestPriceProductTemp = data?.stocks.reduce(
-        (lowest, stock) => {
+        (lowest: any, stock: any) => {
           if (
             stock.color === params.color &&
             stock.size === params.size &&
@@ -136,7 +184,7 @@ export function ProductDetails() {
           </CardContent>
         </Card>
 
-        <div className="flex flex-col h-[calc(70dvh)] overflow-hidden gap-5 col-span-3  justify-between">
+        <div className="flex flex-col h-[calc(70dvh)] overflow-hidden gap-5 col-span-3  justify-between ">
           <div>
             <div className=" flex justify-between items-center">
               {lowestPriceProduct.quantity > 0 ? (
@@ -159,11 +207,11 @@ export function ProductDetails() {
               <p className="w-96">{data?.description}</p>
             </div>
           </div>
-          <div className="flex flex-col gap-5">
+          <div className="flex flex-col gap-5 ml-[3px]">
             <div>
               <p className="text-2xl mb-3">Color:</p>
               <div className="flex gap-2">
-                {data?.colors.map((color) => {
+                {data?.colors.map((color: any) => {
                   return (
                     <Button
                       onClick={() => {
@@ -186,7 +234,7 @@ export function ProductDetails() {
             <div>
               <p className="text-2xl mb-3">Storage:</p>
               <div className="flex gap-2">
-                {data?.sizes.sort().map((size) => {
+                {data?.sizes.sort().map((size: any) => {
                   return (
                     <Button
                       onClick={() => {
@@ -206,20 +254,49 @@ export function ProductDetails() {
                 })}
               </div>
             </div>
+            <div className="flex items-center gap-2 pt-12">
+              <Button variant="outline" className="flex items-center gap-1">
+                <Banknote />
+                Sell This Product
+              </Button>
+              <DropdownMenu>
+                <DropdownMenuTrigger asChild>
+                  <Button
+                    variant="outline"
+                    className="overflow-hidden rounded-md flex items-center gap-1">
+                    <ListPlus />
+                    Add To Wishlist
+                  </Button>
+                </DropdownMenuTrigger>
+                <DropdownMenuContent align="end">
+                  {wishlistData?.map((wishlist: any) => {
+                    return (
+                      <DropdownMenuItem
+                        onClick={() => {
+                          addToWishlists(wishlist.id, data.id);
+                        }}
+                        key={wishlist.id}>
+                        <span>{wishlist.name}</span>
+                      </DropdownMenuItem>
+                    );
+                  })}
+                </DropdownMenuContent>
+              </DropdownMenu>
+            </div>
           </div>
           <div className="w-full flex justify-between items-center">
             <div>
-              <p className="text-2xl mb-0">
-                Price:{" "}
-                {(lowestPriceProduct.price != Infinity
-                  ? lowestPriceProduct.price
-                  : 0
-                )
-                  .toFixed(2)
-                  .toLocaleString()}
-              </p>
-              <p className="text-xl mt-0"></p>
-              <p className="text-sm">By: {lowestPriceProduct.userName}</p>
+              {lowestPriceProduct.price != Infinity ? (
+                <div>
+                  <p className="text-2xl mb-0">
+                    Price:{" "}
+                    {lowestPriceProduct.price.toFixed(2).toLocaleString()} SAR
+                  </p>
+                  <p className="text-sm">By: {lowestPriceProduct.userName}</p>
+                </div>
+              ) : (
+                <p className="text-2xl mb-0">-----</p>
+              )}
             </div>
             <div className="flex gap-3">
               <Sheet>
@@ -231,48 +308,73 @@ export function ProductDetails() {
                     <SheetTitle>{data?.name}</SheetTitle>
                     <SheetDescription>{data?.description}</SheetDescription>
                   </SheetHeader>
-                  <div className="grid gap-4 py-4">
-                    {data?.stocks.map((stock) => {
-                      if (stock.condition === "used" && stock.isMain) {
-                        return (
-                          <div
-                            key={stock.stockId}
-                            className="flex items-center gap-5 hover:bg-background p-5 pt-2 pb-2">
-                            <Card
-                              className={`size-20 bg-cover bg-no-repeat bg-center relative col-span-4`}
-                              style={{ backgroundImage: `url(${stock.url})` }}
-                            />
-                            <div>
-                              <p>{stock.userName}</p>
-                              <div className="flex items-center gap-3 mt-2">
-                                <Badge className="rounded-sm" variant="outline">
-                                  {stock.price.toFixed(2).toLocaleString()}
-                                </Badge>
-                                <Badge className="rounded-sm" variant="outline">
-                                  {stock.size}
-                                </Badge>
-                                <Badge
-                                  className="rounded-full aspect-square"
-                                  variant="outline"
-                                  style={{
-                                    backgroundColor: stock.color,
-                                  }}></Badge>
-                              </div>
-                              <SheetClose asChild>
-                                <Badge
-                                  onClick={() => {
-                                    addToCart(stock);
-                                  }}
-                                  variant="outline"
-                                  className="rounded-sm border-primary mt-2 cursor-pointer hover:bg-muted">
-                                  Add To Cart
-                                </Badge>
-                              </SheetClose>
-                            </div>
-                          </div>
-                        );
-                      }
-                    })}
+                  <div className="grid gap-4 py-4 h-[95%] overflow-y-scroll">
+                    <div>
+                      {data?.stocks.map((stock: any) => {
+                        if (stock.condition === "used" && stock.isMain) {
+                          return (
+                            <Accordion
+                              key={stock.stockId}
+                              type="single"
+                              collapsible
+                              className="w-full text-left gap-2 p-5 pt-2 pb-2">
+                              <AccordionItem value="item-1">
+                                <AccordionTrigger>
+                                  <div className="text-left">
+                                    <p>By: {stock.userName}</p>
+                                    <div className="flex items-center gap-3 mt-2">
+                                      <Badge
+                                        className="rounded-sm"
+                                        variant="outline">
+                                        {stock.price
+                                          .toFixed(2)
+                                          .toLocaleString()}
+                                      </Badge>
+                                      <Badge
+                                        className="rounded-sm"
+                                        variant="outline">
+                                        {stock.size}
+                                      </Badge>
+                                      <Badge
+                                        className="rounded-full aspect-square"
+                                        variant="outline"
+                                        style={{
+                                          backgroundColor: stock.color,
+                                        }}></Badge>
+                                    </div>
+                                  </div>
+                                </AccordionTrigger>
+                                <AccordionContent className="grid grid-cols-5 gap-2 items-start">
+                                  <img
+                                    className={`h-full aspect-square object-contain rounded-md bg-no-repeat bg-center relative col-span-2`}
+                                    src={stock.url}
+                                  />
+                                  <div className="col-span-3">
+                                    <p>
+                                      Lorem ipsum dolor sit amet consectetur
+                                      adipisicing elit. Cupiditate illum magni
+                                      vero molestias. Quis earum provident velit
+                                      pariatur eum iure dolorum aut accusantium
+                                      unde, nesciunt ab, quas eaque dolores quo?
+                                    </p>
+                                    <SheetClose asChild>
+                                      <Badge
+                                        onClick={() => {
+                                          addToCart(stock);
+                                        }}
+                                        variant="outline"
+                                        className="rounded-sm border-primary mt-2 cursor-pointer hover:bg-muted">
+                                        Add To Cart
+                                      </Badge>
+                                    </SheetClose>
+                                  </div>
+                                </AccordionContent>
+                              </AccordionItem>
+                            </Accordion>
+                          );
+                        }
+                      })}
+                    </div>
                   </div>
                   <SheetFooter></SheetFooter>
                 </SheetContent>

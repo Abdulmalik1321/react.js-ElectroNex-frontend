@@ -2,14 +2,21 @@ import { Button } from "@/shadcn/ui/button";
 import { ModeToggle } from "../shadcn/mode-toggle";
 import { Separator } from "@/shadcn/ui/separator";
 import { Link, useNavigate } from "react-router-dom";
-import { ActionType, UserInfo } from "@/types";
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/shadcn/ui/dropdown-menu";
-import { LogOut, PhoneCall, Settings, ShoppingCart, User } from "lucide-react";
+import {
+  AlignJustify,
+  FileHeart,
+  LayoutDashboard,
+  LogOut,
+  Settings,
+  ShoppingCart,
+  User,
+} from "lucide-react";
 import { LocalStorage } from "@/utils";
 import { shopContext } from "../Router";
 import { useContext } from "react";
@@ -55,24 +62,11 @@ export function NavBar() {
               Contact Us
             </Button>
           </Link>
-
-          {state.userInfo && state.userInfo.role == 1 ? (
-            <Link to={"/dashboard"}>
-              <Button
-                className="text-xl text-[vlc(--primary-foreground)]"
-                variant="link">
-                Dashboard
-              </Button>
-            </Link>
-          ) : (
-            ""
-          )}
         </div>
         <div className="flex items-end gap-2">
           <ModeToggle />
           {state.userInfo ? (
             <>
-              {" "}
               <DropdownMenu>
                 <DropdownMenuTrigger asChild>
                   <Button
@@ -83,6 +77,16 @@ export function NavBar() {
                   </Button>
                 </DropdownMenuTrigger>
                 <DropdownMenuContent align="end">
+                  {state.userInfo && state.userInfo.role == 1 ? (
+                    <Link to={"/dashboard"}>
+                      <DropdownMenuItem className="gap-2">
+                        <LayoutDashboard />
+                        <span>Admin Dashboard</span>
+                      </DropdownMenuItem>
+                    </Link>
+                  ) : (
+                    ""
+                  )}
                   <Link to={"/profile"}>
                     <DropdownMenuItem className="gap-2">
                       <User />
@@ -90,10 +94,12 @@ export function NavBar() {
                     </DropdownMenuItem>
                   </Link>
 
-                  <DropdownMenuItem className="gap-2">
-                    <PhoneCall className="w-5" />
-                    <span>Support</span>
-                  </DropdownMenuItem>
+                  <Link to={"/wishlist"}>
+                    <DropdownMenuItem className="gap-2">
+                      <FileHeart />
+                      <span>Wishlist</span>
+                    </DropdownMenuItem>
+                  </Link>
 
                   <DropdownMenuItem
                     className="gap-2"
