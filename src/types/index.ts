@@ -1,6 +1,7 @@
 export type Product = {
   id: string;
-  image: string;
+  stocks: Stocks[];
+  images: string[];
   name: string;
   price: number;
   description: string;
@@ -9,6 +10,17 @@ export type Product = {
   sizes: string[];
 };
 
+export type Stocks = {
+  color: string;
+  isMain: boolean;
+  price: number;
+  quantity: number;
+  size: string;
+  stockId: string;
+  url: string;
+  userName: string;
+  condition: string;
+};
 export type LoginInfo = {
   email: string;
   password: string;

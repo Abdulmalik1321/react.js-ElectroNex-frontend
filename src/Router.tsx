@@ -10,6 +10,7 @@ import { ThemeProvider } from "./shadcn/theme-provider";
 import { shopReducer, initialState } from "./reducer/shopReducer";
 import { Profile } from "./pages/Profile";
 import { Dashboard } from "./pages/Dashboard";
+import { ProductDetails } from "./pages/ProductDetails";
 
 export const shopContext = createContext<any>(null);
 
@@ -35,6 +36,10 @@ export function Router() {
     {
       path: "/dashboard",
       element: <Dashboard />,
+    },
+    {
+      path: "/products/:productId/:color/:size",
+      element: <ProductDetails />,
     },
   ]);
   return (

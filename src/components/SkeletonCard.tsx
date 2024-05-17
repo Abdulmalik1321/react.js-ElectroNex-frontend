@@ -11,10 +11,10 @@ export function SkeletonCard({ customClass = "" }: { customClass?: string }) {
           <div className="flex flex-col items-left justify-center">
             <SkeletonTow className="h-[200px] w-full" />
             <div className="flex justify-center gap-1 mt-2 mb-2">
-              {[...Array(4)].map((index) => {
+              {[...Array(4)].map((i, index) => {
                 return (
                   <SkeletonTow
-                    key={index}
+                    key={`SkeletonTow-${i}-${index}`}
                     className="h-3 w-3 border border-muted-foreground rounded-full block"
                   />
                 );

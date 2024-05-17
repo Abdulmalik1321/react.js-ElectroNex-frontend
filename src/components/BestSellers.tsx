@@ -36,7 +36,9 @@ export function BestSellers() {
       <div className="grid grid-cols-4 gap-5 mt-12">
         {!data ? (
           !error ? (
-            [...Array(10)].map((i) => <SkeletonCard key={i} />)
+            [...Array(8)].map((num, index) => (
+              <SkeletonCard key={`BestSellers-${num}-${index}`} />
+            ))
           ) : (
             <p className="ml-1 text-red-500">{error.message}</p>
           )

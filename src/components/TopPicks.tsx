@@ -48,8 +48,11 @@ export function TopPicks() {
         <CarouselContent className="-ml-1">
           {!data ? (
             !error ? (
-              [...Array(10)].map((i) => (
-                <SkeletonCard customClass="ml-1 mr-[14px]" key={i} />
+              [...Array(10)].map((i, index) => (
+                <SkeletonCard
+                  customClass="ml-1 mr-[14px]"
+                  key={`12-${i}-${index}`}
+                />
               ))
             ) : (
               <p className="ml-1 text-red-500">{error.message}</p>
