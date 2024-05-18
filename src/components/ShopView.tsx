@@ -12,9 +12,11 @@ export function ShopView({
     <>
       {Array.from(products)
         .slice(0, numberOfProducts)
-        .map((product) => (
-          <ProductCard key={product.name} product={product} />
-        ))}
+        .map((product) => {
+          if (product.status === "listed") {
+            return <ProductCard key={product.name} product={product} />;
+          }
+        })}
     </>
   );
 }

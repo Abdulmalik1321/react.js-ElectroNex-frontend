@@ -13,6 +13,7 @@ import { Dashboard } from "./pages/Dashboard";
 import { ProductDetails } from "./pages/ProductDetails";
 import { Wishlist } from "./pages/Wishlist";
 import { WishlistDetails } from "./pages/WishlistDetails";
+import { SignUp } from "./pages/SignUp";
 
 export const shopContext = createContext<any>(null);
 
@@ -30,6 +31,10 @@ export function Router() {
     {
       path: "/login",
       element: <Login handelLogin={dispatch} />,
+    },
+    {
+      path: "/sign-up",
+      element: <SignUp handelLogin={dispatch} />,
     },
     {
       path: "/profile",

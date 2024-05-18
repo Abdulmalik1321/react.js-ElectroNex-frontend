@@ -18,19 +18,21 @@ export function Hero() {
   return (
     <section className="mt-5 h-screen w-full">
       <div className="w-full h-[88%] grid grid-cols-12 gap-5 items-center justify-center">
-        <div className="flex flex-col justify-center items-start text-left col-span-6">
-          <h1 className="z-10 text-8xl">
-            Electronics<strong>Hub</strong>
+        <div className="flex flex-col justify-center items-start text-left col-span-6 font-light">
+          {/* <h1 className="z-10 text-9xl">
+            Electro<strong>Nex</strong>
           </h1>
           <br />
-          <br />
-          <div className="text-5xl font-normal z-10  w-[95%]">
-            <span>A Marketplace to</span>
-            <strong>
+          <br /> */}
+          <div className="text-7xl font-normal z-10  w-[95%]">
+            <span>
+              A Platform to <br /> Seamlessly
+            </span>
+            <strong className="font-extrabold">
               <FlipWords words={words} />
             </strong>
             <br />
-            <span>Your Electronics</span>
+            <span>Your Electronics!</span>
           </div>
         </div>
         <div className="col-span-6 h-full gap-5 grid grid-cols-2 mt-52">

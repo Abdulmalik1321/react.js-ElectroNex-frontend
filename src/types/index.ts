@@ -1,13 +1,16 @@
 export type Product = {
   id: string;
   stocks: Stocks[];
-  images: string[];
+  images: string[][];
   name: string;
   price: number;
   description: string;
   category: string;
   colors: string[];
   sizes: string[];
+  numberOfSales: number;
+  status: string;
+  createdAt: string;
 };
 
 export type Stocks = {

@@ -58,13 +58,17 @@ export function TopPicks() {
               <p className="ml-1 text-red-500">{error.message}</p>
             )
           ) : (
-            Array.from(data).map((product, index) => (
-              <CarouselItem
-                key={index}
-                className="pl-1 md:basis-1/2 lg:basis-1/4">
-                <ProductCard product={product} />
-              </CarouselItem>
-            ))
+            Array.from(data).map((product, index) => {
+              if (product.status === "listed") {
+                return (
+                  <div
+                    key={index}
+                    className="pl-1 mr-[14px] md:basis-1/2 lg:basis-1/4">
+                    <ProductCard product={product} />
+                  </div>
+                );
+              }
+            })
           )}
         </CarouselContent>
         <CarouselPrevious />

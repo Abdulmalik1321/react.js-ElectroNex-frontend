@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 import api from "@/api";
 import { Button } from "@/shadcn/ui/button";
@@ -124,12 +124,11 @@ export function Login({ handelLogin }: LoginProps) {
           </div>
           <div className="mt-4 text-center text-sm">
             Don&apos;t have an account?{" "}
-            <Button
-              variant="link"
-              // href="#"
-              className="underline">
-              Sign up
-            </Button>
+            <Link to={"/sign-up"}>
+              <Button variant="link" className="underline">
+                Sign up
+              </Button>
+            </Link>
           </div>
         </div>
       </div>
