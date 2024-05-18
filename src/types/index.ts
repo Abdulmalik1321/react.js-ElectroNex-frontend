@@ -52,3 +52,9 @@ export type UserInfo = {
   role: number;
   token: string;
 };
+
+export type Category = {
+  id: string;
+  name: string;
+  description: string;
+};

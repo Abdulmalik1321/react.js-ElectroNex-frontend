@@ -51,11 +51,11 @@ export function NavBar() {
     });
   };
   return (
-    <div className="w-full top-0 sticky z-10">
-      <div className="w-full flex items-center p-3 justify-between bg-[hsl(var(--background))]">
+    <div className="w-screen flex flex-col items-center justify-center -top-52 sticky z-50 bg-[hsl(var(--background))]  dark:shadow-md">
+      <div className="w-[80%] flex items-center p-3 justify-between bg-[hsl(var(--background))] bg-transparent">
         <div className="flex items-end">
           <h1 className="text-5xl">
-            Electronics<strong>Hub</strong>
+            Electronics<strong className="text-primary">Hub</strong>
           </h1>
         </div>
         <div className="flex justify-between items-end gap-5 mr-32">

@@ -22,7 +22,7 @@ export function RecyclingBanner() {
         </div>
         <img
           className="w-[40%] absolute right-12 top-12"
-          src="./src/assets/imgs/iphonex.png"
+          src="https://res.cloudinary.com/dbgwe94vv/image/upload/v1715676217/electronicsHub/crnds0bfjgiwbk266rfd.png"
           alt=""
         />
       </Card>
