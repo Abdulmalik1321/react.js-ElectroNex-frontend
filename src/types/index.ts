@@ -35,12 +35,7 @@ export type ActionType =
   | { type: "login"; payload: { email: string; password: string } }
   | { type: "logout" }
   | { type: "addToCart"; payload: Stocks }
-  | { type: "removeFromCart"; payload: Stocks[] }
-  | { type: "setTotalSaving"; payload: number }
-  | { type: "totalIncome"; payload: number }
-  | { type: "totalExpense"; payload: number }
-  | { type: "delete_income"; payload: number }
-  | { type: "delete_expense"; payload: number };
+  | { type: "removeFromCart"; payload: Stocks[] };
 
 export type LoginProps = {
   handelLogin: React.Dispatch<ActionType>;
@@ -60,4 +55,17 @@ export type Category = {
   id: string;
   name: string;
   description: string;
+};
+
+export type SignUpInfo = {
+  firstName: string;
+  lastName: string;
+  email: string;
+  password: string;
+  repeatPassword: string;
+  phone: string;
+};
+
+export type SignUpProps = {
+  handelSignUp: React.Dispatch<ActionType>;
 };

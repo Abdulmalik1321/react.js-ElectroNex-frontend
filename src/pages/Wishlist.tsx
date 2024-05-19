@@ -2,6 +2,7 @@ import { MoreHorizontal, Plus } from "lucide-react";
 
 import {
   Dialog,
+  DialogClose,
   DialogContent,
   DialogFooter,
   DialogHeader,
@@ -37,7 +38,7 @@ import {
 } from "@/shadcn/ui/table";
 import { NavBar } from "@/components/NavBar";
 import api from "@/api";
-import { useQuery } from "@tanstack/react-query";
+import { useQuery, useQueryClient } from "@tanstack/react-query";
 import { shopContext } from "../Router";
 import { ChangeEvent, useContext, useState } from "react";
 import { Link } from "react-router-dom";
@@ -45,6 +46,7 @@ import { Link } from "react-router-dom";
 export function Wishlist() {
   const { state } = useContext(shopContext);
   //   const [page, setPage] = useState(0);
+  const queryClient = useQueryClient();
 
   const getWishlists = async () => {
     try {
@@ -61,7 +63,6 @@ export function Wishlist() {
       const res = await api.delete(`/wishlist/${wishlistId}`, {
         headers: { Authorization: `Bearer ${state.userInfo.token}` },
       });
-      window.location.reload();
       return res.data;
     } catch (error) {
       console.error(error);
@@ -78,12 +79,29 @@ export function Wishlist() {
           headers: { Authorization: `Bearer ${state.userInfo.token}` },
         }
       );
-      window.location.reload();
       return res.data;
     } catch (error) {
       console.error(error);
       return Promise.reject(new Error("Something went wrong"));
     }
+  };
+
+  const handleCreateWishlists = async (wishlistName: string | undefined) => {
+    await createWishlists(wishlistName);
+    queryClient.invalidateQueries({ queryKey: ["WishList"] });
+  };
+
+  const handleDeleteWishlists = async (wishlistId: string) => {
+    await deleteWishlists(wishlistId);
+    queryClient.invalidateQueries({ queryKey: ["WishList"] });
+  };
+
+  const handleUpdateWishlists = async (
+    wishlistName: string | undefined,
+    wishlistId: string
+  ) => {
+    await updateWishlists(wishlistName, wishlistId);
+    queryClient.invalidateQueries({ queryKey: ["WishList"] });
   };
 
   const updateWishlists = async (
@@ -98,9 +116,6 @@ export function Wishlist() {
           headers: { Authorization: `Bearer ${state.userInfo.token}` },
         }
       );
-      window.location.reload();
-
-      window.location.reload();
       return res.data;
     } catch (error) {
       console.error(error);
@@ -121,9 +136,9 @@ export function Wishlist() {
   };
 
   return (
-    <main className="md:w-[80%]  xxs:w-[95%]">
+    <main className="md:w-[80%]  xxs:w-[95%] flex flex-col items-center">
       <NavBar />
-      <Card className="mt-12">
+      <Card className="mt-12 w-full">
         <CardHeader className="flex flex-row justify-between">
           <div>
             <CardTitle>WishLists</CardTitle>
@@ -150,15 +165,17 @@ export function Wishlist() {
                 <Input onChange={handleChange} id="name" />
               </div>
               <DialogFooter>
-                <Button
-                  type="submit"
-                  className="gap-1"
-                  onClick={() => {
-                    createWishlists(newWishlistInput);
-                  }}>
-                  <Plus className="size-4" />
-                  Add
-                </Button>
+                <DialogClose>
+                  <Button
+                    type="submit"
+                    className="gap-1"
+                    onClick={() => {
+                      handleCreateWishlists(newWishlistInput);
+                    }}>
+                    <Plus className="size-4" />
+                    Add
+                  </Button>
+                </DialogClose>
               </DialogFooter>
             </DialogContent>
           </Dialog>
@@ -179,80 +196,82 @@ export function Wishlist() {
               ) : (
                 data?.map((wishlist: any) => {
                   return (
-                    <Link
-                      className="flex w-full"
+                    // <Link
+                    //   className="flex w-full"
+                    //   key={wishlist.id}
+                    //   to={`/wishlist/${wishlist.id}`}>
+                    <TableRow
                       key={wishlist.id}
-                      to={`/wishlist/${wishlist.id}`}>
-                      <TableRow className="w-full flex justify-between">
-                        <TableCell className="font-medium">
-                          {wishlist.name}
-                        </TableCell>
+                      className="w-full flex justify-between">
+                      <TableCell className="font-medium">
+                        {wishlist.name}
+                      </TableCell>
 
-                        <TableCell>
-                          <DropdownMenu>
-                            <DropdownMenuTrigger asChild>
-                              <Button
-                                aria-haspopup="true"
-                                size="icon"
-                                variant="ghost">
-                                <MoreHorizontal className="h-4 w-4" />
-                                <span className="sr-only">Toggle menu</span>
-                              </Button>
-                            </DropdownMenuTrigger>
-                            <DropdownMenuContent align="end">
-                              <DropdownMenuLabel>Actions</DropdownMenuLabel>
+                      <TableCell>
+                        <DropdownMenu>
+                          <DropdownMenuTrigger asChild>
+                            <Button
+                              aria-haspopup="true"
+                              size="icon"
+                              variant="ghost">
+                              <MoreHorizontal className="h-4 w-4" />
+                              <span className="sr-only">Toggle menu</span>
+                            </Button>
+                          </DropdownMenuTrigger>
+                          <DropdownMenuContent align="end">
+                            <DropdownMenuLabel>Actions</DropdownMenuLabel>
 
-                              <Dialog>
-                                <DialogTrigger asChild>
-                                  <Button
-                                    variant="ghost"
-                                    className="p-2 pt-0 pb-0 cursor-default justify-start w-full ">
-                                    Edit
-                                  </Button>
-                                </DialogTrigger>
-                                <DialogContent className="sm:max-w-[425px]">
-                                  <DialogHeader>
-                                    <DialogTitle>Edit Wishlist</DialogTitle>
-                                  </DialogHeader>
-                                  <div className="flex flex-col items-start gap-3 mt-5">
-                                    <Label
-                                      htmlFor="name"
-                                      className="text-right">
-                                      WishList Name:
-                                    </Label>
-                                    <Input
-                                      onChange={handleChange}
-                                      defaultValue={wishlist.name}
-                                      id="name"
-                                    />
-                                  </div>
-                                  <DialogFooter>
+                            <Dialog>
+                              <DialogTrigger asChild>
+                                <Button
+                                  variant="ghost"
+                                  className="p-2 pt-0 pb-0 cursor-default justify-start w-full ">
+                                  Edit
+                                </Button>
+                              </DialogTrigger>
+                              <DialogContent className="sm:max-w-[425px]">
+                                <DialogHeader>
+                                  <DialogTitle>Edit Wishlist</DialogTitle>
+                                </DialogHeader>
+                                <div className="flex flex-col items-start gap-3 mt-5">
+                                  <Label htmlFor="name" className="text-right">
+                                    WishList Name:
+                                  </Label>
+                                  <Input
+                                    onChange={handleChange}
+                                    defaultValue={wishlist.name}
+                                    id="name"
+                                  />
+                                </div>
+                                <DialogFooter>
+                                  <DialogClose>
                                     <Button
                                       type="submit"
                                       className="gap-1"
                                       onClick={() => {
-                                        updateWishlists(
+                                        handleUpdateWishlists(
                                           newWishlistInput,
                                           wishlist.id
                                         );
                                       }}>
                                       Edit
                                     </Button>
-                                  </DialogFooter>
-                                </DialogContent>
-                              </Dialog>
+                                  </DialogClose>
+                                </DialogFooter>
+                              </DialogContent>
+                            </Dialog>
 
-                              <DropdownMenuItem
-                                onClick={() => {
-                                  deleteWishlists(wishlist.id);
-                                }}>
-                                Delete
-                              </DropdownMenuItem>
-                            </DropdownMenuContent>
-                          </DropdownMenu>
-                        </TableCell>
-                      </TableRow>
-                    </Link>
+                            <DropdownMenuItem
+                              onClick={() => {
+                                handleDeleteWishlists(wishlist.id);
+                              }}>
+                              Delete
+                            </DropdownMenuItem>
+                          </DropdownMenuContent>
+                        </DropdownMenu>
+                      </TableCell>
+                    </TableRow>
+                    // </Link>
                   );
                 })
               )}

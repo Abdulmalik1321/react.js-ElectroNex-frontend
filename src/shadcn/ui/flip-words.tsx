@@ -7,10 +7,12 @@ export const FlipWords = ({
   words,
   duration = 3000,
   className,
+  timeout,
 }: {
   words: string[];
   duration?: number;
   className?: string;
+  timeout: number;
 }) => {
   const [currentWord, setCurrentWord] = useState(words[0]);
 
@@ -34,7 +36,13 @@ export const FlipWords = ({
     }, duration);
   };
 
-  return (
+  const [rendering, setRendering] = useState(false);
+
+  setTimeout(() => {
+    setRendering(true);
+  }, timeout);
+
+  return rendering ? (
     <AnimatePresence>
       <motion.div
         initial={{
@@ -80,5 +88,7 @@ export const FlipWords = ({
         ))}
       </motion.div>
     </AnimatePresence>
+  ) : (
+    <></>
   );
 };

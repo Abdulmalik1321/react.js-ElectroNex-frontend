@@ -7,7 +7,7 @@ import {
   CardHeader,
   CardTitle,
 } from "@/shadcn/ui/card";
-import { motion } from "framer-motion";
+import { easeInOut, motion } from "framer-motion";
 import { BatteryCharging, Wifi } from "lucide-react";
 
 import React from "react";
@@ -24,103 +24,91 @@ export function Hero() {
           </h1>
           <br />
           <br /> */}
-          <div className="text-7xl font-normal z-10  w-[95%]">
-            <span>
-              A Platform to <br /> Seamlessly
-            </span>
-            <strong className="font-extrabold">
-              <FlipWords words={words} />
-            </strong>
-            <br />
-            <span>Your Electronics!</span>
-          </div>
+          <motion.div
+            className="flex rounded-lg"
+            initial={{ opacity: 0, scale: 1, translateY: 50 }}
+            animate={{ opacity: 1, scale: 1, translateY: 0 }}
+            transition={{
+              duration: 1,
+              delay: 0.05,
+              ease: [0.2, 0.71, 0.2, 1.01],
+            }}>
+            <div className="text-7xl font-normal z-10">
+              <span>
+                A Platform to <br /> Seamlessly
+              </span>
+              <strong className="font-extrabold">
+                <FlipWords timeout={700} words={words} />
+              </strong>
+              <br />
+              <span>Your Electronics!</span>
+            </div>
+          </motion.div>
         </div>
         <div className="col-span-6 h-full gap-5 grid grid-cols-2 mt-52">
-          <Card className=" w-full bg-transparent backdrop-blur-3xl bg-[url(https://res.cloudinary.com/dbgwe94vv/image/upload/v1715988663/iphone15-pro1_q7hwfi.webp)] [background-position-y:125%] bg-contain bg-no-repeat bg-center relative">
-            <CardHeader>
-              <CardTitle>iPhone 15 Pro</CardTitle>
-              <CardDescription>
-                Titanium. So strong. So light. So Pro.
-              </CardDescription>
-            </CardHeader>
-            <CardFooter className="absolute bottom-0 right-0">
-              <Button>Buy Now</Button>
-            </CardFooter>
-          </Card>
+          <motion.div
+            className="flex backdrop-blur-3xl rounded-lg"
+            initial={{ opacity: 0, scale: 1, translateY: 50 }}
+            animate={{ opacity: 1, scale: 1, translateY: 0 }}
+            transition={{
+              duration: 1,
+              delay: 0.5,
+              ease: easeInOut,
+            }}>
+            <Card className=" w-full bg-transparent bg-[url(https://res.cloudinary.com/dbgwe94vv/image/upload/v1715988663/iphone15-pro1_q7hwfi.webp)] [background-position-y:125%] bg-contain bg-no-repeat bg-center relative">
+              <CardHeader>
+                <CardTitle>iPhone 15 Pro</CardTitle>
+                <CardDescription>
+                  Titanium. So strong. So light. So Pro.
+                </CardDescription>
+              </CardHeader>
+              <CardFooter className="absolute bottom-0 right-0">
+                <Button variant="secondary">Buy Now</Button>
+              </CardFooter>
+            </Card>
+          </motion.div>
 
-          <Card className=" w-full bg-transparent backdrop-blur-3xl bg-[url(https://res.cloudinary.com/dbgwe94vv/image/upload/v1715990265/103375_original_local_1200x1050_v3_converted_hxmz5k.webp)] [background-position-y:85px] bg-contain bg-no-repeat bg-center relative">
-            <CardHeader>
-              <CardTitle>Sony WH-1000XM5</CardTitle>
-              <CardDescription>YOUR WORLD. NOTHING ELSE.</CardDescription>
-            </CardHeader>
-            <CardFooter className="absolute bottom-0 right-0">
-              <Button>Buy Now</Button>
-            </CardFooter>
-          </Card>
+          <motion.div
+            className="flex backdrop-blur-3xl rounded-lg"
+            initial={{ opacity: 0, scale: 1, translateY: 50 }}
+            animate={{ opacity: 1, scale: 1, translateY: 0 }}
+            transition={{
+              duration: 1,
+              delay: 0.6,
+              ease: easeInOut,
+            }}>
+            <Card className=" w-full bg-transparent bg-[url(https://res.cloudinary.com/dbgwe94vv/image/upload/v1715990265/103375_original_local_1200x1050_v3_converted_hxmz5k.webp)] [background-position-y:85px] bg-contain bg-no-repeat bg-center relative">
+              <CardHeader>
+                <CardTitle>Sony WH-1000XM5</CardTitle>
+                <CardDescription>YOUR WORLD. NOTHING ELSE.</CardDescription>
+              </CardHeader>
+              <CardFooter className="absolute bottom-0 right-0">
+                <Button variant="secondary">Buy Now</Button>
+              </CardFooter>
+            </Card>
+          </motion.div>
 
-          <Card className="h-1/2 w-full col-span-2 bg-transparent backdrop-blur-3xl bg-[url(https://res.cloudinary.com/dbgwe94vv/image/upload/v1715988653/ASUS-Zephyrus1_m82tyq.webp)] bg-contain bg-no-repeat bg-center relative">
-            <CardHeader>
-              <CardTitle>ASUS Zephyrus</CardTitle>
-              <CardDescription>For Those Who Dare!</CardDescription>
-            </CardHeader>
-            <CardFooter className="absolute bottom-0 right-0">
-              <Button>Buy Now</Button>
-            </CardFooter>
-          </Card>
+          <motion.div
+            className="flex col-span-2 backdrop-blur-3xl rounded-lg"
+            initial={{ opacity: 0, scale: 1, translateY: 50 }}
+            animate={{ opacity: 1, scale: 1, translateY: 0 }}
+            transition={{
+              duration: 1,
+              delay: 0.7,
+              ease: easeInOut,
+            }}>
+            <Card className="h-1/2 w-full  bg-transparent  bg-[url(https://res.cloudinary.com/dbgwe94vv/image/upload/v1715988653/ASUS-Zephyrus1_m82tyq.webp)] bg-contain bg-no-repeat bg-center relative">
+              <CardHeader>
+                <CardTitle>ASUS Zephyrus</CardTitle>
+                <CardDescription>For Those Who Dare!</CardDescription>
+              </CardHeader>
+              <CardFooter className="absolute bottom-0 right-0">
+                <Button variant="secondary">Buy Now</Button>
+              </CardFooter>
+            </Card>
+          </motion.div>
         </div>
-
-        {/* <Card className="col-span-3 relative">
-          <CardHeader>
-            <CardTitle>
-              Electronics<strong>Hub</strong>
-            </CardTitle>
-            <CardDescription>
-              Save money and upgrade your tech today
-            </CardDescription>
-          </CardHeader>
-
-          <CardContent>
-            Dive into our wide range of electronics to find the perfect device.
-          </CardContent>
-
-          <CardFooter className="absolute bottom-0 right-0">
-            <Button
-              className=" border border-[hsl(var(--primary))]"
-              variant="ghost">
-              Start shopping now!
-            </Button>
-          </CardFooter>
-        </Card> */}
-
-        {/* <Card className="col-span-3 relative">
-          <CardHeader>
-            <CardTitle>Transform Your Tech</CardTitle>
-            <CardDescription>
-              Sell, Earn, and Contribute to Sustainability!
-            </CardDescription>
-          </CardHeader>
-          <CardContent>
-            <p>
-              Sell your old electronics easily and securely, and get the best
-              returns.
-            </p>
-          </CardContent>
-          <CardFooter className="absolute bottom-0 right-0">
-            <Button
-              className=" border border-[hsl(var(--primary))]"
-              variant="ghost">
-              Learn More
-            </Button>
-          </CardFooter>
-        </Card>*/}
       </div>
-
-      {/* <h1 className="scroll-m-20 pb-2 text-3xl font-normal mt-5 text-center">
-        Where Quality Meets Sustainability – From the latest{" "}
-        <strong>Smartphones</strong> 📱 to high-performance{" "}
-        <strong>Laptops</strong> 💻. We offer a wide range of brand new products
-        as well as quality-assured used products to fit every budget.
-      </h1> */}
     </section>
   );
 }

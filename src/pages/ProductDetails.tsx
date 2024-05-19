@@ -5,9 +5,9 @@ import { Button } from "@/shadcn/ui/button";
 import { Card, CardContent } from "@/shadcn/ui/card";
 import { Product, Stocks } from "@/types";
 import { useQuery } from "@tanstack/react-query";
-import { Banknote, Check, ListPlus, X } from "lucide-react";
+import { Banknote, Check, ListPlus, Plus, X } from "lucide-react";
 import { useContext, useEffect, useState } from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import {
   Accordion,
   AccordionContent,
@@ -287,6 +287,12 @@ export function ProductDetails() {
                       </DropdownMenuItem>
                     );
                   })}
+                  <DropdownMenuItem>
+                    <Link to={"/wishlist"} className="flex gap-1 items-center">
+                      <Plus className="size-4" />
+                      Create a Wishlist
+                    </Link>
+                  </DropdownMenuItem>
                 </DropdownMenuContent>
               </DropdownMenu>
             </div>
