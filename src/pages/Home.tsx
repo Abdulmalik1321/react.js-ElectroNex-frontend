@@ -16,7 +16,7 @@ export function Home() {
   // const { state, dispatch } = useContext(shopContext);
 
   return (
-    <main className="md:w-[80%] flex flex-col justify-center items-center xxs:w-[95%]">
+    <main className="md:w-[80%] flex flex-col justify-start items-center xxs:w-[95%]">
       <NavBar />
       <AuroraBackground className="!z-0" />
       <Hero />

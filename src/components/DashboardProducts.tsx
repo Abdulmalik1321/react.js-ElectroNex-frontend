@@ -49,6 +49,7 @@ import {
   SelectValue,
 } from "@/shadcn/ui/select";
 import { Textarea } from "@/shadcn/ui/textarea";
+import { LoadingButton } from "@/shadcn/ui/loadingbutton";
 
 export function DashboardProducts() {
   const queryClient = useQueryClient();
@@ -222,6 +223,8 @@ export function DashboardProducts() {
 
 function CreateEdit({ editProduct }: { editProduct: Product }) {
   const { state } = useContext(shopContext);
+  const [loading, setLoading] = useState(false);
+  const queryClient = useQueryClient();
 
   const getCategories = async () => {
     try {
@@ -341,16 +344,18 @@ function CreateEdit({ editProduct }: { editProduct: Product }) {
     console.log(newValues);
   };
 
-  const handleSubmit = () => {
+  const handleSubmit = async () => {
     editProduct
-      ? updateProduct(editProduct.id, {
+      ? await updateProduct(editProduct.id, {
           name: variantInputs.name,
           description: variantInputs.description,
           status: variantInputs.status,
           categoryId: variantInputs.categoryId,
           brandId: variantInputs.brandId,
         })
-      : createProduct(variantInputs);
+      : await createProduct(variantInputs);
+    setLoading(false);
+    queryClient.invalidateQueries({ queryKey: ["Products"] });
   };
 
   return (
@@ -573,11 +578,17 @@ function CreateEdit({ editProduct }: { editProduct: Product }) {
               </div>
             </CardContent>
           </Card>
-          <SheetClose asChild>
-            <Button onClick={handleSubmit} type="submit">
-              Save changes
-            </Button>
-          </SheetClose>
+          {/* <SheetClose asChild> */}
+          <LoadingButton
+            onClick={() => {
+              handleSubmit;
+              setLoading(true);
+            }}
+            loading={loading}
+            type="submit">
+            Save changes
+          </LoadingButton>
+          {/* </SheetClose> */}
         </div>
       </div>
       <SheetFooter></SheetFooter>

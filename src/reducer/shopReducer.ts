@@ -29,6 +29,11 @@ export function shopReducer(state: any, action: any) {
         ...state,
         userInfo: null,
       };
+    case "updateUser":
+      return {
+        ...state,
+        userInfo: action.payload,
+      };
 
     case "addToCart":
       if (!state.cart) {
