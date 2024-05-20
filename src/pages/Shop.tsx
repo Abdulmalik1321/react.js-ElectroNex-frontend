@@ -11,11 +11,28 @@ import { Category, Product } from "@/types";
 import { useQuery, useQueryClient } from "@tanstack/react-query";
 import { SkeletonCard } from "@/components/SkeletonCard";
 import { Input } from "@/shadcn/ui/input";
-
+import {
+  Pagination,
+  PaginationContent,
+  PaginationEllipsis,
+  PaginationItem,
+  PaginationLink,
+  PaginationNext,
+  PaginationPrevious,
+} from "@/shadcn/ui/pagination";
 import { debounce } from "lodash";
 import { Loader2 } from "lucide-react";
 import { useSearchParams } from "react-router-dom";
 import { ToggleGroup, ToggleGroupItem } from "@/shadcn/ui/toggle-group";
+import {
+  Select,
+  SelectContent,
+  SelectGroup,
+  SelectItem,
+  SelectLabel,
+  SelectTrigger,
+  SelectValue,
+} from "@/shadcn/ui/select";
 
 export function Shop() {
   const { state } = useContext(shopContext);
@@ -24,8 +41,10 @@ export function Shop() {
   const defaultSearch = searchParams.get("searchTerm") || "";
 
   const [filters, setFilters] = useState<string[]>([]);
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState<boolean>(false);
   const [search, setSearch] = useState<string>(defaultSearch);
+  const [sortBy, setSortBy] = useState<string>("0");
+  const [page, setPage] = useState<number>(0);
 
   const handelSearchInput = (e: ChangeEvent<HTMLInputElement>) => {
     const { value } = e.target;
@@ -42,14 +61,22 @@ export function Shop() {
     }, 100);
   };
 
+  const handelSort = (value: string) => {
+    setSortBy(value);
+    setLoading(true);
+    setTimeout(() => {
+      queryClient.invalidateQueries({ queryKey: ["ShopPage"] });
+    }, 100);
+  };
+
   const debouncedOnChange = debounce(handelSearchInput, 500);
 
   const getProducts = async () => {
     try {
       const res = await api.get(
-        `/products?${search ? `&searchTerm=${search}` : ""} ${
+        `/products?${`sort=${sortBy}`}${search ? `&searchTerm=${search}` : ""}${
           filters.length > 0 ? `&categoryFilter=${filters.join("-")}` : ""
-        }`
+        }${`&limit=${page ? 20 : 21}&offset=${page}`}`
       );
       setLoading(false);
       return res.data;
@@ -93,6 +120,8 @@ export function Shop() {
     { data: products, error: productsError },
   ] = queryMultiple();
 
+  console.log(products);
+
   return (
     <main className="md:w-[80%] flex flex-col justify-center items-center xxs:w-[95%]">
       <NavBar />
@@ -105,6 +134,19 @@ export function Shop() {
             className="bg-[hsl(var(--foreground))] h-10"
             orientation="vertical"
           />
+          <Select onValueChange={handelSort}>
+            <SelectTrigger className="w-32 border-primary rounded-lg">
+              <SelectValue placeholder="Sort By" />
+            </SelectTrigger>
+            <SelectContent>
+              <SelectGroup>
+                <SelectLabel>Price</SelectLabel>
+                <SelectItem value="0">Low To High</SelectItem>
+                <SelectItem value="1">High To Low</SelectItem>
+              </SelectGroup>
+            </SelectContent>
+          </Select>
+          -
           <ToggleGroup type="multiple" className="gap-2">
             {categories?.map((category: Category, index: number) => {
               return (
@@ -157,7 +199,7 @@ export function Shop() {
             <p className="ml-1 text-red-500">{productsError.message}</p>
           )
         ) : (
-          <ShopView products={products} numberOfProducts={20} />
+          <ShopView products={products} numberOfProducts={99} />
         )}
         {products?.length === 0 && (
           <span className="col-span-5 text-center mt-24">
@@ -165,6 +207,45 @@ export function Shop() {
           </span>
         )}
       </div>
+      <Pagination className="mt-12">
+        <PaginationContent>
+          <PaginationItem>
+            {page > 0 ? (
+              <PaginationPrevious
+                onClick={() => {
+                  setPage(page - 1);
+                  setTimeout(() => {
+                    queryClient.invalidateQueries({ queryKey: ["ShopPage"] });
+                  }, 100);
+                }}
+              />
+            ) : (
+              <PaginationEllipsis />
+            )}
+          </PaginationItem>
+          <PaginationItem>
+            <PaginationLink>{page + 1}</PaginationLink>
+          </PaginationItem>
+          <PaginationItem>
+            {products.length >= 20 ? (
+              <PaginationNext
+                onClick={() => {
+                  console.log(products.length);
+
+                  if (products.length >= 20) {
+                    setPage(page + 1);
+                    setTimeout(() => {
+                      queryClient.invalidateQueries({ queryKey: ["ShopPage"] });
+                    }, 100);
+                  }
+                }}
+              />
+            ) : (
+              <PaginationEllipsis />
+            )}
+          </PaginationItem>
+        </PaginationContent>
+      </Pagination>
       <Footer />
     </main>
   );
