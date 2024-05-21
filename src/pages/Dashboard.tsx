@@ -19,6 +19,8 @@ import { Link } from "react-router-dom";
 import { DashboardProducts } from "@/components/DashboardProducts";
 import { useContext } from "react";
 import { shopContext } from "@/Router";
+import { DashboardOrders } from "@/components/DashboardOrders";
+import { DashboardUsers } from "@/components/DashboardUsers";
 
 export function Dashboard() {
   const { state } = useContext(shopContext);
@@ -36,12 +38,9 @@ export function Dashboard() {
                 </Button>
               </Link>
               <TabsList>
-                <TabsTrigger value="all">Products</TabsTrigger>
-                <TabsTrigger value="active">Orders</TabsTrigger>
-                <TabsTrigger value="draft">Users</TabsTrigger>
-                <TabsTrigger value="archived" className="hidden sm:flex">
-                  Archived
-                </TabsTrigger>
+                <TabsTrigger value="products">Products</TabsTrigger>
+                <TabsTrigger value="users">Users</TabsTrigger>
+                <TabsTrigger value="orders">Orders</TabsTrigger>
               </TabsList>
               <div className="ml-auto flex items-center gap-2">
                 <DropdownMenu>
@@ -82,8 +81,14 @@ export function Dashboard() {
                 </div>
               </div>
             </div>
-            <TabsContent value="all">
+            <TabsContent value="products">
               <DashboardProducts />
+            </TabsContent>
+            <TabsContent value="users">
+              <DashboardOrders />
+            </TabsContent>
+            <TabsContent value="orders">
+              <DashboardUsers />
             </TabsContent>
           </Tabs>
         </main>

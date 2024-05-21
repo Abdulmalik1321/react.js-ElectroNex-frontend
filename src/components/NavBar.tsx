@@ -37,12 +37,20 @@ export function NavBar() {
     navigate("/");
   };
 
-  const removeFromCart = (cartItemId: number) => {
-    const newCart = state.cart.filter((item: Stocks) => {
-      item.cartItemId !== cartItemId;
+  const calculateQuantity = (stockId: string) => {
+    let quantity = 0;
+    state.cart.forEach((item: Stocks) => {
+      if (item.stockId === stockId) {
+        quantity++;
+      }
     });
+    return quantity;
+  };
 
-    console.log(newCart);
+  const removeFromCart = (cartItemId: string) => {
+    const newCart = state.cart.filter((item: Stocks) => {
+      return item.stockId !== cartItemId;
+    });
 
     LocalStorage("cart", newCart);
     dispatch({
@@ -132,42 +140,84 @@ export function NavBar() {
 
               <DropdownMenu>
                 <DropdownMenuTrigger asChild>
-                  <Button>
+                  <Button className="relative">
+                    {state.cart.length ? (
+                      <span className="absolute flex h-3 w-3 -top-2 -right-0">
+                        <span className="animate-ping absolute inline-flex aspect-square size-5 rounded-full bg-sky-400 opacity-50"></span>
+                        <span className="relative flex justify-center items-center rounded-full aspect-square size-5 bg-sky-500">
+                          {state.cart.length}
+                        </span>
+                      </span>
+                    ) : (
+                      <></>
+                    )}
+
                     <ShoppingCart />
                   </Button>
                 </DropdownMenuTrigger>
                 <DropdownMenuContent align="end">
                   {/* .................................... */}
+                  {state.cart
+                    ?.filter(
+                      (cartItem: Stocks, index: number, self: Stocks[]) =>
+                        index ===
+                        self.findIndex(
+                          (item) => item.stockId === cartItem.stockId
+                        )
+                    )
+                    .map((cartItem: Stocks, index: number) => {
+                      return (
+                        <DropdownMenuItem
+                          key={`${cartItem.stockId}-${index}`}
+                          className="gap-5">
+                          <Card
+                            className="size-16 bg-contain"
+                            style={{
+                              backgroundImage: `url(${cartItem.url})`,
+                            }}
+                          />
+                          <div className="text-left">
+                            <div className="flex items-center gap-2">
+                              <p>{cartItem.productName}</p>-
+                              <span>
+                                Qty: {calculateQuantity(cartItem.stockId)}
+                              </span>
+                            </div>
+                            <div className="flex items-center">
+                              <Badge
+                                className="rounded-sm mt-1 mr-2"
+                                variant="outline">
+                                {cartItem.price} SAR
+                              </Badge>
+                              <Badge
+                                className="rounded-sm mt-1 mr-2"
+                                variant="outline">
+                                {cartItem.size}
+                              </Badge>
+                              <span
+                                style={{ backgroundColor: cartItem.color }}
+                                className={`size-4 border border-muted-foreground rounded-full inline-block`}></span>
+                            </div>
+                          </div>
+                          <Button
+                            onClick={() => {
+                              removeFromCart(cartItem.stockId);
+                            }}
+                            variant="default">
+                            <X />
+                          </Button>
+                        </DropdownMenuItem>
+                      );
+                    })}
 
-                  {state.cart?.map((cartItem: Stocks) => {
-                    return (
-                      <DropdownMenuItem
-                        key={cartItem.cartItemId}
-                        className="gap-5">
-                        <Card
-                          className="size-16 bg-contain"
-                          style={{
-                            backgroundImage: `url(${cartItem.url})`,
-                          }}
-                        />
-                        <div className="text-left">
-                          <p>{cartItem.productName}</p>
-                          <Badge className="rounded-sm mt-1" variant="outline">
-                            {cartItem.price.toFixed(2).toLocaleString()} SAR
-                          </Badge>
-                        </div>
-                        <Button
-                          onClick={() => {
-                            removeFromCart(cartItem.cartItemId);
-                          }}
-                          variant="default">
-                          <X />
-                        </Button>
-                      </DropdownMenuItem>
-                    );
-                  })}
                   <DropdownMenuItem>
-                    <Button className="w-full">Checkout</Button>
+                    {state.cart.length === 0 ? (
+                      <Button className="w-full">Cart Is Empty</Button>
+                    ) : (
+                      <Link to={"/cart"} className="w-full">
+                        <Button className="w-full">Open Cart</Button>
+                      </Link>
+                    )}
                   </DropdownMenuItem>
                   {/* .................................... */}
                 </DropdownMenuContent>

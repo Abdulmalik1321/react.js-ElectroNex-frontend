@@ -189,7 +189,11 @@ export function DashboardProducts() {
                         <DropdownMenuLabel>Actions</DropdownMenuLabel>
                         <Sheet>
                           <SheetTrigger asChild>
-                            <Button>Edit</Button>
+                            <Button
+                              variant="ghost"
+                              className="w-full cursor-auto justify-start p-2">
+                              Edit
+                            </Button>
                           </SheetTrigger>
                           <CreateEdit editProduct={product} />
                         </Sheet>
@@ -225,6 +229,8 @@ function CreateEdit({ editProduct }: { editProduct: Product }) {
   const { state } = useContext(shopContext);
   const [loading, setLoading] = useState(false);
   const queryClient = useQueryClient();
+
+  console.log(editProduct);
 
   const getCategories = async () => {
     try {
@@ -569,9 +575,9 @@ function CreateEdit({ editProduct }: { editProduct: Product }) {
                       <SelectValue placeholder="Select status" />
                     </SelectTrigger>
                     <SelectContent>
-                      <SelectItem value="listed">listed</SelectItem>
-                      <SelectItem value="unlisted">unlisted</SelectItem>
-                      <SelectItem value="draft">draft</SelectItem>
+                      <SelectItem value="listed">Listed</SelectItem>
+                      <SelectItem value="unlisted">Unlisted</SelectItem>
+                      <SelectItem value="draft">Draft</SelectItem>
                     </SelectContent>
                   </Select>
                 </div>

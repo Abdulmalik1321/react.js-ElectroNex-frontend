@@ -51,7 +51,7 @@ export function ProductDetails() {
 
   const getWishlists = async () => {
     try {
-      const res = await api.get(`/wishlist`);
+      const res = await api.get(`/wishlist/user/${state.userInfo.id}`);
       return res.data;
     } catch (error) {
       console.error(error);
@@ -60,8 +60,6 @@ export function ProductDetails() {
   };
 
   const addToWishlists = async (WishlistId: string, productId: string) => {
-    console.log(WishlistId, productId);
-
     try {
       const res = await api.put(`/wishlist/${WishlistId}/${productId}`, {
         headers: { Authorization: `Bearer ${state.userInfo.token}` },
@@ -138,7 +136,6 @@ export function ProductDetails() {
         },
         { price: Infinity, isMain: false }
       );
-      console.log(lowestPriceProductTemp);
 
       setLowestPriceProduct(lowestPriceProductTemp);
     }
@@ -153,7 +150,7 @@ export function ProductDetails() {
 
   const addToCart = (cartItem: Stocks) => {
     cartItem.productName = data.name;
-    cartItem.cartItemId = Date.now();
+    // cartItem["cartItemId"] = d;
     if (state.cart === null) {
       LocalStorage("cart", [cartItem]);
     } else {
