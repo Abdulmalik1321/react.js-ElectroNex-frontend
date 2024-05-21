@@ -9,7 +9,6 @@ import {
   DropdownMenuTrigger,
 } from "@/shadcn/ui/dropdown-menu";
 import {
-  AlignJustify,
   FileHeart,
   LayoutDashboard,
   LogOut,
@@ -120,13 +119,6 @@ export function NavBar() {
                     </DropdownMenuItem>
                   </Link>
 
-                  <Link to={"/wishlist"}>
-                    <DropdownMenuItem className="gap-2">
-                      <FileHeart />
-                      <span>Wishlist</span>
-                    </DropdownMenuItem>
-                  </Link>
-
                   <DropdownMenuItem
                     className="gap-2"
                     onClick={handelLogOutClick}>
@@ -171,7 +163,7 @@ export function NavBar() {
                           key={`${cartItem.stockId}-${index}`}
                           className="gap-5">
                           <Card
-                            className="size-16 bg-contain"
+                            className="size-16 bg-contain bg-no-repeat bg-center"
                             style={{
                               backgroundImage: `url(${cartItem.url})`,
                             }}

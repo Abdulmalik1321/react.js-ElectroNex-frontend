@@ -227,7 +227,7 @@ export function Shop() {
             <PaginationLink>{page + 1}</PaginationLink>
           </PaginationItem>
           <PaginationItem>
-            {products.length >= 20 ? (
+            {products?.length >= 20 ? (
               <PaginationNext
                 onClick={() => {
                   console.log(products.length);

@@ -11,9 +11,9 @@ import { shopReducer, initialState } from "./reducer/shopReducer";
 import { Profile } from "./pages/Profile";
 import { Dashboard } from "./pages/Dashboard";
 import { ProductDetails } from "./pages/ProductDetails";
-import { Wishlist } from "./pages/Wishlist";
 
 import { SignUp } from "./pages/SignUp";
+import { Cart } from "./pages/Cart";
 
 export const shopContext = createContext<any>(null);
 
@@ -49,8 +49,8 @@ export function Router() {
       element: <ProductDetails />,
     },
     {
-      path: "/wishlist",
-      element: <Wishlist />,
+      path: "/cart",
+      element: <Cart />,
     },
   ]);
   return (

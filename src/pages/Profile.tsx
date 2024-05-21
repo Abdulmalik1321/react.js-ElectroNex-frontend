@@ -132,15 +132,31 @@ export function Profile() {
       <NavBar />
       <div className="flex justify-center items-start w-full  gap-5">
         <div className=" md:w-[80%] xxs:w-[95%] grid grid-cols-2 w-full  gap-5 mt-12">
-          <Card className="items-start justify-center flex flex-col w-full pt-12 pb-12">
+          <Card className="grid grid-cols-2 col-span-2 w-full pt-12 pb-12">
             <CardContent className="flex items-center gap-8">
               <User className="size-32" />
               <div className="flex flex-col ">
-                <div>
-                  <p>firstName: {state.userInfo.firstName}</p>
-                  <p>lastName :{state.userInfo.lastName}</p>
-                  <p>email: {state.userInfo.email}</p>
-                  <p>phone: {state.userInfo.phone}</p>
+                <div className="grid grid-cols-2 gap-3">
+                  <p>
+                    First Name:
+                    <br />
+                    {state.userInfo.firstName}
+                  </p>
+                  <p>
+                    Last Name:
+                    <br />
+                    {state.userInfo.lastName}
+                  </p>
+                  <p>
+                    Email:
+                    <br />
+                    {state.userInfo.email}
+                  </p>
+                  <p>
+                    Phone:
+                    <br />
+                    {state.userInfo.phone}
+                  </p>
                 </div>
                 <Dialog>
                   <DialogTrigger className="text-left">
@@ -188,19 +204,28 @@ export function Profile() {
                 </Dialog>
               </div>
             </CardContent>
-            <div className="flex justify-end"></div>
-          </Card>
 
-          <Card className="items-start justify-center flex flex-col w-full pt-12 pb-12">
             <CardContent className="flex items-center gap-8">
               <Home className="size-32" />
               <div>
                 <Dialog>
                   {address ? (
-                    <div>
-                      <p>City: {address?.city}</p>
-                      <p>Zip Code: {address?.zip}</p>
-                      <p>Address: {address?.addressLine}</p>
+                    <div className="grid grid-cols-2 gap-3">
+                      <p>
+                        City:
+                        <br />
+                        {address?.city}
+                      </p>
+                      <p>
+                        Zip Code:
+                        <br />
+                        {address?.zip}
+                      </p>
+                      <p>
+                        Address:
+                        <br />
+                        {address?.addressLine}
+                      </p>
 
                       <DialogTrigger asChild>
                         <Button className="w-28 mt-3">Edit</Button>
@@ -261,7 +286,6 @@ export function Profile() {
                 </Dialog>
               </div>
             </CardContent>
-            <div className="flex justify-end"></div>
           </Card>
 
           <Wishlist />

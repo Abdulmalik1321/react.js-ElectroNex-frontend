@@ -12,7 +12,7 @@ type Reducer = {
 
 export const initialState: Reducer = {
   userInfo: LocalStorage("userInfo"),
-  cart: LocalStorage("cart"),
+  cart: LocalStorage("cart") ? LocalStorage("cart") : LocalStorage("cart", []),
   products: [],
   userTokens: JSON.parse(JSON.stringify(userTokensJson)).tokens,
 };

@@ -29,7 +29,7 @@ export function TopPicks() {
     queryFn: getProducts,
   });
   return (
-    <section className="mt-28 mb-48 w-full flex justify-between items-center">
+    <section className="mt-16 mb-48 w-full flex justify-between items-center">
       <div className="w-1/4">
         <motion.div
           className=""
