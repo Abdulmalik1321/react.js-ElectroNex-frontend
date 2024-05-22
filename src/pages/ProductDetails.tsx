@@ -5,7 +5,7 @@ import { Button } from "@/shadcn/ui/button";
 import { Card, CardContent } from "@/shadcn/ui/card";
 import { Product, Stocks } from "@/types";
 import { useQuery } from "@tanstack/react-query";
-import { Banknote, Check, ListPlus, Plus, X } from "lucide-react";
+import { Banknote, Check, ListPlus, Loader2, Plus, X } from "lucide-react";
 import { useContext, useEffect, useState } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import {
@@ -33,11 +33,13 @@ import {
 import { shopContext } from "../Router";
 import { Review } from "@/components/Reviews";
 import { LocalStorage } from "@/utils";
+import { useToast } from "@/shadcn/ui/use-toast";
 
 export function ProductDetails() {
   const params = useParams();
   const navigate = useNavigate();
   const { state, dispatch } = useContext(shopContext);
+  const { toast } = useToast();
 
   const getProducts = async () => {
     try {
@@ -160,6 +162,29 @@ export function ProductDetails() {
       type: "addToCart",
       payload: cartItem,
     });
+
+    toast({
+      duration: 3000,
+      variant: "default",
+      title: (
+        <span className="flex items-center gap-2">
+          <Loader2 className="animate-spin" /> Adding To Cart
+        </span>
+      ),
+    });
+
+    setTimeout(() => {
+      toast({
+        duration: 3000,
+        variant: "default",
+        className: "bg-green-600",
+        title: (
+          <span className="flex items-center gap-2">
+            <Check /> {cartItem.productName} Added To Cart
+          </span>
+        ),
+      });
+    }, 1000);
   };
 
   return (
@@ -236,7 +261,7 @@ export function ProductDetails() {
               </div>
             </div>
             <div>
-              <p className="text-2xl mb-3">Storage:</p>
+              <p className="text-2xl mb-3">Size:</p>
               <div className="flex gap-2">
                 {data?.sizes.sort().map((size: any) => {
                   return (
@@ -276,8 +301,38 @@ export function ProductDetails() {
                   {wishlistData?.map((wishlist: any) => {
                     return (
                       <DropdownMenuItem
-                        onClick={() => {
-                          addToWishlists(wishlist.id, data.id);
+                        onClick={async () => {
+                          toast({
+                            duration: 10000,
+                            variant: "default",
+                            title: (
+                              <span className="flex items-center gap-2">
+                                <Loader2 className="animate-spin" /> Adding{" "}
+                                {data?.name} To your Wishlist
+                              </span>
+                            ),
+                          });
+                          await addToWishlists(wishlist.id, data.id)
+                            .then(() => {
+                              toast({
+                                duration: 3000,
+                                variant: "default",
+                                className: "bg-green-600",
+                                title: (
+                                  <span className="flex items-center gap-2">
+                                    <Check /> Added To your Wishlist
+                                  </span>
+                                ),
+                              });
+                            })
+                            .catch(() => {
+                              toast({
+                                duration: 3000,
+                                variant: "destructive",
+                                title: `Something went wrong`,
+                                description: `or ${data?.name} is already in your wishlist`,
+                              });
+                            });
                         }}
                         key={wishlist.id}>
                         <span>{wishlist.name}</span>
@@ -285,7 +340,7 @@ export function ProductDetails() {
                     );
                   })}
                   <DropdownMenuItem>
-                    <Link to={"/wishlist"} className="flex gap-1 items-center">
+                    <Link to={"/profile"} className="flex gap-1 items-center">
                       <Plus className="size-4" />
                       Create a Wishlist
                     </Link>

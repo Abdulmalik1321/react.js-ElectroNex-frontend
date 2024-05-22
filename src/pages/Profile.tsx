@@ -23,6 +23,7 @@ import {
 import { Input } from "@/shadcn/ui/input";
 import { Label } from "@radix-ui/react-label";
 import { LocalStorage } from "@/utils";
+import { userInfo } from "os";
 
 export function Profile() {
   const queryClient = useQueryClient();
@@ -60,13 +61,20 @@ export function Profile() {
   };
 
   const handelUserUpdateSubmit = async () => {
-    const updatedUser = await updateUser(userInput);
-    LocalStorage("userInfo", updatedUser);
+    const newUserInfo = await updateUser(userInput);
+
+    const updatedUserInfo = {
+      ...state.userInfo,
+      firstName: newUserInfo.firstName,
+      lastName: newUserInfo.lastName,
+      phone: newUserInfo.phone,
+    };
+
+    LocalStorage("userInfo", updatedUserInfo);
     dispatch({
       type: "updateUser",
-      payload: updatedUser,
+      payload: updatedUserInfo,
     });
-    console.log(updatedUser);
   };
 
   const handelAddressUpdateSubmit = async (addressId: string) => {
