@@ -1,4 +1,5 @@
 import { shopContext } from "@/Router";
+import api from "@/api";
 import { NavBar } from "@/components/NavBar";
 import { Badge } from "@/shadcn/ui/badge";
 
@@ -6,21 +7,27 @@ import { Button } from "@/shadcn/ui/button";
 import {
   Card,
   CardContent,
-  CardDescription,
   CardFooter,
   CardHeader,
   CardTitle,
 } from "@/shadcn/ui/card";
 import { Input } from "@/shadcn/ui/input";
+import { LoadingButton } from "@/shadcn/ui/loadingbutton";
 
 import { Separator } from "@/shadcn/ui/separator";
+import { useToast } from "@/shadcn/ui/use-toast";
 import { Stocks } from "@/types";
 import { LocalStorage } from "@/utils";
-import { Item } from "@radix-ui/react-dropdown-menu";
-import { ChevronLeft, ChevronRight, X } from "lucide-react";
-import { useContext } from "react";
+
+import { Link, useNavigate } from "react-router-dom";
+
+import { ChevronLeft, ChevronRight, Trash2, X } from "lucide-react";
+import { useContext, useState } from "react";
 export function Cart() {
+  const navigate = useNavigate();
   const { state, dispatch } = useContext(shopContext);
+  const [loading, setLoading] = useState(false);
+  const { toast } = useToast();
 
   const calculateQuantity = (stockId: string) => {
     let quantity = 0;
@@ -58,13 +65,9 @@ export function Cart() {
   const decreaseQty = (cartItem: Stocks) => {
     const allCartItems = state.cart;
     const index = allCartItems.findIndex(
-      (item) => item.stockId === cartItem.stockId
+      (item: any) => item.stockId === cartItem.stockId
     );
-    console.log(index);
-
     allCartItems.splice(index, 1);
-
-    console.log(allCartItems);
 
     LocalStorage("cart", allCartItems);
     dispatch({
@@ -73,6 +76,62 @@ export function Cart() {
     });
   };
 
+  let cartTotal = 0;
+
+  state.cart.forEach((item: any) => {
+    console.log(item);
+
+    cartTotal += item.price;
+  });
+
+  cartTotal = cartTotal * 1.15;
+  cartTotal != 0 ? (cartTotal += 10) : 0;
+
+  const handlePayment = () => {
+    setLoading(true);
+    const paymentDetails = {
+      amount: cartTotal,
+      method: "mada",
+      userId: state.userInfo.id,
+      items: state.cart
+        .filter(
+          (cartItem: Stocks, index: number, self: Stocks[]) =>
+            index ===
+            self.findIndex((item) => item.stockId === cartItem.stockId)
+        )
+        .map((item: Stocks) => {
+          return {
+            quantity: calculateQuantity(item.stockId),
+            stockId: item.stockId,
+          };
+        }),
+    };
+    createPayment(paymentDetails);
+  };
+
+  const createPayment = async (paymentDetails: any) => {
+    try {
+      const res = await api.post(`/payment`, paymentDetails, {
+        headers: { Authorization: `Bearer ${state.userInfo.token}` },
+      });
+
+      navigate("/thank-you");
+      return res.data;
+    } catch (error) {
+      toast({
+        duration: 10000,
+        variant: "destructive",
+        title: (
+          <span className="flex items-center gap-2">
+            Something Went Wrong or a Product is out of stock
+          </span>
+        ),
+      });
+      setLoading(false);
+      console.error(error);
+      return Promise.reject(new Error("Something went wrong"));
+    }
+  };
   return (
     <div className="w-full flex flex-col justify-start items-center">
       <NavBar />
@@ -86,7 +145,8 @@ export function Cart() {
           <CardContent>
             <div className="grid grid-cols-7 mb-8 text-muted-foreground">
               <span className="col-span-3 flex flex-col">Product Details</span>
-              <span className="col-span-2">Quantity</span>
+              <span>Size/Color</span>
+              <span>Quantity</span>
               <span>Price</span>
               <span>Remove</span>
             </div>
@@ -104,27 +164,32 @@ export function Cart() {
                     className="grid grid-cols-7">
                     <div className="col-span-3 flex ">
                       <Card
-                        className="size-32 bg-contain bg-no-repeat bg-center"
+                        className="size-24 bg-contain bg-no-repeat bg-center"
                         style={{
                           backgroundImage: `url(${cartItem.url})`,
                         }}
                       />
                       <div className="flex flex-col justify-center ml-5">
-                        <p>{cartItem.productName}</p>
-                        <div className="flex items-center">
-                          <Badge
-                            className="rounded-sm m-0 mt-1 mr-2 text-sm font-normal"
-                            variant="outline">
-                            {cartItem.size}
-                          </Badge>
-                          <span
-                            style={{ backgroundColor: cartItem.color }}
-                            className={`size-4 border border-muted-foreground rounded-full inline-block`}></span>
-                        </div>
+                        <strong>
+                          <p className="text-xl">{cartItem.productName}</p>
+                        </strong>
+                        <p className="text-muted-foreground text-sm">
+                          By: {cartItem.userName}
+                        </p>
                       </div>
                     </div>
+                    <div className="flex items-center">
+                      <Badge
+                        className="rounded-sm m-0 mt-1 mr-2 text-sm font-normal"
+                        variant="outline">
+                        {cartItem.size}
+                      </Badge>
+                      <span
+                        style={{ backgroundColor: cartItem.color }}
+                        className={`size-4 border border-muted-foreground rounded-full inline-block`}></span>
+                    </div>
 
-                    <div className="col-span-2 flex items-center gap-3 text-xl">
+                    <div className="flex items-center gap-3 text-xl">
                       <Button
                         onClick={() => {
                           decreaseQty(cartItem);
@@ -145,18 +210,18 @@ export function Cart() {
                     </div>
 
                     <div className="flex items-center">
-                      <Badge className="rounded-sm mt-1 mr-2" variant="outline">
-                        {cartItem.price} SAR
-                      </Badge>
+                      <span>{cartItem.price} SAR</span>
                     </div>
 
-                    <Button
-                      onClick={() => {
-                        removeFromCart(cartItem.stockId);
-                      }}
-                      variant="default">
-                      <X />
-                    </Button>
+                    <div className="flex items-center">
+                      <Button
+                        onClick={() => {
+                          removeFromCart(cartItem.stockId);
+                        }}
+                        variant="destructive">
+                        <Trash2 />
+                      </Button>
+                    </div>
                   </div>
                 );
               })}
@@ -190,16 +255,16 @@ export function Cart() {
             </div>
             <div className="w-full flex justify-between">
               <span>Delivery</span>
-              <span>10.00</span>
+              <span>{cartTotal == 0 ? "0.00" : "10.00"}</span>
             </div>
             <div className="w-full flex justify-between">
               <span>Vat</span>
-              <span>1000.00</span>
+              <span>{(cartTotal * 0.15).toFixed(2)}</span>
             </div>
             <Separator />
             <div className="w-full flex justify-between">
               <span>Total</span>
-              <span>1000.00</span>
+              <span>{cartTotal.toFixed(2)}</span>
             </div>
           </CardContent>
         </Card>
@@ -216,7 +281,12 @@ export function Cart() {
             <Button className="size-20 bg-muted bg-[url(https://cdn.salla.sa/mRjq/JgbK3sdmqb4jbdS1NLt6otYYH7ArDipt5Hetqypo.png)] bg-center bg-contain bg-no-repeat" />
           </CardContent>
           <CardFooter className="flex justify-between">
-            <Button className="w-full">Checkout</Button>
+            <LoadingButton
+              loading={loading}
+              onClick={handlePayment}
+              className="w-full">
+              Checkout
+            </LoadingButton>
           </CardFooter>
         </Card>
       </div>

@@ -17,13 +17,28 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/shadcn/ui/tabs";
 import { Link } from "react-router-dom";
 
 import { DashboardProducts } from "@/components/DashboardProducts";
-import { useContext } from "react";
+import { ChangeEvent, useContext, useState } from "react";
 import { shopContext } from "@/Router";
 import { DashboardOrders } from "@/components/DashboardOrders";
 import { DashboardUsers } from "@/components/DashboardUsers";
+import { useQueryClient } from "@tanstack/react-query";
 
 export function Dashboard() {
   const { state } = useContext(shopContext);
+
+  const [search, setSearch] = useState<string>("");
+
+  const queryClient = useQueryClient();
+
+  const handelSearchInput = (e: ChangeEvent<HTMLInputElement>) => {
+    const { value } = e.target;
+    setSearch(value);
+    console.log(search);
+
+    setTimeout(() => {
+      queryClient.invalidateQueries({ queryKey: ["Products"] });
+    }, 100);
+  };
 
   return state.userInfo.role === 1 ? (
     <div className="flex min-h-screen w-full flex-col bg-muted/40">
@@ -38,7 +53,7 @@ export function Dashboard() {
                 </Button>
               </Link>
               <TabsList>
-                <TabsTrigger value="products">Products</TabsTrigger>
+                <TabsTrigger value="all">Products</TabsTrigger>
                 <TabsTrigger value="users">Users</TabsTrigger>
                 <TabsTrigger value="orders">Orders</TabsTrigger>
               </TabsList>
@@ -74,6 +89,7 @@ export function Dashboard() {
                 <div className="relative ml-auto flex-1 md:grow-0">
                   <Search className="absolute left-2.5 top-2.5 h-4 w-4 text-muted-foreground" />
                   <Input
+                    onChange={handelSearchInput}
                     type="search"
                     placeholder="Search..."
                     className="w-full rounded-lg bg-background pl-8 md:w-[200px] lg:w-[336px]"
@@ -81,14 +97,14 @@ export function Dashboard() {
                 </div>
               </div>
             </div>
-            <TabsContent value="products">
-              <DashboardProducts />
+            <TabsContent value="all">
+              <DashboardProducts search={search} />
             </TabsContent>
             <TabsContent value="users">
-              <DashboardOrders />
+              <DashboardUsers />
             </TabsContent>
             <TabsContent value="orders">
-              <DashboardUsers />
+              <DashboardOrders />
             </TabsContent>
           </Tabs>
         </main>

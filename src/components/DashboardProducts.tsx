@@ -50,10 +50,31 @@ import {
 } from "@/shadcn/ui/select";
 import { Textarea } from "@/shadcn/ui/textarea";
 import { LoadingButton } from "@/shadcn/ui/loadingbutton";
+import {
+  Pagination,
+  PaginationContent,
+  PaginationEllipsis,
+  PaginationItem,
+  PaginationLink,
+  PaginationNext,
+  PaginationPrevious,
+} from "@/shadcn/ui/pagination";
+import {
+  AlertDialog,
+  AlertDialogAction,
+  AlertDialogCancel,
+  AlertDialogContent,
+  AlertDialogDescription,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogTitle,
+  AlertDialogTrigger,
+} from "@/shadcn/ui/alert-dialog";
 
-export function DashboardProducts() {
+export function DashboardProducts({ search }: { search: string }) {
   const queryClient = useQueryClient();
   const { state } = useContext(shopContext);
+  const [page, setPage] = useState<number>(0);
 
   const getCategories = async () => {
     try {
@@ -67,7 +88,11 @@ export function DashboardProducts() {
 
   const getProducts = async () => {
     try {
-      const res = await api.get("/products");
+      const res = await api.get(
+        `/products?${search ? `&searchTerm=${search}` : ""}${`&limit=${
+          page ? 20 : 21
+        }&offset=${page}`}`
+      );
       return res.data;
     } catch (error) {
       console.error(error);
@@ -108,7 +133,6 @@ export function DashboardProducts() {
     { data: categories, error: categoriesError },
     { data: products, error: productsError },
   ] = queryMultiple();
-  console.log(products);
 
   return (
     <Card x-chunk="dashboard-06-chunk-0" className="bg-background">
@@ -197,11 +221,33 @@ export function DashboardProducts() {
                           </SheetTrigger>
                           <CreateEdit editProduct={product} />
                         </Sheet>
-                        <DropdownMenuItem
-                          onClick={() => {
-                            handelDeleteProduct(product.id);
-                          }}>
-                          Delete
+                        <DropdownMenuItem asChild>
+                          <AlertDialog>
+                            <AlertDialogTrigger asChild>
+                              <Button variant="destructive">Delete</Button>
+                            </AlertDialogTrigger>
+                            <AlertDialogContent>
+                              <AlertDialogHeader>
+                                <AlertDialogTitle>
+                                  Are you absolutely sure?
+                                </AlertDialogTitle>
+                                <AlertDialogDescription>
+                                  This action cannot be undone. This will
+                                  permanently delete this account and remove
+                                  there data from our servers.
+                                </AlertDialogDescription>
+                              </AlertDialogHeader>
+                              <AlertDialogFooter>
+                                <AlertDialogCancel>Cancel</AlertDialogCancel>
+                                <AlertDialogAction
+                                  onClick={() => {
+                                    handelDeleteProduct(product.id);
+                                  }}>
+                                  Continue
+                                </AlertDialogAction>
+                              </AlertDialogFooter>
+                            </AlertDialogContent>
+                          </AlertDialog>
                         </DropdownMenuItem>
                       </DropdownMenuContent>
                     </DropdownMenu>
@@ -217,9 +263,48 @@ export function DashboardProducts() {
       </CardContent>
 
       <CardFooter>
-        <div className="text-xs text-muted-foreground">
+        {/* <div className="text-xs text-muted-foreground">
           Showing <strong>1-10</strong> of <strong>32</strong> products
-        </div>
+        </div> */}
+        <Pagination className="mt-12">
+          <PaginationContent>
+            <PaginationItem>
+              {page > 0 ? (
+                <PaginationPrevious
+                  onClick={() => {
+                    setPage(page - 1);
+                    setTimeout(() => {
+                      queryClient.invalidateQueries({ queryKey: ["Products"] });
+                    }, 100);
+                  }}
+                />
+              ) : (
+                <PaginationEllipsis />
+              )}
+            </PaginationItem>
+            <PaginationItem>
+              <PaginationLink>{page + 1}</PaginationLink>
+            </PaginationItem>
+            <PaginationItem>
+              {products?.length >= 20 ? (
+                <PaginationNext
+                  onClick={() => {
+                    if (products.length >= 20) {
+                      setPage(page + 1);
+                      setTimeout(() => {
+                        queryClient.invalidateQueries({
+                          queryKey: ["Products"],
+                        });
+                      }, 100);
+                    }
+                  }}
+                />
+              ) : (
+                <PaginationEllipsis />
+              )}
+            </PaginationItem>
+          </PaginationContent>
+        </Pagination>
       </CardFooter>
     </Card>
   );
@@ -229,8 +314,6 @@ function CreateEdit({ editProduct }: { editProduct: Product }) {
   const { state } = useContext(shopContext);
   const [loading, setLoading] = useState(false);
   const queryClient = useQueryClient();
-
-  console.log(editProduct);
 
   const getCategories = async () => {
     try {
@@ -304,8 +387,6 @@ function CreateEdit({ editProduct }: { editProduct: Product }) {
 
   const updateProduct = async (productId: string, newProduct: Product) => {
     try {
-      console.log(newProduct.createdAt);
-
       const res = await api.put(`/products/${productId}`, newProduct, {
         headers: { Authorization: `Bearer ${state.userInfo.token}` },
       });
@@ -347,7 +428,6 @@ function CreateEdit({ editProduct }: { editProduct: Product }) {
     }
 
     setVariantInputs(newValues);
-    console.log(newValues);
   };
 
   const handleSubmit = async () => {
@@ -487,7 +567,6 @@ function CreateEdit({ editProduct }: { editProduct: Product }) {
                         },
                       ],
                     }));
-                    console.log(variantInputs);
                   }}>
                   <PlusCircle className="h-3.5 w-3.5" />
                   Add Variant
@@ -587,7 +666,7 @@ function CreateEdit({ editProduct }: { editProduct: Product }) {
           {/* <SheetClose asChild> */}
           <LoadingButton
             onClick={() => {
-              handleSubmit;
+              handleSubmit();
               setLoading(true);
             }}
             loading={loading}
@@ -597,7 +676,6 @@ function CreateEdit({ editProduct }: { editProduct: Product }) {
           {/* </SheetClose> */}
         </div>
       </div>
-      <SheetFooter></SheetFooter>
     </SheetContent>
   );
 }

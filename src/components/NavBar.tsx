@@ -9,13 +9,12 @@ import {
   DropdownMenuTrigger,
 } from "@/shadcn/ui/dropdown-menu";
 import {
-  FileHeart,
   LayoutDashboard,
   LogOut,
   Settings,
   ShoppingCart,
+  Trash2Icon,
   User,
-  X,
 } from "lucide-react";
 import { LocalStorage } from "@/utils";
 import { shopContext } from "../Router";
@@ -195,8 +194,8 @@ export function NavBar() {
                             onClick={() => {
                               removeFromCart(cartItem.stockId);
                             }}
-                            variant="default">
-                            <X />
+                            variant="destructive">
+                            <Trash2Icon />
                           </Button>
                         </DropdownMenuItem>
                       );

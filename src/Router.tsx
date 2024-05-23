@@ -14,6 +14,7 @@ import { ProductDetails } from "./pages/ProductDetails";
 
 import { SignUp } from "./pages/SignUp";
 import { Cart } from "./pages/Cart";
+import { ThankYou } from "./pages/ThankYou";
 
 export const shopContext = createContext<any>(null);
 
@@ -51,6 +52,10 @@ export function Router() {
     {
       path: "/cart",
       element: <Cart />,
+    },
+    {
+      path: "/thank-you",
+      element: <ThankYou />,
     },
   ]);
   return (

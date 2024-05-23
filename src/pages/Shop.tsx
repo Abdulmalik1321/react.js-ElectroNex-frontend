@@ -21,7 +21,7 @@ import {
   PaginationPrevious,
 } from "@/shadcn/ui/pagination";
 import { debounce } from "lodash";
-import { Loader2 } from "lucide-react";
+import { ListFilterIcon, Loader2 } from "lucide-react";
 import { useSearchParams } from "react-router-dom";
 import { ToggleGroup, ToggleGroupItem } from "@/shadcn/ui/toggle-group";
 import {
@@ -33,6 +33,24 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/shadcn/ui/select";
+import { Button } from "@/shadcn/ui/button";
+import {
+  Sheet,
+  SheetContent,
+  SheetDescription,
+  SheetHeader,
+  SheetTitle,
+  SheetTrigger,
+} from "@/shadcn/ui/sheet";
+import { Checkbox } from "@/shadcn/ui/checkbox";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from "@/shadcn/ui/dropdown-menu";
 
 export function Shop() {
   const { state } = useContext(shopContext);
@@ -41,6 +59,8 @@ export function Shop() {
   const defaultSearch = searchParams.get("searchTerm") || "";
 
   const [filters, setFilters] = useState<string[]>([]);
+  const [categoryFilters, setCategoryFilters] = useState<string[]>([]);
+  const [brandFilters, setBrandFilters] = useState<string[]>([]);
   const [loading, setLoading] = useState<boolean>(false);
   const [search, setSearch] = useState<string>(defaultSearch);
   const [sortBy, setSortBy] = useState<string>("0");
@@ -75,7 +95,13 @@ export function Shop() {
     try {
       const res = await api.get(
         `/products?${`sort=${sortBy}`}${search ? `&searchTerm=${search}` : ""}${
-          filters.length > 0 ? `&categoryFilter=${filters.join("-")}` : ""
+          categoryFilters.length > 0
+            ? `&categoryFilter=${categoryFilters.join("-")}`
+            : ""
+        }${
+          brandFilters.length > 0
+            ? `&brandFilter=${brandFilters.join("-")}`
+            : ""
         }${`&limit=${page ? 20 : 21}&offset=${page}`}`
       );
       setLoading(false);
@@ -96,11 +122,17 @@ export function Shop() {
     }
   };
 
+  const getBrands = async () => {
+    try {
+      const res = await api.get("/brands");
+      return res.data;
+    } catch (error) {
+      console.error(error);
+      return Promise.reject(new Error("Something went wrong"));
+    }
+  };
+
   // Queries
-  const { data, error } = useQuery<Product[]>({
-    queryKey: ["ShopPage"],
-    queryFn: getProducts,
-  });
 
   const queryMultiple = () => {
     const res1 = useQuery<any>({
@@ -108,15 +140,20 @@ export function Shop() {
       queryFn: getCategories,
     });
     const res2 = useQuery<any>({
+      queryKey: ["Brands"],
+      queryFn: getBrands,
+    });
+    const res3 = useQuery<any>({
       queryKey: ["ShopPage"],
       queryFn: getProducts,
     });
 
-    return [res1, res2];
+    return [res1, res2, res3];
   };
 
   const [
     { data: categories, error: categoriesError },
+    { data: brands, error: brandsError },
     { data: products, error: productsError },
   ] = queryMultiple();
 
@@ -134,8 +171,8 @@ export function Shop() {
             className="bg-[hsl(var(--foreground))] h-10"
             orientation="vertical"
           />
-          <Select onValueChange={handelSort}>
-            <SelectTrigger className="w-32 border-primary rounded-lg">
+          <Select defaultValue="0" onValueChange={handelSort}>
+            <SelectTrigger className="w-32">
               <SelectValue placeholder="Sort By" />
             </SelectTrigger>
             <SelectContent>
@@ -147,30 +184,84 @@ export function Shop() {
             </SelectContent>
           </Select>
           -
-          <ToggleGroup type="multiple" className="gap-2">
-            {categories?.map((category: Category, index: number) => {
-              return (
-                <ToggleGroupItem
-                  variant="outline"
-                  className="border-primary rounded-lg"
-                  key={`${category.name}-${index}`}
-                  value={category.name}
-                  onClick={() => {
-                    if (filters?.includes(category.name)) {
-                      setFilters(
-                        filters.filter((filter) => filter !== category.name)
-                      );
-                    } else {
-                      setFilters([...filters, category.name]);
-                    }
-                    setLoading(true);
-                    handelFilters();
-                  }}>
-                  <span>{category.name}</span>
-                </ToggleGroupItem>
-              );
-            })}
-          </ToggleGroup>
+          <DropdownMenu>
+            <DropdownMenuTrigger asChild>
+              <Button variant="outline" className="gap-2">
+                <ListFilterIcon className="size-5" />
+                Filters
+              </Button>
+            </DropdownMenuTrigger>
+            <DropdownMenuContent className="w-52">
+              <DropdownMenuLabel className="text-xl">
+                Category
+              </DropdownMenuLabel>
+              <DropdownMenuSeparator className="mb-2" />
+              {categories?.map((category: Category, index: number) => {
+                const checked = categoryFilters.includes(category.name)
+                  ? true
+                  : false;
+                return (
+                  <div
+                    key={`${category.name}-${index}`}
+                    className="flex items-center space-x-2 ml-2 mb-2">
+                    <Checkbox
+                      checked={checked}
+                      onCheckedChange={(value) => {
+                        value
+                          ? setCategoryFilters([
+                              ...categoryFilters,
+                              category.name,
+                            ])
+                          : setCategoryFilters(
+                              categoryFilters.filter(
+                                (filter) => filter !== category.name
+                              )
+                            );
+                        setLoading(true);
+                        handelFilters();
+                      }}
+                    />
+                    <label className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">
+                      {category.name}
+                    </label>
+                  </div>
+                );
+              })}
+
+              <DropdownMenuLabel className="mt-6 text-xl">
+                Brand
+              </DropdownMenuLabel>
+              <DropdownMenuSeparator className="mb-2" />
+              {brands?.map((brand: Category, index: number) => {
+                const checked = brandFilters.includes(brand.name)
+                  ? true
+                  : false;
+                return (
+                  <div
+                    key={`${brand.name}-${index}`}
+                    className="flex items-center space-x-2 ml-2 mb-2">
+                    <Checkbox
+                      checked={checked}
+                      onCheckedChange={(value) => {
+                        value
+                          ? setBrandFilters([...brandFilters, brand.name])
+                          : setBrandFilters(
+                              brandFilters.filter(
+                                (filter) => filter !== brand.name
+                              )
+                            );
+                        setLoading(true);
+                        handelFilters();
+                      }}
+                    />
+                    <label className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">
+                      {brand.name}
+                    </label>
+                  </div>
+                );
+              })}
+            </DropdownMenuContent>
+          </DropdownMenu>
         </div>
         <div className="w-1/3 flex items-center relative group">
           {loading ? (

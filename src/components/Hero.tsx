@@ -1,16 +1,13 @@
 import { Button } from "@/shadcn/ui/button";
 import {
   Card,
-  CardContent,
   CardDescription,
   CardFooter,
   CardHeader,
   CardTitle,
 } from "@/shadcn/ui/card";
 import { easeInOut, motion } from "framer-motion";
-import { BatteryCharging, Wifi } from "lucide-react";
 
-import React from "react";
 import { FlipWords } from "../shadcn/ui/flip-words";
 
 export function Hero() {
