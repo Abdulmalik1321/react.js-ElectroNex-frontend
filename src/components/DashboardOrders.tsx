@@ -125,48 +125,28 @@ export function DashboardOrders() {
         <Table>
           <TableHeader>
             <TableRow>
-              <TableHead>Image</TableHead>
-              <TableHead>Name</TableHead>
+              <TableHead>Order ID</TableHead>
+
               <TableHead>Status</TableHead>
-              <TableHead>Price</TableHead>
-              <TableHead>Total Sales</TableHead>
-              <TableHead>Created at</TableHead>
+              <TableHead>Date</TableHead>
+              <TableHead>payment ID</TableHead>
+              <TableHead>User Id</TableHead>
               <TableHead>Actions</TableHead>
             </TableRow>
           </TableHeader>
           <TableBody>
-            {orders?.map((product: any) => {
-              console.log(product.images[0]);
-
+            {orders?.map((order: any) => {
               return (
-                <TableRow key={product.id}>
-                  <TableCell className="hidden sm:table-cell">
-                    <Carousel className="size-20 flex items-center">
-                      <CarouselContent className="-ml-1">
-                        {product.images.map((image: any) => {
-                          return (
-                            <img
-                              key={`img-${image[0]}`}
-                              className="h-full object-cover"
-                              src={image[0]}
-                              alt=""
-                            />
-                          );
-                        })}
-                      </CarouselContent>
-                    </Carousel>
-                  </TableCell>
-                  <TableCell className="font-medium">{product.name}</TableCell>
+                <TableRow key={order.id}>
+                  <TableCell className="font-medium">{order.id}</TableCell>
                   <TableCell>
-                    <Badge variant="outline">{product.status}</Badge>
+                    <Badge variant="outline">{order.status}</Badge>
                   </TableCell>
                   <TableCell>
-                    {product.price.toFixed(2).toLocaleString()}
+                    {new Date(order.date).toLocaleDateString()}
                   </TableCell>
-                  <TableCell>{product.numberOfSales}</TableCell>
-                  <TableCell>
-                    {new Date(product.createdAt).toLocaleDateString()}
-                  </TableCell>
+                  <TableCell>{order.paymentId}</TableCell>
+                  <TableCell>{order.userId}</TableCell>
                   <TableCell>
                     <DropdownMenu>
                       <DropdownMenuTrigger asChild>
@@ -187,11 +167,11 @@ export function DashboardOrders() {
                               Edit
                             </Button>
                           </SheetTrigger>
-                          <CreateEdit editOrder={product} />
+                          <CreateEdit editOrder={order} />
                         </Sheet>
                         <DropdownMenuItem
                           onClick={() => {
-                            handelDeleteOrder(product.id);
+                            handelDeleteOrder(order.id);
                           }}>
                           Delete
                         </DropdownMenuItem>

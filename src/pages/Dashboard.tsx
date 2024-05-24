@@ -22,6 +22,7 @@ import { shopContext } from "@/Router";
 import { DashboardOrders } from "@/components/DashboardOrders";
 import { DashboardUsers } from "@/components/DashboardUsers";
 import { useQueryClient } from "@tanstack/react-query";
+import { DashboardOverview } from "@/components/DashboardOverview";
 
 export function Dashboard() {
   const { state } = useContext(shopContext);
@@ -53,7 +54,8 @@ export function Dashboard() {
                 </Button>
               </Link>
               <TabsList>
-                <TabsTrigger value="all">Products</TabsTrigger>
+                <TabsTrigger value="all">Overview</TabsTrigger>
+                <TabsTrigger value="products">Products</TabsTrigger>
                 <TabsTrigger value="users">Users</TabsTrigger>
                 <TabsTrigger value="orders">Orders</TabsTrigger>
               </TabsList>
@@ -98,6 +100,9 @@ export function Dashboard() {
               </div>
             </div>
             <TabsContent value="all">
+              <DashboardOverview />
+            </TabsContent>
+            <TabsContent value="products">
               <DashboardProducts search={search} />
             </TabsContent>
             <TabsContent value="users">
