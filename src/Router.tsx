@@ -54,7 +54,7 @@ export function Router() {
       element: <Cart />,
     },
     {
-      path: "/thank-you",
+      path: "/thank-you/:paymentId",
       element: <ThankYou />,
     },
   ]);

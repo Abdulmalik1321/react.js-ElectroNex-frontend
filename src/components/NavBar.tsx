@@ -22,6 +22,7 @@ import { useContext } from "react";
 import { Stocks } from "@/types";
 import { Card } from "@/shadcn/ui/card";
 import { Badge } from "@/shadcn/ui/badge";
+import { Logo } from "./logo";
 
 export function NavBar() {
   const { state, dispatch } = useContext(shopContext);
@@ -59,11 +60,7 @@ export function NavBar() {
   return (
     <div className="w-screen flex flex-col items-center justify-center top-0 sticky z-50 bg-[hsl(var(--background))]  dark:shadow-md">
       <div className="w-[80%] flex items-center p-3 justify-between bg-[hsl(var(--background))]">
-        <div className="flex items-end">
-          <h1 className="text-5xl font-normal">
-            Electro<strong className="font-extrabold">Nex </strong>
-          </h1>
-        </div>
+        <Logo />
         <div className="flex justify-between items-end gap-5 mr-32">
           <Link to={"/"}>
             <Button

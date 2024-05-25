@@ -52,8 +52,6 @@ export function Cart() {
   };
 
   const increaseQty = (cartItem: Stocks) => {
-    console.log(cartItem);
-
     LocalStorage("cart", [...state.cart, cartItem]);
 
     dispatch({
@@ -115,7 +113,14 @@ export function Cart() {
         headers: { Authorization: `Bearer ${state.userInfo.token}` },
       });
 
-      navigate("/thank-you");
+      LocalStorage("cart", []);
+
+      dispatch({
+        type: "removeFromCart",
+        payload: [],
+      });
+
+      navigate(`/thank-you/${res.data.id}`);
       return res.data;
     } catch (error) {
       toast({

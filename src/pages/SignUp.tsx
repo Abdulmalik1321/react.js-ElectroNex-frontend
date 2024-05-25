@@ -10,6 +10,7 @@ import { Badge } from "@/shadcn/ui/badge";
 
 import { LoginInfo, LoginProps, SignUpInfo, SignUpProps } from "@/types";
 import { LocalStorage } from "@/utils";
+import { Logo } from "@/components/logo";
 
 export function SignUp({ handelLogin }: LoginProps) {
   const [input, setInput] = useState<SignUpInfo>({
@@ -91,9 +92,7 @@ export function SignUp({ handelLogin }: LoginProps) {
   return (
     <main className="w-full lg:grid lg:min-h-full lg:grid-cols-2 xl:min-h-full">
       <div className="hidden bg-muted lg:block relative">
-        <h1 className="text-5xl font-normal absolute top-10 left-10 z-10">
-          Electro<strong className="font-extrabold">Nex </strong>
-        </h1>
+        <Logo />
         <img
           src="./src/assets/imgs/iphone15-pro.jpeg"
           alt="Image"
