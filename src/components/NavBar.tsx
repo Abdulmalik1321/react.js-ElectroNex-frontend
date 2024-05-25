@@ -130,9 +130,9 @@ export function NavBar() {
                 <DropdownMenuTrigger asChild>
                   <Button className="relative">
                     {state.cart.length ? (
-                      <span className="absolute flex h-3 w-3 -top-2 -right-0">
-                        <span className="animate-ping absolute inline-flex aspect-square size-5 rounded-full bg-sky-400 opacity-50"></span>
-                        <span className="relative flex justify-center items-center rounded-full aspect-square size-5 bg-sky-500">
+                      <span className="absolute aspect-square flex h-3 w-3 -top-2 -right-2">
+                        <span className="animate-ping absolute inline-flex aspect-square size-5 w-5 rounded-full bg-sky-400 opacity-50"></span>
+                        <span className="relative flex justify-center items-center rounded-full aspect-square size-5  !w-5 bg-sky-500">
                           {state.cart.length}
                         </span>
                       </span>

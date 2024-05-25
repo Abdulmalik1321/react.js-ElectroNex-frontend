@@ -23,6 +23,7 @@ import { Link, useNavigate } from "react-router-dom";
 
 import { ChevronLeft, ChevronRight, Trash2, X } from "lucide-react";
 import { useContext, useState } from "react";
+import { PaymentMethod } from "@/components/PaymentMethod";
 export function Cart() {
   const navigate = useNavigate();
   const { state, dispatch } = useContext(shopContext);
@@ -140,6 +141,7 @@ export function Cart() {
   return (
     <div className="w-full flex flex-col justify-start items-center">
       <NavBar />
+
       <div className="h-[92vh] pt-10 pb-10 grid grid-cols-12 grid-rows-12 gap-5 w-[80%]">
         <Card className="col-span-8 row-span-12 rounded-2xl ">
           <CardHeader>
@@ -233,21 +235,6 @@ export function Cart() {
           </CardContent>
         </Card>
 
-        <Card className="col-span-4 row-span-4 rounded-2xl p-0 flex flex-col justify-around">
-          <CardHeader>
-            <CardTitle className="text-3xl">Coupon Code</CardTitle>
-            <Separator />
-          </CardHeader>
-          <CardContent>
-            <Input placeholder="Enter Your Coupon" />
-          </CardContent>
-          <CardFooter className=" justify-center flex items-end ">
-            <Button className="w-full border border-primary" variant="outline">
-              Apply Your Coupon
-            </Button>
-          </CardFooter>
-        </Card>
-
         <Card className="col-span-4 row-span-4 rounded-2xl">
           <CardHeader>
             <CardTitle className="text-3xl">Order Summary</CardTitle>
@@ -263,7 +250,7 @@ export function Cart() {
               <span>{cartTotal == 0 ? "0.00" : "10.00"}</span>
             </div>
             <div className="w-full flex justify-between">
-              <span>Vat</span>
+              <span>VAT</span>
               <span>{(cartTotal * 0.15).toFixed(2)}</span>
             </div>
             <Separator />
@@ -273,27 +260,7 @@ export function Cart() {
             </div>
           </CardContent>
         </Card>
-
-        <Card className="col-span-4 row-span-4 rounded-2xl">
-          <CardHeader>
-            <CardTitle className="text-3xl">Payment Method</CardTitle>
-            <Separator />
-          </CardHeader>
-          <CardContent className="flex gap-5">
-            <Button className="size-20 bg-muted bg-[url(https://framerusercontent.com/images/GfcI9NmQBdKh98dSnEvPCmg5nCo.png)] bg-center bg-contain bg-no-repeat" />
-            <Button className="size-20 bg-muted bg-[url(https://static.vecteezy.com/system/resources/previews/020/975/576/original/visa-logo-visa-icon-transparent-free-png.png)] bg-center bg-cover" />
-            <Button className="size-20 bg-muted bg-[url(https://iconape.com/wp-content/files/ei/387896/png/387896.png)] bg-center bg-cover" />
-            <Button className="size-20 bg-muted bg-[url(https://cdn.salla.sa/mRjq/JgbK3sdmqb4jbdS1NLt6otYYH7ArDipt5Hetqypo.png)] bg-center bg-contain bg-no-repeat" />
-          </CardContent>
-          <CardFooter className="flex justify-between">
-            <LoadingButton
-              loading={loading}
-              onClick={handlePayment}
-              className="w-full">
-              Checkout
-            </LoadingButton>
-          </CardFooter>
-        </Card>
+        <PaymentMethod />
       </div>
     </div>
   );
