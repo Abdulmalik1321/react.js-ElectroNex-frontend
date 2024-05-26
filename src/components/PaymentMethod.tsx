@@ -46,19 +46,7 @@ export function PaymentMethod() {
               />
               <Label
                 htmlFor="Card"
-                className="flex flex-col items-center justify-between rounded-md border-2 border-muted bg-transparent p-4 hover:bg-accent hover:text-accent-foreground peer-data-[state=checked]:border-primary [&:has([data-state=checked])]:border-primary">
-                {/* <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth="2"
-                  className="mb-3 h-6 w-6">
-                  <rect width="20" height="14" x="2" y="5" rx="2" />
-                  <path d="M2 10h20" />
-                </svg> */}
+                className="flex flex-col items-center justify-between rounded-md border-2 border-muted bg-background p-4 hover:bg-accent hover:text-accent-foreground peer-data-[state=checked]:border-primary [&:has([data-state=checked])]:border-primary peer-data-[state=checked]:!bg-transparent hover:border-primary">
                 <Icons.card className="mb-3 h-6 w-6" />
                 {/* Card */}
               </Label>
@@ -73,7 +61,7 @@ export function PaymentMethod() {
               />
               <Label
                 htmlFor="Tabby"
-                className="flex flex-col items-center justify-between rounded-md border-2 border-muted bg-transparent p-4 hover:bg-accent hover:text-accent-foreground peer-data-[state=checked]:border-primary [&:has([data-state=checked])]:border-primary">
+                className="flex flex-col items-center justify-between rounded-md border-2 border-muted bg-background p-4 hover:bg-accent hover:text-accent-foreground peer-data-[state=checked]:border-primary [&:has([data-state=checked])]:border-primary peer-data-[state=checked]:!bg-transparent hover:border-primary">
                 <Icons.tabby className="mb-3 h-6 w-6" />
                 {/* Tabby */}
               </Label>
@@ -88,7 +76,7 @@ export function PaymentMethod() {
               />
               <Label
                 htmlFor="Tamara"
-                className="flex flex-col items-center justify-between rounded-md border-2 border-muted bg-transparent p-4 hover:bg-accent hover:text-accent-foreground peer-data-[state=checked]:border-primary [&:has([data-state=checked])]:border-primary">
+                className="flex flex-col items-center justify-between rounded-md border-2 border-muted bg-background p-4 hover:bg-accent hover:text-accent-foreground peer-data-[state=checked]:border-primary [&:has([data-state=checked])]:border-primary peer-data-[state=checked]:!bg-transparent hover:border-primary">
                 <Icons.tamara className="mb-3 h-6 w-6" />
                 {/* Tamara */}
               </Label>

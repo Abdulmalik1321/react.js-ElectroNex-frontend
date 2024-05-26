@@ -143,37 +143,27 @@ export function Profile() {
           <Card className="grid grid-cols-2 col-span-2 w-full pt-12 pb-12">
             <CardContent className="flex items-center gap-8">
               <User className="size-32" />
-              <div className="flex flex-col ">
-                <div className="grid grid-cols-2 gap-3">
-                  <p>
-                    First Name:
-                    <br />
-                    {state.userInfo.firstName}
-                  </p>
-                  <p>
-                    Last Name:
-                    <br />
-                    {state.userInfo.lastName}
-                  </p>
-                  <p>
-                    Email:
-                    <br />
-                    {state.userInfo.email}
-                  </p>
-                  <p>
-                    Phone:
-                    <br />
-                    {state.userInfo.phone}
-                  </p>
+
+              <div className="flex flex-col mt-6 h-48 justify-end">
+                <div className="grid gap-1 gap-x-24">
+                  <p>First Name: {state.userInfo.firstName}</p>
+                  <p>Last Name: {state.userInfo.lastName}</p>
+                  <p>Email: {state.userInfo.email}</p>
+                  <p>Phone: {state.userInfo.phone}</p>
                 </div>
+
                 <Dialog>
                   <DialogTrigger className="text-left">
-                    <Button className="w-28 mt-3">Edit</Button>
+                    <Button
+                      variant="outline"
+                      className="w-full text-lg text-current mt-3">
+                      Edit
+                    </Button>
                   </DialogTrigger>
 
                   <DialogContent className="sm:max-w-[450px]">
                     <DialogHeader>
-                      <DialogTitle>Add Address</DialogTitle>
+                      <DialogTitle>Edit user info</DialogTitle>
                     </DialogHeader>
                     <div className="grid gap-4 py-4">
                       <div className="grid grid-cols-4 items-center gap-4">
@@ -218,25 +208,18 @@ export function Profile() {
               <div>
                 <Dialog>
                   {address ? (
-                    <div className="grid grid-cols-2 gap-3">
-                      <p>
-                        City:
-                        <br />
-                        {address?.city}
-                      </p>
-                      <p>
-                        Zip Code:
-                        <br />
-                        {address?.zip}
-                      </p>
-                      <p>
-                        Address:
-                        <br />
-                        {address?.addressLine}
-                      </p>
-
+                    <div className="flex flex-col justify-end h-48">
+                      <div className="grid gap-1 items-end ">
+                        <p>City: {address?.city}</p>
+                        <p>Zip Code: {address?.zip}</p>
+                        <p>Address: {address?.addressLine}</p>
+                      </div>
                       <DialogTrigger asChild>
-                        <Button className="w-28 mt-3">Edit</Button>
+                        <Button
+                          variant="outline"
+                          className="w-full text-lg text-current mt-3">
+                          Edit
+                        </Button>
                       </DialogTrigger>
                     </div>
                   ) : (
@@ -244,7 +227,11 @@ export function Profile() {
                       <p>You Don&apos;t Have Address </p>
                       <br />
                       <DialogTrigger asChild>
-                        <Button>Add Address</Button>
+                        <Button
+                          variant="outline"
+                          className="w-full text-lg text-current mt-3">
+                          Add Address
+                        </Button>
                       </DialogTrigger>
                     </div>
                   )}
@@ -295,7 +282,6 @@ export function Profile() {
               </div>
             </CardContent>
           </Card>
-
           <Wishlist />
         </div>
       </div>

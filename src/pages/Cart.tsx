@@ -168,10 +168,10 @@ export function Cart() {
                 return (
                   <div
                     key={`${cartItem.stockId}-${index}`}
-                    className="grid grid-cols-7">
+                    className="grid grid-cols-7 mt-3">
                     <div className="col-span-3 flex ">
                       <Card
-                        className="size-24 bg-contain bg-no-repeat bg-center"
+                        className="size-24 bg-contain bg-no-repeat bg-center bg-background"
                         style={{
                           backgroundImage: `url(${cartItem.url})`,
                         }}

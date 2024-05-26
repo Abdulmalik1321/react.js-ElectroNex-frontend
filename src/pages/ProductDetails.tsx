@@ -34,6 +34,7 @@ import { shopContext } from "../Router";
 import { Review } from "@/components/Reviews";
 import { LocalStorage } from "@/utils";
 import { useToast } from "@/shadcn/ui/use-toast";
+import { Footer } from "@/components/Footer";
 
 export function ProductDetails() {
   const params = useParams();
@@ -191,7 +192,7 @@ export function ProductDetails() {
     <main className="md:w-[80%] flex flex-col justify-start items-center xxs:w-[95%]">
       <NavBar />
 
-      <div className="grid grid-cols-7 h-full w-full items-center gap-12">
+      <div className="grid grid-cols-7 h-full w-full items-center gap-12 mt-16">
         <Card
           className={`h-[calc(75dvh)] [background-position-x:-50px] bg-contain bg-no-repeat bg-center relative col-span-4`}
           style={{ backgroundImage: `url(${displayImg})` }}>
@@ -457,6 +458,7 @@ export function ProductDetails() {
         {error && <p className="text-red-500">{error.message}</p>}
       </div>
       <Review />
+      <Footer />
     </main>
   );
 }
