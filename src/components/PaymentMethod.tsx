@@ -12,6 +12,7 @@ import {
 } from "@/shadcn/ui/card";
 import { Input } from "@/shadcn/ui/input";
 import { Label } from "@/shadcn/ui/label";
+import { LoadingButton } from "@/shadcn/ui/loadingbutton";
 import { RadioGroup, RadioGroupItem } from "@/shadcn/ui/radio-group";
 import {
   Select,
@@ -22,7 +23,7 @@ import {
 } from "@/shadcn/ui/select";
 import { useState } from "react";
 
-export function PaymentMethod() {
+export function PaymentMethod({handlePayment, loading}:{handlePayment:any, loading:boolean}) {
   const [selected, setSelected] = useState("Card");
   return (
     <div className="col-span-4 row-span-8">
@@ -143,7 +144,7 @@ export function PaymentMethod() {
           )}
         </CardContent>
         <CardFooter>
-          <Button className="w-full">Checkout with {selected}</Button>
+          <LoadingButton loading={loading} onClick={handlePayment} className="w-full">Checkout with {selected}</LoadingButton>
         </CardFooter>
       </Card>
     </div>

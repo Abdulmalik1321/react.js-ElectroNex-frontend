@@ -45,7 +45,7 @@ export function ProductCard({ product }: { product: Product }) {
                 return (
                   <img
                     key={`img-${image[0]}`}
-                    className="h-48 object-cover"
+                    className="h-48 object-contain"
                     src={image[0]}
                     alt=""
                   />
@@ -60,7 +60,7 @@ export function ProductCard({ product }: { product: Product }) {
               return (
                 <span
                   key={color[1]}
-                  style={{ backgroundColor: color[1] }}
+                  style={{ backgroundColor: `#${color[1]}` }}
                   className={`h-3 w-3 border border-muted-foreground rounded-full block ${
                     current === index ? "opacity-100" : "opacity-20"
                   }`}></span>

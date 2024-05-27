@@ -1,5 +1,3 @@
-import userTokensJson from "../assets/JSON/appSettings.json";
-
 import { Product } from "@/types";
 import { LocalStorage } from "@/utils";
 
@@ -7,14 +5,12 @@ type Reducer = {
   userInfo: any;
   cart: Product[];
   products: Product[];
-  userTokens: { admin: string; customer: string };
 };
 
 export const initialState: Reducer = {
   userInfo: LocalStorage("userInfo"),
   cart: LocalStorage("cart") ? LocalStorage("cart") : LocalStorage("cart", []),
   products: [],
-  userTokens: JSON.parse(JSON.stringify(userTokensJson)).tokens,
 };
 
 export function shopReducer(state: any, action: any) {

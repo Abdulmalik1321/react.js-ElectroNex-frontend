@@ -192,7 +192,7 @@ export function Cart() {
                         {cartItem.size}
                       </Badge>
                       <span
-                        style={{ backgroundColor: cartItem.color }}
+                        style={{ backgroundColor: `#${cartItem.color}` }}
                         className={`size-4 border border-muted-foreground rounded-full inline-block`}></span>
                     </div>
 
@@ -260,7 +260,7 @@ export function Cart() {
             </div>
           </CardContent>
         </Card>
-        <PaymentMethod />
+        <PaymentMethod loading={loading} handlePayment={handlePayment} />
       </div>
     </div>
   );
