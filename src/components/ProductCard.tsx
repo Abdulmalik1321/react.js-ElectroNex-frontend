@@ -40,12 +40,18 @@ export function ProductCard({ product }: { product: Product }) {
       <Card className="w-60 h-full relative flex flex-col justify-between group">
         <CardContent className="flex flex-col items-center justify-center p-6">
           <Carousel setApi={setApi} className="w-3/4 flex items-center">
-            <CarouselContent className="-ml-1">
+            <CarouselContent
+              className={`-ml-1 ${
+                window.location.href.slice(-1) === "/" ? "overflow-hidden" : ""
+              }`}>
               {product.images.map((image) => {
+                console.log(window.location.href);
+
                 return (
                   <img
-                    key={`img-${image[0]}`}
-                    className="h-48 object-contain"
+                    loading="lazy"
+                    key={`${product.id}-img-${image[0]}`}
+                    className="h-48 object-scale-down"
                     src={image[0]}
                     alt=""
                   />
@@ -59,7 +65,7 @@ export function ProductCard({ product }: { product: Product }) {
             {product.images.map((color, index) => {
               return (
                 <span
-                  key={color[1]}
+                  key={`${product.id}-as12e-${color[1] + index}`}
                   style={{ backgroundColor: `#${color[1]}` }}
                   className={`h-3 w-3 border border-muted-foreground rounded-full block ${
                     current === index ? "opacity-100" : "opacity-20"

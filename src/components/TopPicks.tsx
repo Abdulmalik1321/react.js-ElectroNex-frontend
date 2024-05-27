@@ -15,7 +15,7 @@ import { easeInOut, motion } from "framer-motion";
 export function TopPicks() {
   const getProducts = async () => {
     try {
-      const res = await api.get("/products");
+      const res = await api.get("/products?limit=8&offset=1");
       return res.data;
     } catch (error) {
       console.error(error);
@@ -73,7 +73,7 @@ export function TopPicks() {
               if (product.status === "listed") {
                 return (
                   <motion.div
-                    key={index}
+                    key={`1342-${product.id}-${index}`}
                     className=""
                     initial={{ opacity: 0, scale: 1, translateX: 20 }}
                     whileInView={{ opacity: 1, scale: 1, translateX: 0 }}

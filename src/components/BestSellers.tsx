@@ -9,7 +9,9 @@ import { easeInOut, motion } from "framer-motion";
 export function BestSellers() {
   const getProducts = async () => {
     try {
-      const res = await api.get("/products?sort=1");
+      const res = await api.get(
+        "/products?sort=1&brandFilter=Apple-Huawei-Sony-Samsung&limit=8&offset=0"
+      );
       return res.data;
     } catch (error) {
       console.error(error);
