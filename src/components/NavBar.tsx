@@ -183,7 +183,7 @@ export function NavBar() {
                                 {cartItem.size}
                               </Badge>
                               <span
-                                style={{ backgroundColor: cartItem.color }}
+                                style={{ backgroundColor: `#${cartItem.color}` }}
                                 className={`size-4 border border-muted-foreground rounded-full inline-block`}></span>
                             </div>
                           </div>

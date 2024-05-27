@@ -252,7 +252,7 @@ export function ProductDetails() {
                       className="w-18 h-12 group"
                       key={color}>
                       <span
-                        style={{ backgroundColor: color }}
+                        style={{ backgroundColor: `#${color}` }}
                         className={`size-8 rounded-full block cursor-pointer border border-muted-foreground ${
                           color === params.color ? "opacity-100" : "opacity-40"
                         } group-hover:opacity-100 transition-opacity`}></span>
@@ -405,7 +405,7 @@ export function ProductDetails() {
                                         className="rounded-full aspect-square"
                                         variant="outline"
                                         style={{
-                                          backgroundColor: stock.color,
+                                          backgroundColor: `#${stock.color}`,
                                         }}></Badge>
                                     </div>
                                   </div>

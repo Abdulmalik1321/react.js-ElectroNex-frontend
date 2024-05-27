@@ -97,7 +97,7 @@ export function ThankYou() {
                       <TableCell>
                         <div className="flex items-center h-full gap-2">
                           <span
-                            style={{ backgroundColor: item.color }}
+                            style={{ backgroundColor: `#${item.color}` }}
                             className={`size-4 border border-muted-foreground rounded-full inline-block`}></span>
                           <Badge
                             className="rounded-sm m-0 text-sm font-normal"
