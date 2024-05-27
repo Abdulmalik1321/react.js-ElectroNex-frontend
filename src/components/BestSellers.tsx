@@ -29,7 +29,7 @@ export function BestSellers() {
     <section className="w-full flex justify-center items-center flex-col mb-28">
       <p className="text-5xl">
         <strong>
-          Best Sellers
+          Best Seller Products
           <strong />
         </strong>
       </p>
