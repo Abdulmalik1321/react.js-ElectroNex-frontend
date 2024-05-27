@@ -1,4 +1,3 @@
-"use client";
 import { cn } from "./aceternityUtils";
 
 interface AuroraBackgroundProps extends React.HTMLProps<HTMLDivElement> {

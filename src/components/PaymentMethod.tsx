@@ -1,5 +1,3 @@
-"use client";
-
 import { Icons } from "@/shadcn/icons";
 import { Button } from "@/shadcn/ui/button";
 
@@ -23,7 +21,13 @@ import {
 } from "@/shadcn/ui/select";
 import { useState } from "react";
 
-export function PaymentMethod({handlePayment, loading}:{handlePayment:any, loading:boolean}) {
+export function PaymentMethod({
+  handlePayment,
+  loading,
+}: {
+  handlePayment: any;
+  loading: boolean;
+}) {
   const [selected, setSelected] = useState("Card");
   return (
     <div className="col-span-4 row-span-8">
@@ -144,7 +148,12 @@ export function PaymentMethod({handlePayment, loading}:{handlePayment:any, loadi
           )}
         </CardContent>
         <CardFooter>
-          <LoadingButton loading={loading} onClick={handlePayment} className="w-full">Checkout with {selected}</LoadingButton>
+          <LoadingButton
+            loading={loading}
+            onClick={handlePayment}
+            className="w-full">
+            Checkout with {selected}
+          </LoadingButton>
         </CardFooter>
       </Card>
     </div>
