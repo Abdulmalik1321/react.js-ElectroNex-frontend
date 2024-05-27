@@ -10,7 +10,7 @@ import { Badge } from "@/shadcn/ui/badge";
 
 import { LoginInfo, LoginProps, SignUpInfo, SignUpProps } from "@/types";
 import { LocalStorage } from "@/utils";
-import { Logo } from "@/components/logo";
+import { Logo } from "@/components/Logo";
 
 export function SignUp({ handelLogin }: LoginProps) {
   const [input, setInput] = useState<SignUpInfo>({

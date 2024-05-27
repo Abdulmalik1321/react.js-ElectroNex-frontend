@@ -10,7 +10,7 @@ import { Badge } from "@/shadcn/ui/badge";
 
 import { LoginInfo, LoginProps } from "@/types";
 import { LocalStorage } from "@/utils";
-import { Logo } from "@/components/logo";
+import { Logo } from "@/components/Logo";
 
 export function Login({ handelLogin }: LoginProps) {
   const [email, setEmail] = useState("");
