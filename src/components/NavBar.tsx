@@ -22,7 +22,7 @@ import { useContext } from "react";
 import { Stocks } from "@/types";
 import { Card } from "@/shadcn/ui/card";
 import { Badge } from "@/shadcn/ui/badge";
-import { Logo } from "./logo";
+import { Logo } from "./Logo";
 
 export function NavBar() {
   const { state, dispatch } = useContext(shopContext);
@@ -183,7 +183,9 @@ export function NavBar() {
                                 {cartItem.size}
                               </Badge>
                               <span
-                                style={{ backgroundColor: `#${cartItem.color}` }}
+                                style={{
+                                  backgroundColor: `#${cartItem.color}`,
+                                }}
                                 className={`size-4 border border-muted-foreground rounded-full inline-block`}></span>
                             </div>
                           </div>
