@@ -22,7 +22,7 @@ import {
 } from "@/shadcn/ui/pagination";
 import { debounce } from "lodash";
 import { ListFilterIcon, Loader2 } from "lucide-react";
-import { useSearchParams } from "react-router-dom";
+import { ScrollRestoration, useSearchParams } from "react-router-dom";
 import { ToggleGroup, ToggleGroupItem } from "@/shadcn/ui/toggle-group";
 import {
   Select,
@@ -338,6 +338,7 @@ export function Shop() {
         </PaginationContent>
       </Pagination>
       <Footer />
+      <ScrollRestoration />
     </main>
   );
 }

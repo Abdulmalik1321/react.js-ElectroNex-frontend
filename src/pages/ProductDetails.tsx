@@ -7,7 +7,12 @@ import { Product, Stocks } from "@/types";
 import { useQuery } from "@tanstack/react-query";
 import { Banknote, Check, ListPlus, Loader2, Plus, X } from "lucide-react";
 import { useContext, useEffect, useState } from "react";
-import { Link, useNavigate, useParams } from "react-router-dom";
+import {
+  Link,
+  ScrollRestoration,
+  useNavigate,
+  useParams,
+} from "react-router-dom";
 import {
   Accordion,
   AccordionContent,
@@ -433,6 +438,11 @@ export function ProductDetails() {
                                         Add To Cart
                                       </Badge>
                                     </SheetClose>
+                                    <Badge
+                                      variant="outline"
+                                      className="rounded-sm border-primary mt-2 cursor-pointer hover:bg-muted ml-2">
+                                      More Details
+                                    </Badge>
                                   </div>
                                 </AccordionContent>
                               </AccordionItem>
@@ -459,6 +469,7 @@ export function ProductDetails() {
       </div>
       <Review />
       <Footer />
+      <ScrollRestoration />
     </main>
   );
 }

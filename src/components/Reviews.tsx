@@ -66,14 +66,27 @@ export function Review() {
                 <Ratings variant="yellow" rating={5} />
               </div>
             </div>
-            <p className="mt-3">
+            <p className="mt-3 mb-1">
               Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tempore,
               aspernatur, sunt illo magni error ab facilis exercitationem ea
               culpa nemo rerum non ratione enim asperiores quia sit nostrum
               sapiente obcaecati!
             </p>
-            <div>
-              <Card className="size-10" />
+            <div className="flex gap-1">
+              <Card
+                className="size-16 bg-cover"
+                style={{
+                  backgroundImage:
+                    "url(https://res.cloudinary.com/dbgwe94vv/image/upload/v1715888866/7189b8269d38741250375176895de55aba729c5db851b11d09871fe54f1ee323.jpg_bloqcn.webp)",
+                }}
+              />
+              <Card
+                className="size-16 bg-cover"
+                style={{
+                  backgroundImage:
+                    "url(https://res.cloudinary.com/dbgwe94vv/image/upload/v1715889314/d081fe48badc91bd72e0ef273d81942cd6b0cc806eef5ac9e4b900b52c721715.jpg_yitaey.webp)",
+                }}
+              />
             </div>
             <Separator className="mt-6" />
           </div>
@@ -101,7 +114,6 @@ export function Review() {
               culpa nemo rerum non ratione enim asperiores quia sit nostrum
               sapiente obcaecati!
             </p>
-            s
             <Separator className="mt-6" />
           </div>
 

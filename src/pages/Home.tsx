@@ -8,6 +8,7 @@ import { BestSellers } from "../components/BestSellers";
 import { RecyclingBanner } from "../components/RecyclingBanner";
 import { Footer } from "../components/Footer";
 import { AuroraBackground } from "@/shadcn/ui/aurora-background";
+import { ScrollRestoration } from "react-router-dom";
 
 // import { shopContext } from "../Router";
 // import { Product } from "@/types";
@@ -24,6 +25,7 @@ export function Home() {
       <BestSellers />
       <RecyclingBanner />
       <Footer />
+      <ScrollRestoration />
     </main>
   );
 }

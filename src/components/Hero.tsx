@@ -52,7 +52,7 @@ export function Hero() {
               delay: 0.5,
               ease: easeInOut,
             }}>
-            <Card className=" w-full bg-transparent bg-[url(https://res.cloudinary.com/dbgwe94vv/image/upload/v1715988663/iphone15-pro1_q7hwfi.webp)] [background-position-y:125%] bg-contain bg-no-repeat bg-center relative">
+            <Card className="border-muted w-full bg-transparent bg-[url(https://res.cloudinary.com/dbgwe94vv/image/upload/v1715988663/iphone15-pro1_q7hwfi.webp)] [background-position-y:125%] bg-contain bg-no-repeat bg-center relative">
               <CardHeader>
                 <CardTitle>iPhone 15 Pro</CardTitle>
                 <CardDescription>
@@ -74,7 +74,7 @@ export function Hero() {
               delay: 0.6,
               ease: easeInOut,
             }}>
-            <Card className=" w-full bg-transparent bg-[url(https://res.cloudinary.com/dbgwe94vv/image/upload/v1715990265/103375_original_local_1200x1050_v3_converted_hxmz5k.webp)] [background-position-y:85px] bg-contain bg-no-repeat bg-center relative">
+            <Card className="border-muted   w-full bg-transparent bg-[url(https://res.cloudinary.com/dbgwe94vv/image/upload/v1715990265/103375_original_local_1200x1050_v3_converted_hxmz5k.webp)] [background-position-y:85px] bg-contain bg-no-repeat bg-center relative">
               <CardHeader>
                 <CardTitle>Sony WH-1000XM5</CardTitle>
                 <CardDescription>YOUR WORLD. NOTHING ELSE.</CardDescription>
@@ -94,7 +94,7 @@ export function Hero() {
               delay: 0.7,
               ease: easeInOut,
             }}>
-            <Card className="h-1/2 w-full  bg-transparent  bg-[url(https://res.cloudinary.com/dbgwe94vv/image/upload/v1715988653/ASUS-Zephyrus1_m82tyq.webp)] bg-contain bg-no-repeat bg-center relative">
+            <Card className="border-muted  h-1/2 w-full  bg-transparent  bg-[url(https://res.cloudinary.com/dbgwe94vv/image/upload/v1715988653/ASUS-Zephyrus1_m82tyq.webp)] bg-contain bg-no-repeat bg-center relative">
               <CardHeader>
                 <CardTitle>ASUS Zephyrus</CardTitle>
                 <CardDescription>For Those Who Dare!</CardDescription>
