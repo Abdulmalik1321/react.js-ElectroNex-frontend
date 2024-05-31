@@ -93,15 +93,19 @@ export function DashboardUsers() {
     }
   };
 
-  const updateUser = async (userId: string, newRole: string) => {
+  const updateUser = async (userId: string, newRole: string, token: string) => {
     try {
+      console.log("============");
       console.log(
-        `New Role: ${newRole}\n\nUser Id: ${userId}\n\nUser Token: ${state.userInfo.token}`
+        `New Role: ${newRole}\n\nUser Id: ${userId}\n\nUser Token: ${token}`
       );
-
-      const res = await api.put(`/users/role/${userId}?newRole=${newRole}`, {
-        headers: { Authorization: `Bearer ${state.userInfo.token}` },
-      });
+      const res = await api.put(
+        `/users/role/${userId}?newRole=${newRole}`,
+        {},
+        {
+          headers: { Authorization: `Bearer ${token}` },
+        }
+      );
       return res.data;
     } catch (error) {
       console.error(error);
@@ -110,7 +114,7 @@ export function DashboardUsers() {
   };
 
   const handelUserUpdateSubmit = async (userId: string, newRole: string) => {
-    await updateUser(userId, newRole);
+    await updateUser(userId, newRole, state.userInfo.token);
     queryClient.invalidateQueries({ queryKey: ["Users"] });
   };
 
