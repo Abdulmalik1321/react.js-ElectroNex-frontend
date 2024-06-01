@@ -12,7 +12,13 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 // import { useState } from "react";
 
-export function ProductCard({ product }: { product: Product }) {
+export function ProductCard({
+  product,
+  customClass = "",
+}: {
+  product: Product;
+  customClass: string;
+}) {
   // const [activeColor, setActiveColor] = useState(product.colors[0]);
 
   const [carouselApi, setApi] = useState<CarouselApi>();
@@ -37,9 +43,10 @@ export function ProductCard({ product }: { product: Product }) {
   const displaySizes = sizes.length > 3 ? [...sizes.slice(0, 3), "..."] : sizes;
   return (
     <>
-      <Card className="w-60 h-full relative flex flex-col justify-between group">
-        <CardContent className="flex flex-col items-center justify-center p-6">
-          <Carousel setApi={setApi} className="w-3/4 flex items-center">
+      <Card
+        className={`md:w-60 xxs:w-full h-full relative flex flex-col justify-between group ${customClass}`}>
+        <CardContent className="flex flex-col items-center justify-center md:p-6 xxs:p-3">
+          <Carousel setApi={setApi} className="w-3/4 flex items-center ">
             <CarouselContent
               className={`-ml-1 ${
                 window.location.href.slice(-1) === "/" ? "overflow-hidden" : ""
@@ -49,17 +56,16 @@ export function ProductCard({ product }: { product: Product }) {
 
                 return (
                   <img
-                    loading="lazy"
                     key={`${product.id}-img-${image[0]}`}
-                    className="h-48 object-scale-down"
+                    className="xxs:h-36 md:h-48 object-scale-down xxs:mb-2 md:mb-0"
                     src={image[0]}
                     alt=""
                   />
                 );
               })}
             </CarouselContent>
-            <CarouselPrevious className="ml-3 transition-opacity !opacity-0 group-hover:!opacity-100" />
-            <CarouselNext className="mr-3 transition-opacity !opacity-0 group-hover:!opacity-100" />
+            <CarouselPrevious className="xxs:ml-6 md:ml-3 transition-opacity !opacity-0 group-hover:!opacity-100" />
+            <CarouselNext className="xxs:mr-6 md:mr-3 transition-opacity !opacity-0 group-hover:!opacity-100" />
           </Carousel>
           <div className="flex justify-center gap-1 mt-2 mb-2">
             {product.images.map((color, index) => {
@@ -73,17 +79,19 @@ export function ProductCard({ product }: { product: Product }) {
               );
             })}
           </div>
-          <div className="text-center w-full mt-6">
-            <p className="text font-semibold">{product.name}</p>
-            <span className="text-xs text-muted-foreground">
+          <div className="text-center w-full xxs:mt-3 xxs:mb-2 md:mb-0 md:mt-6">
+            <p className="text font-semibold xxs:text-nowrap xxs:overflow-hidden xxs:text-ellipsis xxs:whitespace-nowrap xxs:w-full">
+              {product.name}
+            </p>
+            <span className="text-xs text-muted-foreground xxs:text-nowrap xxs:overflow-hidden xxs:text-ellipsis xxs:w-full xxs:h-4">
               {displaySizes.join(" | ")}
             </span>
           </div>
         </CardContent>
-        <CardFooter className="">
+        <CardFooter className="xxs:p-3 md:p-6 !pt-0">
           <div className=" flex justify-between items-center w-full">
             <p className="text-sm text-muted-foreground">
-              {product.price.toFixed(2).toLocaleString()} SAR
+              {product.price.toFixed(2).toLocaleString()}
             </p>
             <Link
               to={`/products/${product.id}/${product.images[current][1]}/${displaySizes[0]}`}>

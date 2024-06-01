@@ -14,7 +14,13 @@ export function ShopView({
         .slice(0, numberOfProducts)
         .map((product) => {
           if (product.status === "listed") {
-            return <ProductCard key={product.name} product={product} />;
+            return (
+              <ProductCard
+                customClass="xxs:w-full"
+                key={product.name}
+                product={product}
+              />
+            );
           }
         })}
     </>

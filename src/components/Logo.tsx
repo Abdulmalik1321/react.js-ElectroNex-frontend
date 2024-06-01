@@ -1,10 +1,10 @@
 export function Logo() {
   return (
     <div className="flex items-center gap-[2px]">
-      <h1 className="text-5xl font-normal">Electro</h1>
+      <h1 className="xxs:text-3xl md:text-5xl font-normal">Electro</h1>
       <div>
         <svg
-          className="block flex-shrink-0 w-20 object-contain fill-white mt-1"
+          className="block flex-shrink-0 md:w-20 xxs:w-12 object-contain fill-secondary-foreground mt-1"
           clipRule="evenodd"
           fillRule="evenodd"
           strokeLinejoin="round"

@@ -29,8 +29,8 @@ export function TopPicks() {
     queryFn: getProducts,
   });
   return (
-    <section className="mt-16 mb-48 w-full flex justify-between items-center">
-      <div className="w-1/4">
+    <section className="md:mt-16 md:p-0 xxs:p-6 xxs:mb-24 md:mb-48 w-full flex xxs:flex-col md:flex-row gap-6 justify-between items-center">
+      <div className="xxs:w-full xxs:flex xxs:justify-center md:justify-start md:w-1/4">
         <motion.div
           className=""
           initial={{ opacity: 0, scale: 1, translateX: -20 }}
@@ -40,7 +40,7 @@ export function TopPicks() {
             delay: 0.1,
             ease: easeInOut,
           }}>
-          <p className="text-5xl">
+          <p className="xxs:text-4xl md:text-5xl">
             <strong>
               Top Picks
               <br />
@@ -55,8 +55,8 @@ export function TopPicks() {
         </motion.div>
       </div>
 
-      <Carousel className="w-3/4 flex items-center">
-        <CarouselContent className="-ml-1">
+      <Carousel className="w-3/4 flex items-center justify-center ">
+        <CarouselContent className="ml-1">
           {!data ? (
             !error ? (
               [...Array(10)].map((i, index) => (
@@ -83,7 +83,10 @@ export function TopPicks() {
                       ease: easeInOut,
                     }}>
                     <div className="pl-1 mr-[14px] md:basis-1/2 lg:basis-1/4">
-                      <ProductCard product={product} />
+                      <ProductCard
+                        customClass="xxs:w-60 xxs:p-3"
+                        product={product}
+                      />
                     </div>
                   </motion.div>
                 );

@@ -28,17 +28,17 @@ export function BestSellers() {
   console.log(data);
 
   return (
-    <section className="w-full flex justify-center items-center flex-col mb-28">
-      <p className="text-5xl">
+    <section className="w-full flex justify-center items-center flex-col mb-28 md:p-0 xxs:p-3">
+      <p className="xxs:text-4xl md:text-5xl">
         <strong>
-          Best Seller Products
+          Best Sellers
           <strong />
         </strong>
       </p>
 
       {!data ? (
         !error ? (
-          <div className="grid grid-cols-4 gap-5 mt-12">
+          <div className="grid md:grid-cols-4 xxs:grid-cols-2 gap-5 mt-12">
             {[...Array(8)].map((num, index) => (
               <SkeletonCard key={`BestSellers-${num}-${index}`} />
             ))}
@@ -48,7 +48,7 @@ export function BestSellers() {
         )
       ) : (
         <motion.div
-          className="grid grid-cols-4 gap-5 mt-12"
+          className="grid md:grid-cols-4 xxs:grid-cols-2 gap-5 mt-12"
           initial={{ opacity: 0, scale: 1, translateY: 20 }}
           whileInView={{ opacity: 1, scale: 1, translateY: 0 }}
           transition={{

@@ -1,25 +1,31 @@
-import { Button } from "@/shadcn/ui/button";
-import { ModeToggle } from "../shadcn/mode-toggle";
-import { Separator } from "@/shadcn/ui/separator";
 import { Link, useNavigate } from "react-router-dom";
+import { shopContext } from "../Router";
+import { LocalStorage } from "@/utils";
+import { useContext } from "react";
+import { Stocks } from "@/types";
+
+import { ModeToggle } from "../shadcn/mode-toggle";
+import { Button } from "@/shadcn/ui/button";
+import { Separator } from "@/shadcn/ui/separator";
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
+  DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/shadcn/ui/dropdown-menu";
 import {
+  Home,
   LayoutDashboard,
   LogOut,
+  Menu,
+  Phone,
   Settings,
   ShoppingCart,
+  Store,
   Trash2Icon,
   User,
 } from "lucide-react";
-import { LocalStorage } from "@/utils";
-import { shopContext } from "../Router";
-import { useContext } from "react";
-import { Stocks } from "@/types";
 import { Card } from "@/shadcn/ui/card";
 import { Badge } from "@/shadcn/ui/badge";
 import { Logo } from "./Logo";
@@ -59,9 +65,9 @@ export function NavBar() {
   };
   return (
     <div className="w-screen flex flex-col items-center justify-center top-0 sticky z-50 bg-[hsl(var(--background))]  dark:shadow-md">
-      <div className="w-[80%] flex items-center p-3 justify-between bg-[hsl(var(--background))]">
+      <div className="md:w-[80%] xxs:w-full flex items-center p-3 justify-between bg-[hsl(var(--background))]">
         <Logo />
-        <div className="flex justify-between items-end gap-5 mr-32">
+        <div className="justify-between items-end gap-5 mr-32 xxs:hidden md:flex">
           <Link to={"/"}>
             <Button
               className="text-xl text-[vlc(--primary-foreground)]"
@@ -94,10 +100,31 @@ export function NavBar() {
                     variant="outline"
                     size="icon"
                     className="overflow-hidden rounded-md ">
-                    <Settings />
+                    <Menu className="sm:hidden" />
+                    <Settings className="xxs:hidden sm:flex" />
                   </Button>
                 </DropdownMenuTrigger>
                 <DropdownMenuContent align="end">
+                  <div className="sm:hidden">
+                    <Link to={"/"}>
+                      <DropdownMenuItem className="gap-2">
+                        <Home />
+                        Home
+                      </DropdownMenuItem>
+                    </Link>
+                    <Link to={"/shop"}>
+                      <DropdownMenuItem className="gap-2">
+                        <Store /> Shop
+                      </DropdownMenuItem>
+                    </Link>
+                    <Link to={"/"}>
+                      <DropdownMenuItem className="gap-2">
+                        <Phone /> Contact Us
+                      </DropdownMenuItem>
+                    </Link>
+                  </div>
+                  <DropdownMenuSeparator className="xxs:visible md:hidden" />
+
                   {state.userInfo && state.userInfo.role == 1 ? (
                     <Link to={"/dashboard"}>
                       <DropdownMenuItem className="gap-2">
