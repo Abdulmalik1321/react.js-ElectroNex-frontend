@@ -1,15 +1,18 @@
-import { ChangeEvent, useContext, useState } from "react";
+import { ScrollRestoration, useSearchParams } from "react-router-dom";
+import { useQuery, useQueryClient } from "@tanstack/react-query";
+import { ChangeEvent, useState } from "react";
+import { debounce } from "lodash";
+import api from "@/api";
+
+import { Category } from "@/types";
+import { ListFilterIcon, Loader2 } from "lucide-react";
 
 import { Footer } from "@/components/Footer";
 import { NavBar } from "@/components/NavBar";
 import { ShopView } from "@/components/ShopView";
-
-import { shopContext } from "../Router";
-import { Separator } from "@/shadcn/ui/separator";
-import api from "@/api";
-import { Category, Product } from "@/types";
-import { useQuery, useQueryClient } from "@tanstack/react-query";
 import { SkeletonCard } from "@/components/SkeletonCard";
+
+import { Separator } from "@/shadcn/ui/separator";
 import { Input } from "@/shadcn/ui/input";
 import {
   Pagination,
@@ -20,10 +23,6 @@ import {
   PaginationNext,
   PaginationPrevious,
 } from "@/shadcn/ui/pagination";
-import { debounce } from "lodash";
-import { ListFilterIcon, Loader2 } from "lucide-react";
-import { ScrollRestoration, useSearchParams } from "react-router-dom";
-import { ToggleGroup, ToggleGroupItem } from "@/shadcn/ui/toggle-group";
 import {
   Select,
   SelectContent,
@@ -34,31 +33,20 @@ import {
   SelectValue,
 } from "@/shadcn/ui/select";
 import { Button } from "@/shadcn/ui/button";
-import {
-  Sheet,
-  SheetContent,
-  SheetDescription,
-  SheetHeader,
-  SheetTitle,
-  SheetTrigger,
-} from "@/shadcn/ui/sheet";
 import { Checkbox } from "@/shadcn/ui/checkbox";
 import {
   DropdownMenu,
   DropdownMenuContent,
-  DropdownMenuItem,
   DropdownMenuLabel,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/shadcn/ui/dropdown-menu";
 
 export function Shop() {
-  const { state } = useContext(shopContext);
   const queryClient = useQueryClient();
   const [searchParams, setSearchParams] = useSearchParams();
   const defaultSearch = searchParams.get("searchTerm") || "";
 
-  const [filters, setFilters] = useState<string[]>([]);
   const [categoryFilters, setCategoryFilters] = useState<string[]>([]);
   const [brandFilters, setBrandFilters] = useState<string[]>([]);
   const [loading, setLoading] = useState<boolean>(false);
@@ -162,13 +150,13 @@ export function Shop() {
   return (
     <main className="md:w-[80%] flex flex-col justify-center items-center xxs:w-[95%]">
       <NavBar />
-      <div className="flex items-center w-full mt-12 pl-12 pr-12 justify-between">
-        <div className="flex justify-start items-center gap-5 ">
-          <p className="text-3xl">
+      <div className="flex items-center xxs:flex-col-reverse gap-5 md:flex-row w-full b mt-12  justify-between">
+        <div className="flex xxs:justify-between md:justify-start items-center gap-5 w-full">
+          <p className="text-3xl xxs:hidden md:block">
             <strong>Products</strong>
           </p>
           <Separator
-            className="bg-[hsl(var(--foreground))] h-10"
+            className="bg-[hsl(var(--foreground))] h-10 xxs:hidden md:block"
             orientation="vertical"
           />
           <Select defaultValue="0" onValueChange={handelSort}>
@@ -183,7 +171,7 @@ export function Shop() {
               </SelectGroup>
             </SelectContent>
           </Select>
-          -
+
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
               <Button variant="outline" className="gap-2">
@@ -263,24 +251,26 @@ export function Shop() {
             </DropdownMenuContent>
           </DropdownMenu>
         </div>
-        <div className="w-1/3 flex items-center relative group">
-          {loading ? (
-            <Loader2 className="animate-spin size-8 absolute -left-10" />
-          ) : (
-            <></>
-          )}
+        <div className="xxs:w-full md:w-1/3 flex items-center relative group">
+          <span className="absolute left-2">
+            {loading ? (
+              <Loader2 className="animate-spin size-5" />
+            ) : (
+              <>&#x1F50D;</>
+            )}
+          </span>
           <Input
             onChange={(e) => {
               debouncedOnChange(e);
               setLoading(true);
             }}
-            className=""
-            placeholder="&#x1F50D; Search"
+            className="pl-8"
+            placeholder="Search"
             type="search"
           />
         </div>
       </div>
-      <div className="grid grid-cols-5 gap-5 mt-6 w-full justify-center min-h-96">
+      <div className="grid xxs:grid-cols-2 xs:grid-cols-3 sm:grid-cols-4 lg:grid-cols-5 gap-5 mt-6 w-full justify-center min-h-96">
         {!products ? (
           !productsError ? (
             [...Array(20)].map((num, index) => (

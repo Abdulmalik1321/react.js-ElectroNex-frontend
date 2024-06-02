@@ -48,7 +48,7 @@ export function BestSellers() {
         )
       ) : (
         <motion.div
-          className="grid md:grid-cols-4 xxs:grid-cols-2 gap-5 mt-12"
+          className="grid xxs:grid-cols-2 xs:grid-cols-3 sm:grid-cols-4 lg:grid-cols-4 gap-5 mt-12"
           initial={{ opacity: 0, scale: 1, translateY: 20 }}
           whileInView={{ opacity: 1, scale: 1, translateY: 0 }}
           transition={{

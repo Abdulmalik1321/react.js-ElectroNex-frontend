@@ -94,7 +94,8 @@ module.exports = {
         aurora: "aurora 60s linear infinite",
       },
       screens: {
-        "xxs": "350px"
+        "xxs": "350px",
+        "xs": "500px"
       },
     },
   },
