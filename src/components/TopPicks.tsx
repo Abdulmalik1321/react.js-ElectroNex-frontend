@@ -60,10 +60,12 @@ export function TopPicks() {
           {!data ? (
             !error ? (
               [...Array(10)].map((i, index) => (
-                <SkeletonCard
-                  customClass="ml-1 mr-[14px]"
-                  key={`12-${i}-${index}`}
-                />
+                <div className="ml-1 mr-[14px]">
+                  <SkeletonCard
+                    customClass="xxs:w-60"
+                    key={`12-${i}-${index}`}
+                  />
+                </div>
               ))
             ) : (
               <p className="ml-1 text-red-500">{error.message}</p>
