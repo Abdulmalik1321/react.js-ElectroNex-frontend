@@ -90,11 +90,13 @@ export function SignUp({ handelLogin }: LoginProps) {
   const [loading, setLoading] = useState(false);
 
   return (
-    <main className="w-full lg:grid lg:min-h-full lg:grid-cols-2 xl:min-h-full">
+    <main className="w-full lg:grid lg:min-h-full lg:grid-cols-2 xl:min-h-full xxs:w-[90%] md:w-full">
       <div className="hidden bg-muted lg:block relative">
-        <Logo />
+        <span className="absolute top-12 left-12 z-50">
+          <Logo />
+        </span>
         <img
-          src="./src/assets/imgs/iphone15-pro.jpeg"
+          src="https://res.cloudinary.com/dbgwe94vv/image/upload/v1715676215/electronicsHub/tm0xjkxzmkteczkpq4tk.jpg"
           alt="Image"
           className="h-dvh w-full object-cover dark:brightness-[0.2] dark:grayscale"
         />

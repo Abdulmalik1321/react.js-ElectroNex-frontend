@@ -42,6 +42,8 @@ import { useToast } from "@/shadcn/ui/use-toast";
 import { Footer } from "@/components/Footer";
 
 export function ProductDetails() {
+  const [scrollPosition, setscrollPosition] = useState<number>(0);
+  window.scroll(0, scrollPosition);
   const params = useParams();
   const navigate = useNavigate();
   const { state, dispatch } = useContext(shopContext);
@@ -150,9 +152,11 @@ export function ProductDetails() {
   }, [data, params.color, params.size]);
 
   const navigateSize = (size: string) => {
+    setscrollPosition(window.pageYOffset);
     navigate(`/products/${params.productId}/${params.color}/${size}`);
   };
   const navigateColor = (color: string) => {
+    setscrollPosition(window.pageYOffset);
     navigate(`/products/${params.productId}/${color}/${params.size}`);
   };
 
@@ -194,7 +198,7 @@ export function ProductDetails() {
   };
 
   return (
-    <main className="md:w-[80%] flex flex-col justify-start items-center xxs:w-[95%] ">
+    <main className="md:w-[80%] flex flex-col justify-start items-center xxs:w-[95%] min-h-screen">
       <div>
         <NavBar />
       </div>

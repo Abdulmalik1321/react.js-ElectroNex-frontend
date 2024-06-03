@@ -172,7 +172,7 @@ export function DashboardProducts({ search }: { search: string }) {
 
               return (
                 <TableRow key={product.id}>
-                  <TableCell className="hidden sm:table-cell">
+                  <TableCell className="table-cell">
                     <Carousel className="size-20 flex items-center">
                       <CarouselContent className="-ml-1">
                         {product.images.map((image: any) => {

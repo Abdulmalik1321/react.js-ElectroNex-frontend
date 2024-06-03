@@ -57,7 +57,7 @@ export function Login({ handelLogin }: LoginProps) {
   const [loading, setLoading] = useState(false);
 
   return (
-    <main className="w-full lg:grid lg:min-h-full lg:grid-cols-2 xl:min-h-full ">
+    <main className="w-full lg:grid lg:min-h-full lg:grid-cols-2 xl:min-h-full xxs:w-[90%] md:w-full">
       <div className="hidden bg-muted lg:block relative">
         <span className="absolute top-12 left-12 z-50">
           <Logo />

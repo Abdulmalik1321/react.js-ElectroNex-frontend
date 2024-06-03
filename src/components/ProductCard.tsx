@@ -49,7 +49,7 @@ export function ProductCard({
           <Carousel setApi={setApi} className="w-3/4 flex items-center ">
             <CarouselContent
               className={`-ml-1 ${
-                window.location.href.slice(-1) === "/" ? "overflow-hidden" : ""
+                window.location.href.slice(-1) === "/" ? "" : ""
               }`}>
               {product.images.map((image) => {
                 console.log(window.location.href);

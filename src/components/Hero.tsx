@@ -53,7 +53,7 @@ export function Hero() {
               delay: 0.5,
               ease: easeInOut,
             }}>
-            <Card className="border-muted w-full bg-transparent bg-[url(https://res.cloudinary.com/dbgwe94vv/image/upload/v1715988663/iphone15-pro1_q7hwfi.webp)] md:[background-position-y:125%] xxs:[background-position-y:125%] bg-contain bg-no-repeat bg-center relative">
+            <Card className="dark:border-muted w-full bg-transparent bg-[url(https://res.cloudinary.com/dbgwe94vv/image/upload/v1715988663/iphone15-pro1_q7hwfi.webp)] md:[background-position-y:125%] xxs:[background-position-y:125%] bg-contain bg-no-repeat bg-center relative">
               <CardHeader className="md:p-6 xxs:p-3">
                 <CardTitle className="xxs:text-base md:text-2xl leading-none">
                   iPhone 15 Pro
@@ -78,7 +78,7 @@ export function Hero() {
           </motion.div>
 
           <motion.div
-            className="flex backdrop-blur-3xl rounded-lg md:h-full xxs:h-52"
+            className="flex xxs:backdrop-blur-xl md:backdrop-blur-3xl rounded-lg md:h-full xxs:h-52"
             initial={{ opacity: 0, scale: 1, translateY: 50 }}
             animate={{ opacity: 1, scale: 1, translateY: 0 }}
             transition={{
@@ -86,7 +86,7 @@ export function Hero() {
               delay: 0.6,
               ease: easeInOut,
             }}>
-            <Card className="border-muted w-full bg-transparent bg-[url(https://res.cloudinary.com/dbgwe94vv/image/upload/v1715990265/103375_original_local_1200x1050_v3_converted_hxmz5k.webp)] md:[background-position-y:85px] xxs:[background-position-y:60px] bg-contain bg-no-repeat bg-center relative ">
+            <Card className="dark:border-muted w-full bg-transparent bg-[url(https://res.cloudinary.com/dbgwe94vv/image/upload/v1715990265/103375_original_local_1200x1050_v3_converted_hxmz5k.webp)] md:[background-position-y:85px] xxs:[background-position-y:60px] bg-contain bg-no-repeat bg-center relative ">
               <CardHeader className="md:p-6 xxs:p-3">
                 <CardTitle className="xxs:text-base md:text-2xl leading-none xxs:text-nowrap xxs:overflow-hidden xxs:text-ellipsis xxs:w-full">
                   Sony WH-1000XM
@@ -119,7 +119,7 @@ export function Hero() {
               delay: 0.7,
               ease: easeInOut,
             }}>
-            <Card className="border-muted   w-full  bg-transparent  bg-[url(https://res.cloudinary.com/dbgwe94vv/image/upload/v1715988653/ASUS-Zephyrus1_m82tyq.webp)] bg-contain bg-no-repeat bg-center relative md:h-1/2 xxs:h-32">
+            <Card className="dark:border-muted   w-full  bg-transparent  bg-[url(https://res.cloudinary.com/dbgwe94vv/image/upload/v1715988653/ASUS-Zephyrus1_m82tyq.webp)] bg-contain bg-no-repeat bg-center relative md:h-1/2 xxs:h-32">
               <CardHeader className="md:p-6 xxs:p-3">
                 <CardTitle className="xxs:text-base md:text-2xl leading-none">
                   ASUS Zephyrus
