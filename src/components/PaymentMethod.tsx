@@ -30,7 +30,7 @@ export function PaymentMethod({
 }) {
   const [selected, setSelected] = useState("Card");
   return (
-    <div className="col-span-4 row-span-8">
+    <div className="xxs:col-span-1 md:col-span-4 md:row-span-8">
       <Card className={`rounded-2xl ${selected === "Card" ? "h-full" : ""}`}>
         <CardHeader>
           <CardTitle className="text-3xl">Payment Method</CardTitle>
