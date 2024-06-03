@@ -1,6 +1,8 @@
 import { File, Home, ListFilter, Search } from "lucide-react";
-
-import { Button } from "@/shadcn/ui/button";
+import { ChangeEvent, useContext, useState } from "react";
+import { useQueryClient } from "@tanstack/react-query";
+import { Link } from "react-router-dom";
+import { shopContext } from "@/Router";
 
 import {
   DropdownMenu,
@@ -11,20 +13,15 @@ import {
   DropdownMenuTrigger,
 } from "@/shadcn/ui/dropdown-menu";
 import { Input } from "@/shadcn/ui/input";
-
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/shadcn/ui/tabs";
-
-import { Link } from "react-router-dom";
-
+import { Button } from "@/shadcn/ui/button";
 import { DashboardProducts } from "@/components/DashboardProducts";
-import { ChangeEvent, useContext, useState } from "react";
-import { shopContext } from "@/Router";
 import { DashboardOrders } from "@/components/DashboardOrders";
 import { DashboardUsers } from "@/components/DashboardUsers";
-import { useQueryClient } from "@tanstack/react-query";
 import { DashboardOverview } from "@/components/DashboardOverview";
 import { DashboardCategories } from "@/components/DashboardCategories";
 import { DashboardBrands } from "@/components/DashboardBrands";
+import { DashboardListings } from "@/components/DashboardListings";
 
 export function Dashboard() {
   const { state } = useContext(shopContext);
@@ -58,6 +55,7 @@ export function Dashboard() {
               <TabsList>
                 <TabsTrigger value="all">Overview</TabsTrigger>
                 <TabsTrigger value="products">Products</TabsTrigger>
+                <TabsTrigger value="listings">Listings</TabsTrigger>
                 <TabsTrigger value="categories">Categories</TabsTrigger>
                 <TabsTrigger value="brands">Brands</TabsTrigger>
                 <TabsTrigger value="users">Users</TabsTrigger>
@@ -108,6 +106,9 @@ export function Dashboard() {
             </TabsContent>
             <TabsContent value="products">
               <DashboardProducts search={search} />
+            </TabsContent>
+            <TabsContent value="listings">
+              <DashboardListings />
             </TabsContent>
             <TabsContent value="categories">
               <DashboardCategories />
