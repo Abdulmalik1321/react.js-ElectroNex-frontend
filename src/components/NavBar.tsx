@@ -64,7 +64,7 @@ export function NavBar() {
     });
   };
   return (
-    <div className="w-screen flex flex-col items-center justify-center top-0 sticky z-50 bg-[hsl(var(--background))]  dark:shadow-md">
+    <div className="w-screen flex flex-col items-center justify-center top-0 sticky z-50 bg-[hsl(var(--background))] overflow-hidden  dark:shadow-md ">
       <div className="md:w-[80%] xxs:w-full flex items-center p-3 justify-between bg-[hsl(var(--background))]">
         <Logo />
         <div className="justify-between items-end gap-5 mr-32 xxs:hidden md:flex">

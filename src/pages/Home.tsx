@@ -10,7 +10,7 @@ import { Footer } from "../components/Footer";
 
 export function Home() {
   return (
-    <main className="w-screen md:w-[80%] flex flex-col justify-start items-center xxs:w-full xxs:overflow-hidden md:overflow-visible">
+    <main className="w-screen md:w-[80%] flex flex-col justify-start items-center xxs:w-full  ">
       <NavBar />
       <AuroraBackground className="!z-0" />
       <Hero />

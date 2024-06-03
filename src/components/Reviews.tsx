@@ -11,14 +11,18 @@ import { Card } from "@/shadcn/ui/card";
 
 export function Review() {
   return (
-    <section className="mt-52 w-full">
-      <div className="w-full flex justify-center items-center gap-5 mt-12">
+    <section className="xxs:mt-24 md:mt-52 w-full">
+      <div className="w-full flex xxs:flex-col md:flex-row justify-center items-center gap-5 mt-12">
         <div className="flex flex-col justify-center items-center gap-3 w-fit">
           <p className="text-6xl">4.5</p>
           <Ratings variant="yellow" rating={4.5} />
           <p className="text-muted-foreground">35K Ratings</p>
         </div>
-        <Separator className="h-32" orientation="vertical" />
+        <Separator
+          className="h-32 xxs:hidden md:block"
+          orientation="vertical"
+        />
+        <Separator className="xxs:w-[90%] md:w-[75%] md:hidden" />
         <div className="flex flex-col gap-1">
           <div className="flex items-center gap-2">
             <Progress value={70} className="w-[40vw] h-3" />
@@ -48,7 +52,7 @@ export function Review() {
         </div>
       </div>
       <div className="w-full mt-12 flex justify-center">
-        <div className=" w-[75%]">
+        <div className=" xxs:w-[90%] md:w-[75%]">
           <div className="mt-12">
             <div className="flex items-center gap-4">
               <Avatar className="hidden h-9 w-9 sm:flex">
@@ -148,7 +152,7 @@ export function Review() {
         </div>
       </div>
       <div className="w-full flex justify-center mt-12">
-        <form className="w-[75%] relative overflow-hidden rounded-lg border bg-background focus-within:ring-1 focus-within:ring-ring">
+        <form className="xxs:w-[90%] md:w-[75%] relative overflow-hidden rounded-lg border bg-background focus-within:ring-1 focus-within:ring-ring">
           <Label htmlFor="message" className="sr-only">
             Message
           </Label>

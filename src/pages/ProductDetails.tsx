@@ -194,14 +194,16 @@ export function ProductDetails() {
   };
 
   return (
-    <main className="md:w-[80%] flex flex-col justify-start items-center xxs:w-[95%]">
-      <NavBar />
+    <main className="md:w-[80%] flex flex-col justify-start items-center xxs:w-[95%] ">
+      <div>
+        <NavBar />
+      </div>
 
-      <div className="grid grid-cols-7 h-full w-full items-center gap-12 mt-16">
+      <div className="grid xxs:grid-cols-1 md:grid-cols-7 h-full w-full items-center gap-12 mt-16 ">
         <Card
-          className={`h-[calc(75dvh)] [background-position-x:-50px] bg-contain bg-no-repeat bg-center relative col-span-4`}
+          className={`xxs:h-[calc(50vh)] md:h-[calc(75vh)] [background-position-x:0px] bg-[length:80%] bg-no-repeat bg-center relative md:col-span-4`}
           style={{ backgroundImage: `url(${displayImg})` }}>
-          <CardContent className=" absolute h-[90%] top-[5%] right-1 overflow-y-scroll">
+          <CardContent className="xxs:p-2 md:p-6 :md:pt-0 absolute h-[90%] top-[5%] right-1 overflow-y-scroll no-scrollbar">
             <div className="flex flex-col gap-4">
               {images.sort().map((img) => {
                 return (
@@ -220,7 +222,7 @@ export function ProductDetails() {
           </CardContent>
         </Card>
 
-        <div className="flex flex-col h-[calc(70dvh)] overflow-hidden gap-5 col-span-3  justify-between ">
+        <div className="flex flex-col md:h-[calc(70vh)] overflow-hidden gap-5 md:col-span-3  justify-between ">
           <div>
             <div className=" flex justify-between items-center">
               {lowestPriceProduct.quantity > 0 ? (
@@ -239,14 +241,14 @@ export function ProductDetails() {
               <span className="text-sm">Delivery in 1 - 3 Days</span>
             </div>
             <div className="flex flex-col gap-3 mt-12">
-              <h1 className="text-5xl">{data?.name}</h1>
-              <p className="w-96">{data?.description}</p>
+              <h1 className="xxs:text-2xl md:text-5xl">{data?.name}</h1>
+              <p className="md:w-96">{data?.description}</p>
             </div>
           </div>
           <div className="flex flex-col gap-5 ml-[3px]">
             <div>
               <p className="text-2xl mb-3">Color:</p>
-              <div className="flex gap-2">
+              <div className="flex flex-wrap gap-2">
                 {data?.colors.map((color: any) => {
                   return (
                     <Button
@@ -355,7 +357,7 @@ export function ProductDetails() {
               </DropdownMenu>
             </div>
           </div>
-          <div className="w-full flex justify-between items-center">
+          <div className="w-full flex xxs:flex-col md:flex-row gap-5 md:justify-between md:items-center xxs:mt-8 md:mt-0">
             <div>
               {lowestPriceProduct.price != Infinity ? (
                 <div>
@@ -415,9 +417,9 @@ export function ProductDetails() {
                                     </div>
                                   </div>
                                 </AccordionTrigger>
-                                <AccordionContent className="grid grid-cols-5 gap-2 items-start">
+                                <AccordionContent className="grid grid-cols-5 gap-2 items-start h-48">
                                   <img
-                                    className={`h-full aspect-square object-contain rounded-md bg-no-repeat bg-center relative col-span-2`}
+                                    className={`md:h-full aspect-square object-contain rounded-md bg-no-repeat bg-center relative col-span-2`}
                                     src={stock.url}
                                   />
                                   <div className="col-span-3">

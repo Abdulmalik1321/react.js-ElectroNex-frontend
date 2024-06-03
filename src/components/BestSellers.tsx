@@ -38,7 +38,7 @@ export function BestSellers() {
 
       {!data ? (
         !error ? (
-          <div className="grid md:grid-cols-4 xxs:grid-cols-2 gap-5 mt-12">
+          <div className="grid md:grid-cols-4 xxs:grid-cols-2 gap-5 mt-12 w-full">
             {[...Array(8)].map((num, index) => (
               <SkeletonCard key={`BestSellers-${num}-${index}`} />
             ))}
