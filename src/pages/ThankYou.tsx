@@ -1,12 +1,16 @@
+import { useContext } from "react";
+import { useParams } from "react-router-dom";
+import { useQuery } from "@tanstack/react-query";
 import { shopContext } from "@/Router";
 import api from "@/api";
+
 import { Footer } from "@/components/Footer";
 import { NavBar } from "@/components/NavBar";
+
 import { Badge } from "@/shadcn/ui/badge";
 import {
   Card,
   CardContent,
-  CardDescription,
   CardFooter,
   CardHeader,
   CardTitle,
@@ -19,10 +23,6 @@ import {
   TableHeader,
   TableRow,
 } from "@/shadcn/ui/table";
-import { useQuery } from "@tanstack/react-query";
-
-import { useContext } from "react";
-import { useParams } from "react-router-dom";
 
 export function ThankYou() {
   const params = useParams();
@@ -47,14 +47,20 @@ export function ThankYou() {
   console.log(data);
 
   return (
-    <main>
+    <main className="w-full">
       <NavBar />
-      <div className="flex flex-col items-center justify-start gap-5 mt-12 min-h-[800px]">
-        <p className="text-5xl">Thank You For Your Order</p>
-        <p>
-          Your order number is <b>{data?.id}</b>
-        </p>
-        <p>your order well be shipped as soon as possible</p>
+      <div className="flex flex-col items-center justify-start gap-5 mt-12 md:min-h-[800px] p-4">
+        <div>
+          <p className="text-5xl text-center">Thank You For Your Order</p>
+          <br />
+          <br />
+          <p>
+            Your order number is: <br className="xxs:block md:hidden" />
+            <b>{data?.id}</b>
+            <br />
+            your order well be shipped as soon as possible
+          </p>
+        </div>
 
         <Card x-chunk="dashboard-06-chunk-0" className="bg-background mt-12">
           <CardHeader className="flex justify-between flex-row">
@@ -62,18 +68,21 @@ export function ThankYou() {
               <CardTitle>Order Details</CardTitle>
             </div>
           </CardHeader>
-          <CardContent>
+          <CardContent className="xxs:p-0 md:px-6">
             <Table>
               <TableHeader>
                 <TableRow>
-                  {/* <TableHead>Status</TableHead>
-                  <TableHead>Date</TableHead> */}
-
-                  <TableHead>Image</TableHead>
+                  <TableHead className="xxs:hidden md:table-cell">
+                    Image
+                  </TableHead>
                   <TableHead>Product Name</TableHead>
-                  <TableHead>Options</TableHead>
+                  <TableHead className="xxs:hidden md:table-cell">
+                    Options
+                  </TableHead>
                   <TableHead>Condition</TableHead>
-                  <TableHead>Quantity</TableHead>
+                  <TableHead className="xxs:hidden md:table-cell">
+                    Quantity
+                  </TableHead>
                   <TableHead>Price</TableHead>
                   <TableHead>Sold By</TableHead>
                 </TableRow>
@@ -82,7 +91,7 @@ export function ThankYou() {
                 {data?.stocks.map((item: any) => {
                   return (
                     <TableRow key={item.stockId}>
-                      <TableCell>
+                      <TableCell className="xxs:hidden md:table-cell">
                         <Card
                           className="size-24 bg-contain bg-no-repeat bg-center"
                           style={{
@@ -94,7 +103,7 @@ export function ThankYou() {
                         <p>{item.productName}</p>
                       </TableCell>
 
-                      <TableCell>
+                      <TableCell className="xxs:hidden md:table-cell">
                         <div className="flex items-center h-full gap-2">
                           <span
                             style={{ backgroundColor: `#${item.color}` }}
@@ -115,7 +124,7 @@ export function ThankYou() {
                         </Badge>
                       </TableCell>
 
-                      <TableCell>
+                      <TableCell className="xxs:hidden md:table-cell">
                         <p>{item.quantity}</p>
                       </TableCell>
 
