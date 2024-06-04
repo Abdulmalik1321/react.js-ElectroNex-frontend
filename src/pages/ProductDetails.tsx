@@ -29,6 +29,7 @@ import {
   SheetTitle,
   SheetTrigger,
 } from "@/shadcn/ui/sheet";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/shadcn/ui/tabs";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -378,86 +379,178 @@ export function ProductDetails() {
             <div className="flex gap-3">
               <Sheet>
                 <SheetTrigger asChild>
-                  <Button variant="outline">Buy It Used</Button>
+                  <Button variant="outline">See all options</Button>
                 </SheetTrigger>
                 <SheetContent className="p-0 pt-10 pb-10">
                   <SheetHeader className="p-5 pt-2 pb-">
                     <SheetTitle>{data?.name}</SheetTitle>
                     <SheetDescription>{data?.description}</SheetDescription>
                   </SheetHeader>
-                  <div className="grid gap-4 py-4 h-[95%] overflow-y-scroll">
-                    <div>
-                      {data?.stocks.map((stock: any) => {
-                        if (stock.condition === "used" && stock.isMain) {
-                          return (
-                            <Accordion
-                              key={stock.stockId}
-                              type="single"
-                              collapsible
-                              className="w-full text-left gap-2 p-5 pt-2 pb-2">
-                              <AccordionItem value="item-1">
-                                <AccordionTrigger>
-                                  <div className="text-left">
-                                    <p>By: {stock.userName}</p>
-                                    <div className="flex items-center gap-3 mt-2">
-                                      <Badge
-                                        className="rounded-sm"
-                                        variant="outline">
-                                        {stock.price
-                                          .toFixed(2)
-                                          .toLocaleString()}
-                                      </Badge>
-                                      <Badge
-                                        className="rounded-sm"
-                                        variant="outline">
-                                        {stock.size}
-                                      </Badge>
-                                      <Badge
-                                        className="rounded-full aspect-square"
-                                        variant="outline"
-                                        style={{
-                                          backgroundColor: `#${stock.color}`,
-                                        }}></Badge>
-                                    </div>
-                                  </div>
-                                </AccordionTrigger>
-                                <AccordionContent className="grid grid-cols-5 gap-2 items-start h-48">
-                                  <img
-                                    className={`md:h-full aspect-square object-contain rounded-md bg-no-repeat bg-center relative col-span-2`}
-                                    src={stock.url}
-                                  />
-                                  <div className="col-span-3">
-                                    <p>
-                                      Lorem ipsum dolor sit amet consectetur
-                                      adipisicing elit. Cupiditate illum magni
-                                      vero molestias. Quis earum provident velit
-                                      pariatur eum iure dolorum aut accusantium
-                                      unde, nesciunt ab, quas eaque
-                                    </p>
-                                    <SheetClose asChild>
-                                      <Badge
-                                        onClick={() => {
-                                          addToCart(stock);
-                                        }}
-                                        variant="outline"
-                                        className="rounded-sm border-primary mt-2 cursor-pointer hover:bg-muted">
-                                        Add To Cart
-                                      </Badge>
-                                    </SheetClose>
-                                    <Badge
-                                      variant="outline"
-                                      className="rounded-sm border-primary mt-2 cursor-pointer hover:bg-muted ml-2">
-                                      More Details
-                                    </Badge>
-                                  </div>
-                                </AccordionContent>
-                              </AccordionItem>
-                            </Accordion>
-                          );
-                        }
-                      })}
+                  <Tabs defaultValue="all">
+                    <div className="flex items-center justify-center gap-5">
+                      <TabsList className="w-[50%]">
+                        <TabsTrigger className="w-full" value="all">
+                          New
+                        </TabsTrigger>
+                        <TabsTrigger className="w-full" value="used">
+                          Used
+                        </TabsTrigger>
+                      </TabsList>
                     </div>
-                  </div>
+                    <TabsContent value="all">
+                      <div className="grid gap-4 py-4 xxs:h-[70dvh] md:h-[80dvh] overflow-y-scroll">
+                        <div>
+                          {data?.stocks.map((stock: any) => {
+                            if (stock.condition !== "used" && stock.isMain) {
+                              return (
+                                <Accordion
+                                  key={stock.stockId}
+                                  type="single"
+                                  collapsible
+                                  className="w-full text-left gap-2 p-5 pt-2 pb-2">
+                                  <AccordionItem value="item-1">
+                                    <AccordionTrigger>
+                                      <div className="text-left">
+                                        <p>By: {stock.userName}</p>
+                                        <div className="flex items-center gap-3 mt-2">
+                                          <Badge
+                                            className="rounded-sm"
+                                            variant="outline">
+                                            {stock.price
+                                              .toFixed(2)
+                                              .toLocaleString()}
+                                          </Badge>
+                                          <Badge
+                                            className="rounded-sm"
+                                            variant="outline">
+                                            {stock.size}
+                                          </Badge>
+                                          <Badge
+                                            className="rounded-full aspect-square"
+                                            variant="outline"
+                                            style={{
+                                              backgroundColor: `#${stock.color}`,
+                                            }}></Badge>
+                                        </div>
+                                      </div>
+                                    </AccordionTrigger>
+                                    <AccordionContent className="grid grid-cols-5 gap-2 items-start h-48">
+                                      <img
+                                        className={`md:h-full aspect-square object-contain rounded-md bg-no-repeat bg-center relative col-span-2`}
+                                        src={stock.url}
+                                      />
+                                      <div className="col-span-3">
+                                        <p>
+                                          Lorem ipsum dolor sit amet consectetur
+                                          adipisicing elit. Cupiditate illum
+                                          magni vero molestias. Quis earum
+                                          provident velit pariatur eum iure
+                                          dolorum aut accusantium unde, nesciunt
+                                          ab, quas eaque
+                                        </p>
+                                        <SheetClose asChild>
+                                          <Badge
+                                            onClick={() => {
+                                              addToCart(stock);
+                                            }}
+                                            variant="outline"
+                                            className="rounded-sm border-primary mt-2 cursor-pointer hover:bg-muted">
+                                            Add To Cart
+                                          </Badge>
+                                        </SheetClose>
+                                        <Badge
+                                          variant="outline"
+                                          className="rounded-sm border-primary mt-2 cursor-pointer hover:bg-muted ml-2">
+                                          More Details
+                                        </Badge>
+                                      </div>
+                                    </AccordionContent>
+                                  </AccordionItem>
+                                </Accordion>
+                              );
+                            }
+                          })}
+                        </div>
+                      </div>
+                    </TabsContent>
+                    <TabsContent value="used">
+                      <div className="grid gap-4 py-4 xxs:h-[70dvh] md:h-[80dvh] overflow-y-scroll">
+                        <div>
+                          {data?.stocks.map((stock: any) => {
+                            if (stock.condition === "used" && stock.isMain) {
+                              return (
+                                <Accordion
+                                  key={stock.stockId}
+                                  type="single"
+                                  collapsible
+                                  className="w-full text-left gap-2 p-5 pt-2 pb-2">
+                                  <AccordionItem value="item-1">
+                                    <AccordionTrigger>
+                                      <div className="text-left">
+                                        <p>By: {stock.userName}</p>
+                                        <div className="flex items-center gap-3 mt-2">
+                                          <Badge
+                                            className="rounded-sm"
+                                            variant="outline">
+                                            {stock.price
+                                              .toFixed(2)
+                                              .toLocaleString()}
+                                          </Badge>
+                                          <Badge
+                                            className="rounded-sm"
+                                            variant="outline">
+                                            {stock.size}
+                                          </Badge>
+                                          <Badge
+                                            className="rounded-full aspect-square"
+                                            variant="outline"
+                                            style={{
+                                              backgroundColor: `#${stock.color}`,
+                                            }}></Badge>
+                                        </div>
+                                      </div>
+                                    </AccordionTrigger>
+                                    <AccordionContent className="grid grid-cols-5 gap-2 items-start h-48">
+                                      <img
+                                        className={`md:h-full aspect-square object-contain rounded-md bg-no-repeat bg-center relative col-span-2`}
+                                        src={stock.url}
+                                      />
+                                      <div className="col-span-3">
+                                        <p>
+                                          Lorem ipsum dolor sit amet consectetur
+                                          adipisicing elit. Cupiditate illum
+                                          magni vero molestias. Quis earum
+                                          provident velit pariatur eum iure
+                                          dolorum aut accusantium unde, nesciunt
+                                          ab, quas eaque
+                                        </p>
+                                        <SheetClose asChild>
+                                          <Badge
+                                            onClick={() => {
+                                              addToCart(stock);
+                                            }}
+                                            variant="outline"
+                                            className="rounded-sm border-primary mt-2 cursor-pointer hover:bg-muted">
+                                            Add To Cart
+                                          </Badge>
+                                        </SheetClose>
+                                        <Badge
+                                          variant="outline"
+                                          className="rounded-sm border-primary mt-2 cursor-pointer hover:bg-muted ml-2">
+                                          More Details
+                                        </Badge>
+                                      </div>
+                                    </AccordionContent>
+                                  </AccordionItem>
+                                </Accordion>
+                              );
+                            }
+                          })}
+                        </div>
+                      </div>
+                    </TabsContent>
+                  </Tabs>
+
                   <SheetFooter></SheetFooter>
                 </SheetContent>
               </Sheet>
