@@ -38,16 +38,7 @@ import {
   SheetHeader,
   SheetTitle,
 } from "@/shadcn/ui/product-sheet";
-import { Label } from "@radix-ui/react-dropdown-menu";
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/shadcn/ui/select";
-import { Textarea } from "@/shadcn/ui/textarea";
-import { LoadingButton } from "@/shadcn/ui/loadingbutton";
+
 import {
   Pagination,
   PaginationContent,
@@ -68,8 +59,10 @@ import {
   AlertDialogTitle,
   AlertDialogTrigger,
 } from "@/shadcn/ui/alert-dialog";
+import { LoadingButton } from "@/shadcn/ui/loadingbutton";
+import { Label } from "@/shadcn/ui/label";
 
-export function DashboardListings({ search }: { search: string }) {
+export function DashboardListings() {
   const queryClient = useQueryClient();
   const { state } = useContext(shopContext);
   const [page, setPage] = useState<number>(0);
@@ -300,7 +293,13 @@ export function DashboardListings({ search }: { search: string }) {
   );
 }
 
-function CreateEdit({ editStock }: { editStock: Stocks }) {
+export function CreateEdit({
+  editStock,
+  productIdProp = "",
+}: {
+  editStock: Stocks;
+  productIdProp: string;
+}) {
   const { state } = useContext(shopContext);
   const [loading, setLoading] = useState(false);
   const queryClient = useQueryClient();
@@ -344,25 +343,19 @@ function CreateEdit({ editStock }: { editStock: Stocks }) {
   ] = queryMultiple();
 
   const [variantInputs, setVariantInputs] = useState<any>({
-    name: "",
-    description: "",
-    categoryId: "",
-    brandId: "",
-    status: "",
-    newStocks: [
-      {
-        userId: state.userInfo.id,
-        price: "",
-        quantity: "",
-        size: "",
-        color: "",
-        condition: "",
-        images: [],
-      },
-    ],
+    userId: state.userInfo.id,
+    productId: productIdProp,
+    price: "",
+    quantity: "",
+    size: "",
+    color: "",
+    condition: "",
+    images: [],
   });
 
   const createStock = async (newStock: Stocks) => {
+    console.log(newStock);
+
     try {
       const res = await api.post(`/stocks`, newStock, {
         headers: { Authorization: `Bearer ${state.userInfo.token}` },
@@ -394,28 +387,25 @@ function CreateEdit({ editStock }: { editStock: Stocks }) {
     const valueName = e.target.name.split("-");
     const value = e.target.value;
     const col = valueName[0];
-    const row = Number(valueName[1]);
 
     const newValues: any = variantInputs;
 
-    if (valueName.length > 1) {
-      if (col === "images") {
-        const valuesTemp = value.split(" ");
-        const newValuesTemp = [];
-        for (let i = 0; i < valuesTemp.length; i++) {
-          newValuesTemp.push({
-            url: valuesTemp[i],
-            isMain: i === 0 ? true : false,
-          });
-        }
-
-        newValues.newStocks[row][col] = newValuesTemp;
-      } else {
-        newValues.newStocks[row][col] = value;
+    if (col === "images") {
+      const valuesTemp = value.split(" ");
+      const newValuesTemp = [];
+      for (let i = 0; i < valuesTemp.length; i++) {
+        newValuesTemp.push({
+          url: valuesTemp[i],
+          isMain: i === 0 ? true : false,
+        });
       }
+
+      newValues[col] = newValuesTemp;
     } else {
       newValues[col] = value;
     }
+    newValues.productId = productIdProp;
+    console.log(newValues);
 
     setVariantInputs(newValues);
   };
@@ -441,11 +431,22 @@ function CreateEdit({ editStock }: { editStock: Stocks }) {
       </SheetHeader>
 
       <Card x-chunk="dashboard-07-chunk-1">
-        <CardHeader>
-          <CardTitle>Listing</CardTitle>
-          <CardDescription>
-            Lipsum dolor sit amet, consectetur adipiscing elit
-          </CardDescription>
+        <CardHeader className="flex-row justify-between">
+          <div>
+            <CardTitle>Listing</CardTitle>
+            <CardDescription>
+              Lipsum dolor sit amet, consectetur adipiscing elit
+            </CardDescription>
+          </div>
+          <div className="w-72">
+            <Label>Product ID:</Label>
+            <Input
+              disabled={productIdProp ? true : false}
+              defaultValue={productIdProp}
+              name={`productId`}
+              onChange={handleChange}
+            />
+          </div>
         </CardHeader>
         <CardContent>
           <Table>
@@ -460,61 +461,40 @@ function CreateEdit({ editStock }: { editStock: Stocks }) {
               </TableRow>
             </TableHeader>
             <TableBody>
-              {variantInputs.newStocks?.map((num: any, index: number) => (
-                <TableRow key={`StockVariants-${num}-${index}`}>
-                  <TableCell>
-                    <Input name={`price-${index}`} onChange={handleChange} />
-                  </TableCell>
-                  <TableCell>
-                    <Input name={`quantity-${index}`} onChange={handleChange} />
-                  </TableCell>
-                  <TableCell>
-                    <Input name={`size-${index}`} onChange={handleChange} />
-                  </TableCell>
-                  <TableCell>
-                    <Input name={`color-${index}`} onChange={handleChange} />
-                  </TableCell>
-                  <TableCell>
-                    <Input
-                      name={`condition-${index}`}
-                      onChange={handleChange}
-                    />
-                  </TableCell>
-                  <TableCell>
-                    <Input name={`images-${index}`} onChange={handleChange} />
-                  </TableCell>
-                </TableRow>
-              ))}
+              <TableRow>
+                <TableCell>
+                  <Input name={`price`} onChange={handleChange} />
+                </TableCell>
+                <TableCell>
+                  <Input name={`quantity`} onChange={handleChange} />
+                </TableCell>
+                <TableCell>
+                  <Input name={`size`} onChange={handleChange} />
+                </TableCell>
+                <TableCell>
+                  <Input name={`color`} onChange={handleChange} />
+                </TableCell>
+                <TableCell>
+                  <Input name={`condition`} onChange={handleChange} />
+                </TableCell>
+                <TableCell>
+                  <Input name={`images`} onChange={handleChange} />
+                </TableCell>
+              </TableRow>
             </TableBody>
           </Table>
         </CardContent>
-        <CardFooter className="justify-center border-t p-4">
-          <Button
-            size="sm"
-            variant="ghost"
-            className="gap-1"
-            onClick={() => {
-              setVariantInputs((prevVariantInputs: any) => ({
-                ...prevVariantInputs,
-                newStocks: [
-                  ...prevVariantInputs.newStocks,
-                  {
-                    userId: state.userInfo.id,
-                    price: "",
-                    quantity: "",
-                    size: "",
-                    color: "",
-                    condition: "",
-                    images: [],
-                  },
-                ],
-              }));
-            }}>
-            <PlusCircle className="h-3.5 w-3.5" />
-            Add Variant
-          </Button>
-        </CardFooter>
       </Card>
+      <LoadingButton
+        className="mt-10"
+        onClick={() => {
+          handleSubmit();
+          setLoading(true);
+        }}
+        loading={loading}
+        type="submit">
+        Save changes
+      </LoadingButton>
     </SheetContent>
   );
 }

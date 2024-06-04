@@ -65,7 +65,7 @@ export function DashboardOrders() {
 
   const getOrders = async () => {
     try {
-      const res = await api.get(`/orders`, {
+      const res = await api.get(`/orders/user/${state.userInfo.id}`, {
         headers: { Authorization: `Bearer ${state.userInfo.token}` },
       });
       return res.data;
@@ -101,6 +101,8 @@ export function DashboardOrders() {
   };
 
   const [{ data: orders, error: ordersError }] = queryMultiple();
+
+  console.log(orders);
 
   return (
     <Card x-chunk="dashboard-06-chunk-0" className="bg-background">

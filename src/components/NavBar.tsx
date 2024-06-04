@@ -125,16 +125,13 @@ export function NavBar() {
                   </div>
                   <DropdownMenuSeparator className="xxs:visible md:hidden" />
 
-                  {state.userInfo && state.userInfo.role == 1 ? (
-                    <Link to={"/dashboard"}>
-                      <DropdownMenuItem className="gap-2">
-                        <LayoutDashboard />
-                        <span>Admin Dashboard</span>
-                      </DropdownMenuItem>
-                    </Link>
-                  ) : (
-                    ""
-                  )}
+                  <Link to={"/dashboard"}>
+                    <DropdownMenuItem className="gap-2">
+                      <LayoutDashboard />
+                      <span>Dashboard</span>
+                    </DropdownMenuItem>
+                  </Link>
+
                   <Link to={"/profile"}>
                     <DropdownMenuItem className="gap-2">
                       <User />

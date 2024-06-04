@@ -1,5 +1,6 @@
 import api from "@/api";
 import { NavBar } from "@/components/NavBar";
+import { CreateEdit } from "@/components/DashboardListings";
 import { Badge } from "@/shadcn/ui/badge";
 import { Button } from "@/shadcn/ui/button";
 import { Card, CardContent } from "@/shadcn/ui/card";
@@ -297,10 +298,16 @@ export function ProductDetails() {
               </div>
             </div>
             <div className="flex items-center gap-2 pt-12">
-              <Button variant="outline" className="flex items-center gap-1">
-                <Banknote />
-                Sell This Product
-              </Button>
+              <Sheet>
+                <SheetTrigger asChild>
+                  <Button variant="outline" className="flex items-center gap-1">
+                    <Banknote />
+                    Sell This Product
+                  </Button>
+                </SheetTrigger>
+                <CreateEdit productIdProp={data?.id} editStock={null} />
+              </Sheet>
+
               <DropdownMenu>
                 <DropdownMenuTrigger asChild>
                   <Button

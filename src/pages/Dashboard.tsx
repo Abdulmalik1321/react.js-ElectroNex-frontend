@@ -40,7 +40,7 @@ export function Dashboard() {
     }, 100);
   };
 
-  return state.userInfo.role === 1 ? (
+  return (
     <div className="flex min-h-screen w-full flex-col bg-muted/40">
       <div className="flex flex-col sm:gap-4 sm:py-4">
         <main className="grid flex-1 items-start gap-4 p-4 sm:px-6 sm:py-0 md:gap-8">
@@ -52,15 +52,22 @@ export function Dashboard() {
                   Home
                 </Button>
               </Link>
-              <TabsList>
-                <TabsTrigger value="all">Overview</TabsTrigger>
-                <TabsTrigger value="products">Products</TabsTrigger>
-                <TabsTrigger value="listings">Listings</TabsTrigger>
-                <TabsTrigger value="categories">Categories</TabsTrigger>
-                <TabsTrigger value="brands">Brands</TabsTrigger>
-                <TabsTrigger value="users">Users</TabsTrigger>
-                <TabsTrigger value="orders">Orders</TabsTrigger>
-              </TabsList>
+              {state.userInfo.role === 1 ? (
+                <TabsList>
+                  <TabsTrigger value="all">Overview</TabsTrigger>
+                  <TabsTrigger value="products">Products</TabsTrigger>
+                  <TabsTrigger value="listings">Listings</TabsTrigger>
+                  <TabsTrigger value="categories">Categories</TabsTrigger>
+                  <TabsTrigger value="brands">Brands</TabsTrigger>
+                  <TabsTrigger value="users">Users</TabsTrigger>
+                  <TabsTrigger value="orders">Orders</TabsTrigger>
+                </TabsList>
+              ) : (
+                <TabsList>
+                  <TabsTrigger value="all">Listings</TabsTrigger>
+                  <TabsTrigger value="orders">Orders</TabsTrigger>
+                </TabsList>
+              )}
               <div className="ml-auto flex items-center gap-2">
                 <DropdownMenu>
                   <DropdownMenuTrigger asChild>
@@ -101,32 +108,43 @@ export function Dashboard() {
                 </div>
               </div>
             </div>
-            <TabsContent value="all">
-              <DashboardOverview />
-            </TabsContent>
-            <TabsContent value="products">
-              <DashboardProducts search={search} />
-            </TabsContent>
-            <TabsContent value="listings">
-              <DashboardListings />
-            </TabsContent>
-            <TabsContent value="categories">
-              <DashboardCategories />
-            </TabsContent>
-            <TabsContent value="brands">
-              <DashboardBrands />
-            </TabsContent>
-            <TabsContent value="users">
-              <DashboardUsers />
-            </TabsContent>
-            <TabsContent value="orders">
-              <DashboardOrders />
-            </TabsContent>
+            {state.userInfo.role === 1 ? (
+              <>
+                <TabsContent value="all">
+                  <DashboardOverview />
+                </TabsContent>
+                <TabsContent value="products">
+                  <DashboardProducts search={search} />
+                </TabsContent>
+                <TabsContent value="listings">
+                  <DashboardListings />
+                </TabsContent>
+                <TabsContent value="categories">
+                  <DashboardCategories />
+                </TabsContent>
+                <TabsContent value="brands">
+                  <DashboardBrands />
+                </TabsContent>
+                <TabsContent value="users">
+                  <DashboardUsers />
+                </TabsContent>
+                <TabsContent value="orders">
+                  <DashboardOrders />
+                </TabsContent>
+              </>
+            ) : (
+              <>
+                <TabsContent value="all">
+                  <DashboardListings />
+                </TabsContent>
+                <TabsContent value="orders">
+                  <DashboardOrders />
+                </TabsContent>
+              </>
+            )}
           </Tabs>
         </main>
       </div>
     </div>
-  ) : (
-    <h1>You Are Not Authorized to Open The Dashboard</h1>
   );
 }
