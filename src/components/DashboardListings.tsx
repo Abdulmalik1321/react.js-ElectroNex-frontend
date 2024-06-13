@@ -343,7 +343,7 @@ export function CreateEdit({
   ] = queryMultiple();
 
   const [variantInputs, setVariantInputs] = useState<any>({
-    userId: state.userInfo.id,
+    userId: state.userInfo?.id,
     productId: productIdProp,
     price: "",
     quantity: "",
