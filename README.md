@@ -1,3 +1,4 @@
+# Working Deployment => [ElectroNex](https://electronex.vercel.app/)
 # Project: Frontend for E-commerce Website
 
 Tech Stack: React, TypeScript. Styling: Tailwind, MUI, or CSS/SASS
