@@ -31,7 +31,7 @@ export function SignUp({ handelLogin }: LoginProps) {
       return res.data;
     } catch (error: any) {
       setLoading(false);
-      setError(error.response.data || "Something went wrong");
+      setError(error?.response?.data || "Something went wrong");
       return Promise.reject(new Error("Something went wrong"));
     }
   };
@@ -49,7 +49,7 @@ export function SignUp({ handelLogin }: LoginProps) {
       return userData.data;
     } catch (error: any) {
       setLoading(false);
-      setError(error.response.data || "Something went wrong");
+      setError(error?.response?.data || "Something went wrong");
       return Promise.reject(new Error("Something went wrong"));
     }
   };

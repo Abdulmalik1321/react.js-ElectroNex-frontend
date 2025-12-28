@@ -50,6 +50,10 @@ export function Router() {
       element: <ProductDetails />,
     },
     {
+      path: "/products/:productId",
+      element: <ProductDetails />,
+    },
+    {
       path: "/cart",
       element: <Cart />,
     },

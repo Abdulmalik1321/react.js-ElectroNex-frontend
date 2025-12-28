@@ -1,0 +1,791 @@
+[
+  {
+    "id": "1",
+    "name": "iPhone 15 Pro Max",
+    "price": 1199,
+    "description": "The ultimate iPhone with titanium design, A17 Pro chip, and advanced camera system. Experience pro-level photography and performance.",
+    "category": "Smartphones",
+    "colors": ["Natural Titanium", "Blue Titanium", "White Titanium", "Black Titanium"],
+    "sizes": ["256GB", "512GB", "1TB"],
+    "numberOfSales": 245,
+    "status": "listed",
+    "createdAt": "2024-01-15T10:30:00Z",
+    "images": [
+      ["https://placehold.co/800x1000/4A90E2/FFF?text=iPhone+15+Pro+Max"],
+      ["https://placehold.co/800x1000/1E3A8A/FFF?text=iPhone+15+Pro"]
+    ],
+    "stocks": [
+      {
+        "stockId": "s1",
+        "color": "Natural Titanium",
+        "size": "256GB",
+        "price": 1199,
+        "quantity": 15,
+        "isMain": true,
+        "url": "https://placehold.co/800x1000/4A90E2/FFF?text=iPhone+15+Pro+Max",
+        "userName": "TechStore",
+        "condition": "new",
+        "productName": "iPhone 15 Pro Max",
+        "cartItemId": 0
+      },
+      {
+        "stockId": "s1b",
+        "color": "Natural Titanium",
+        "size": "512GB",
+        "price": 1399,
+        "quantity": 12,
+        "isMain": false,
+        "url": "https://placehold.co/800x1000/4A90E2/FFF?text=iPhone+15+Pro+Max",
+        "userName": "TechStore",
+        "condition": "new",
+        "productName": "iPhone 15 Pro Max",
+        "cartItemId": 0
+      },
+      {
+        "stockId": "s1c",
+        "color": "Natural Titanium",
+        "size": "1TB",
+        "price": 1599,
+        "quantity": 8,
+        "isMain": false,
+        "url": "https://placehold.co/800x1000/4A90E2/FFF?text=iPhone+15+Pro+Max",
+        "userName": "TechStore",
+        "condition": "new",
+        "productName": "iPhone 15 Pro Max",
+        "cartItemId": 0
+      },
+      {
+        "stockId": "s2",
+        "color": "Blue Titanium",
+        "size": "256GB",
+        "price": 1199,
+        "quantity": 10,
+        "isMain": true,
+        "url": "https://placehold.co/800x1000/1E3A8A/FFF?text=iPhone+15+Pro",
+        "userName": "TechStore",
+        "condition": "new",
+        "productName": "iPhone 15 Pro Max",
+        "cartItemId": 0
+      },
+      {
+        "stockId": "s2b",
+        "color": "Blue Titanium",
+        "size": "512GB",
+        "price": 1399,
+        "quantity": 10,
+        "isMain": false,
+        "url": "https://placehold.co/800x1000/1E3A8A/FFF?text=iPhone+15+Pro",
+        "userName": "TechStore",
+        "condition": "new",
+        "productName": "iPhone 15 Pro Max",
+        "cartItemId": 0
+      },
+      {
+        "stockId": "s2c",
+        "color": "Blue Titanium",
+        "size": "1TB",
+        "price": 1599,
+        "quantity": 7,
+        "isMain": false,
+        "url": "https://placehold.co/800x1000/1E3A8A/FFF?text=iPhone+15+Pro",
+        "userName": "TechStore",
+        "condition": "new",
+        "productName": "iPhone 15 Pro Max",
+        "cartItemId": 0
+      }
+    ]
+  },
+  {
+    "id": "2",
+    "name": "MacBook Pro 16-inch M3 Max",
+    "price": 2499,
+    "description": "Supercharged by M3 Max chip with up to 40-core GPU. Perfect for demanding creative workflows and professional applications.",
+    "category": "Laptops",
+    "colors": ["Space Black", "Silver"],
+    "sizes": ["16GB RAM", "32GB RAM", "64GB RAM"],
+    "numberOfSales": 156,
+    "status": "listed",
+    "createdAt": "2024-01-20T14:20:00Z",
+    "images": [
+      ["https://placehold.co/1000x700/1F2937/FFF?text=MacBook+Pro+M3"],
+      ["https://placehold.co/1000x700/6B7280/FFF?text=MacBook+Pro"]
+    ],
+    "stocks": [
+      {
+        "stockId": "s3",
+        "color": "Space Black",
+        "size": "16GB RAM",
+        "price": 2099,
+        "quantity": 10,
+        "isMain": true,
+        "url": "https://placehold.co/1000x700/1F2937/FFF?text=MacBook+Pro+M3",
+        "userName": "AppleStore",
+        "condition": "new",
+        "productName": "MacBook Pro 16-inch M3 Max",
+        "cartItemId": 0
+      },
+      {
+        "stockId": "s3b",
+        "color": "Space Black",
+        "size": "32GB RAM",
+        "price": 2499,
+        "quantity": 8,
+        "isMain": false,
+        "url": "https://placehold.co/1000x700/1F2937/FFF?text=MacBook+Pro+M3",
+        "userName": "AppleStore",
+        "condition": "new",
+        "productName": "MacBook Pro 16-inch M3 Max",
+        "cartItemId": 0
+      },
+      {
+        "stockId": "s3c",
+        "color": "Space Black",
+        "size": "64GB RAM",
+        "price": 2999,
+        "quantity": 5,
+        "isMain": false,
+        "url": "https://placehold.co/1000x700/1F2937/FFF?text=MacBook+Pro+M3",
+        "userName": "AppleStore",
+        "condition": "new",
+        "productName": "MacBook Pro 16-inch M3 Max",
+        "cartItemId": 0
+      },
+      {
+        "stockId": "s3d",
+        "color": "Silver",
+        "size": "16GB RAM",
+        "price": 2099,
+        "quantity": 9,
+        "isMain": true,
+        "url": "https://placehold.co/1000x700/6B7280/FFF?text=MacBook+Pro",
+        "userName": "AppleStore",
+        "condition": "new",
+        "productName": "MacBook Pro 16-inch M3 Max",
+        "cartItemId": 0
+      },
+      {
+        "stockId": "s3e",
+        "color": "Silver",
+        "size": "32GB RAM",
+        "price": 2499,
+        "quantity": 7,
+        "isMain": false,
+        "url": "https://placehold.co/1000x700/6B7280/FFF?text=MacBook+Pro",
+        "userName": "AppleStore",
+        "condition": "new",
+        "productName": "MacBook Pro 16-inch M3 Max",
+        "cartItemId": 0
+      }
+    ]
+  },
+  {
+    "id": "3",
+    "name": "Samsung Galaxy S24 Ultra",
+    "price": 1299,
+    "description": "Galaxy AI is here. Experience the power of AI on mobile with advanced photo editing, live translation, and more.",
+    "category": "Smartphones",
+    "colors": ["Titanium Gray", "Titanium Black", "Titanium Violet"],
+    "sizes": ["256GB", "512GB", "1TB"],
+    "numberOfSales": 198,
+    "status": "listed",
+    "createdAt": "2024-02-01T09:15:00Z",
+    "images": [
+      ["https://placehold.co/800x1000/6366F1/FFF?text=Galaxy+S24+Ultra"],
+      ["https://placehold.co/800x1000/1E1B4B/FFF?text=Galaxy+S24"]
+    ],
+    "stocks": [
+      {
+        "stockId": "s4",
+        "color": "Titanium Gray",
+        "size": "256GB",
+        "price": 1299,
+        "quantity": 18,
+        "isMain": true,
+        "url": "https://placehold.co/800x1000/6366F1/FFF?text=Galaxy+S24+Ultra",
+        "userName": "Samsung",
+        "condition": "new",
+        "productName": "Samsung Galaxy S24 Ultra",
+        "cartItemId": 0
+      },
+      {
+        "stockId": "s4b",
+        "color": "Titanium Gray",
+        "size": "512GB",
+        "price": 1419,
+        "quantity": 20,
+        "isMain": false,
+        "url": "https://placehold.co/800x1000/6366F1/FFF?text=Galaxy+S24+Ultra",
+        "userName": "Samsung",
+        "condition": "new",
+        "productName": "Samsung Galaxy S24 Ultra",
+        "cartItemId": 0
+      },
+      {
+        "stockId": "s4c",
+        "color": "Titanium Gray",
+        "size": "1TB",
+        "price": 1619,
+        "quantity": 15,
+        "isMain": false,
+        "url": "https://placehold.co/800x1000/6366F1/FFF?text=Galaxy+S24+Ultra",
+        "userName": "Samsung",
+        "condition": "new",
+        "productName": "Samsung Galaxy S24 Ultra",
+        "cartItemId": 0
+      },
+      {
+        "stockId": "s4d",
+        "color": "Titanium Black",
+        "size": "256GB",
+        "price": 1299,
+        "quantity": 16,
+        "isMain": true,
+        "url": "https://placehold.co/800x1000/1E1B4B/FFF?text=Galaxy+S24",
+        "userName": "Samsung",
+        "condition": "new",
+        "productName": "Samsung Galaxy S24 Ultra",
+        "cartItemId": 0
+      },
+      {
+        "stockId": "s4e",
+        "color": "Titanium Black",
+        "size": "512GB",
+        "price": 1419,
+        "quantity": 14,
+        "isMain": false,
+        "url": "https://placehold.co/800x1000/1E1B4B/FFF?text=Galaxy+S24",
+        "userName": "Samsung",
+        "condition": "new",
+        "productName": "Samsung Galaxy S24 Ultra",
+        "cartItemId": 0
+      }
+    ]
+  },
+  {
+    "id": "4",
+    "name": "Sony WH-1000XM5 Headphones",
+    "price": 399,
+    "description": "Industry-leading noise cancellation with two processors controlling 8 microphones. 30-hour battery life and crystal-clear call quality.",
+    "category": "Audio",
+    "colors": ["Black", "Silver"],
+    "sizes": ["Standard"],
+    "numberOfSales": 432,
+    "status": "listed",
+    "createdAt": "2024-01-10T11:45:00Z",
+    "images": [
+      ["https://placehold.co/800x800/1F2937/FFF?text=Sony+WH-1000XM5"],
+      ["https://placehold.co/800x800/D1D5DB/1F2937?text=Sony+Headphones"]
+    ],
+    "stocks": [
+      {
+        "stockId": "s5",
+        "color": "Black",
+        "size": "Standard",
+        "price": 399,
+        "quantity": 35,
+        "isMain": true,
+        "url": "https://placehold.co/800x800/1F2937/FFF?text=Sony+WH-1000XM5",
+        "userName": "AudioPro",
+        "condition": "new",
+        "productName": "Sony WH-1000XM5 Headphones",
+        "cartItemId": 0
+      },
+      {
+        "stockId": "s6",
+        "color": "Silver",
+        "size": "Standard",
+        "price": 399,
+        "quantity": 28,
+        "isMain": false,
+        "url": "https://placehold.co/800x800/D1D5DB/1F2937?text=Sony+Headphones",
+        "userName": "AudioPro",
+        "condition": "new",
+        "productName": "Sony WH-1000XM5 Headphones",
+        "cartItemId": 0
+      }
+    ]
+  },
+  {
+    "id": "5",
+    "name": "iPad Pro 12.9-inch M2",
+    "price": 1099,
+    "description": "The ultimate iPad experience with M2 chip, Liquid Retina XDR display, and support for Apple Pencil hover.",
+    "category": "Tablets",
+    "colors": ["Space Gray", "Silver"],
+    "sizes": ["128GB", "256GB", "512GB", "1TB"],
+    "numberOfSales": 178,
+    "status": "listed",
+    "createdAt": "2024-01-25T16:30:00Z",
+    "images": [
+      ["https://placehold.co/800x1000/374151/FFF?text=iPad+Pro+M2"],
+      ["https://placehold.co/800x1000/9CA3AF/1F2937?text=iPad+Pro"]
+    ],
+    "stocks": [
+      {
+        "stockId": "s7",
+        "color": "Space Gray",
+        "size": "256GB",
+        "price": 1199,
+        "quantity": 12,
+        "isMain": true,
+        "url": "https://placehold.co/800x1000/374151/FFF?text=iPad+Pro+M2",
+        "userName": "AppleStore",
+        "condition": "new",
+        "productName": "iPad Pro 12.9-inch M2",
+        "cartItemId": 0
+      }
+    ]
+  },
+  {
+    "id": "6",
+    "name": "Dell XPS 15",
+    "price": 1799,
+    "description": "Premium Windows laptop with InfinityEdge display, 13th Gen Intel Core processors, and stunning OLED screen option.",
+    "category": "Laptops",
+    "colors": ["Platinum Silver", "Graphite"],
+    "sizes": ["16GB RAM", "32GB RAM"],
+    "numberOfSales": 134,
+    "status": "listed",
+    "createdAt": "2024-02-05T10:00:00Z",
+    "images": [
+      ["https://placehold.co/1000x700/0066CC/FFF?text=Dell+XPS+15"]
+    ],
+    "stocks": [
+      {
+        "stockId": "s8",
+        "color": "Platinum Silver",
+        "size": "32GB RAM",
+        "price": 1799,
+        "quantity": 7,
+        "isMain": true,
+        "url": "https://placehold.co/1000x700/0066CC/FFF?text=Dell+XPS+15",
+        "userName": "DellDirect",
+        "condition": "new",
+        "productName": "Dell XPS 15",
+        "cartItemId": 0
+      }
+    ]
+  },
+  {
+    "id": "7",
+    "name": "Apple Watch Series 9",
+    "price": 429,
+    "description": "The most advanced Apple Watch with double tap gesture, all-day 18-hour battery, and enhanced health features.",
+    "category": "Wearables",
+    "colors": ["Midnight", "Starlight", "Silver", "Pink"],
+    "sizes": ["41mm", "45mm"],
+    "numberOfSales": 312,
+    "status": "listed",
+    "createdAt": "2024-01-18T13:20:00Z",
+    "images": [
+      ["https://placehold.co/800x800/1E293B/FFF?text=Apple+Watch+S9"],
+      ["https://placehold.co/800x800/F3F4F6/1E293B?text=Apple+Watch"]
+    ],
+    "stocks": [
+      {
+        "stockId": "s9",
+        "color": "Midnight",
+        "size": "45mm",
+        "price": 429,
+        "quantity": 25,
+        "isMain": true,
+        "url": "https://placehold.co/800x800/1E293B/FFF?text=Apple+Watch+S9",
+        "userName": "AppleStore",
+        "condition": "new",
+        "productName": "Apple Watch Series 9",
+        "cartItemId": 0
+      }
+    ]
+  },
+  {
+    "id": "8",
+    "name": "PlayStation 5",
+    "price": 499,
+    "description": "Experience lightning-fast loading with an ultra-high speed SSD, deeper immersion with haptic feedback, and 4K gaming.",
+    "category": "Gaming",
+    "colors": ["White"],
+    "sizes": ["Standard Edition", "Digital Edition"],
+    "numberOfSales": 567,
+    "status": "listed",
+    "createdAt": "2024-01-12T08:30:00Z",
+    "images": [
+      ["https://placehold.co/800x900/003791/FFF?text=PlayStation+5"]
+    ],
+    "stocks": [
+      {
+        "stockId": "s10",
+        "color": "White",
+        "size": "Standard Edition",
+        "price": 499,
+        "quantity": 18,
+        "isMain": true,
+        "url": "https://placehold.co/800x900/003791/FFF?text=PlayStation+5",
+        "userName": "GameWorld",
+        "condition": "new",
+        "productName": "PlayStation 5",
+        "cartItemId": 0
+      }
+    ]
+  },
+  {
+    "id": "9",
+    "name": "Canon EOS R6 Mark II",
+    "price": 2499,
+    "description": "Full-frame mirrorless camera with 24.2MP sensor, up to 40fps continuous shooting, and advanced subject detection.",
+    "category": "Cameras",
+    "colors": ["Black"],
+    "sizes": ["Body Only", "With 24-105mm Lens"],
+    "numberOfSales": 89,
+    "status": "listed",
+    "createdAt": "2024-02-10T15:45:00Z",
+    "images": [
+      ["https://placehold.co/900x800/DC2626/FFF?text=Canon+EOS+R6"]
+    ],
+    "stocks": [
+      {
+        "stockId": "s11",
+        "color": "Black",
+        "size": "Body Only",
+        "price": 2499,
+        "quantity": 5,
+        "isMain": true,
+        "url": "https://placehold.co/900x800/DC2626/FFF?text=Canon+EOS+R6",
+        "userName": "PhotoPro",
+        "condition": "new",
+        "productName": "Canon EOS R6 Mark II",
+        "cartItemId": 0
+      }
+    ]
+  },
+  {
+    "id": "10",
+    "name": "Samsung 65\" OLED 4K TV",
+    "price": 2199,
+    "description": "Quantum HDR OLED with Neural Quantum Processor, Dolby Atmos sound, and anti-reflection screen for any lighting.",
+    "category": "TVs",
+    "colors": ["Black"],
+    "sizes": ["55-inch", "65-inch", "77-inch"],
+    "numberOfSales": 223,
+    "status": "listed",
+    "createdAt": "2024-01-28T12:00:00Z",
+    "images": [
+      ["https://placehold.co/1200x700/1E293B/FFF?text=Samsung+65+OLED+TV"]
+    ],
+    "stocks": [
+      {
+        "stockId": "s12",
+        "color": "Black",
+        "size": "65-inch",
+        "price": 2199,
+        "quantity": 9,
+        "isMain": true,
+        "url": "https://placehold.co/1200x700/1E293B/FFF?text=Samsung+65+OLED+TV",
+        "userName": "Samsung",
+        "condition": "new",
+        "productName": "Samsung 65\" OLED 4K TV",
+        "cartItemId": 0
+      }
+    ]
+  },
+  {
+    "id": "11",
+    "name": "AirPods Pro 2nd Gen",
+    "price": 249,
+    "description": "Active Noise Cancellation, Adaptive Audio, and Personalized Spatial Audio. Up to 2x more noise cancellation.",
+    "category": "Audio",
+    "colors": ["White"],
+    "sizes": ["Standard"],
+    "numberOfSales": 678,
+    "status": "listed",
+    "createdAt": "2024-01-08T09:20:00Z",
+    "images": [
+      ["https://placehold.co/800x800/F3F4F6/1F2937?text=AirPods+Pro+2"]
+    ],
+    "stocks": [
+      {
+        "stockId": "s13",
+        "color": "White",
+        "size": "Standard",
+        "price": 249,
+        "quantity": 45,
+        "isMain": true,
+        "url": "https://placehold.co/800x800/F3F4F6/1F2937?text=AirPods+Pro+2",
+        "userName": "AppleStore",
+        "condition": "new",
+        "productName": "AirPods Pro 2nd Gen",
+        "cartItemId": 0
+      }
+    ]
+  },
+  {
+    "id": "12",
+    "name": "Microsoft Surface Laptop 5",
+    "price": 1299,
+    "description": "Sleek design with 13.5\" PixelSense touchscreen, 12th Gen Intel Core processor, and all-day battery life.",
+    "category": "Laptops",
+    "colors": ["Platinum", "Matte Black", "Sage"],
+    "sizes": ["16GB RAM", "32GB RAM"],
+    "numberOfSales": 167,
+    "status": "listed",
+    "createdAt": "2024-02-03T11:15:00Z",
+    "images": [
+      ["https://placehold.co/1000x700/0078D4/FFF?text=Surface+Laptop+5"]
+    ],
+    "stocks": [
+      {
+        "stockId": "s14",
+        "color": "Platinum",
+        "size": "16GB RAM",
+        "price": 1299,
+        "quantity": 14,
+        "isMain": true,
+        "url": "https://placehold.co/1000x700/0078D4/FFF?text=Surface+Laptop+5",
+        "userName": "Microsoft",
+        "condition": "new",
+        "productName": "Microsoft Surface Laptop 5",
+        "cartItemId": 0
+      }
+    ]
+  },
+  {
+    "id": "13",
+    "name": "DJI Mini 3 Pro Drone",
+    "price": 759,
+    "description": "Lightweight and powerful drone with 4K/60fps video, 34-minute flight time, and advanced obstacle avoidance.",
+    "category": "Cameras",
+    "colors": ["Gray"],
+    "sizes": ["Standard"],
+    "numberOfSales": 145,
+    "status": "listed",
+    "createdAt": "2024-01-22T14:30:00Z",
+    "images": [
+      ["https://placehold.co/900x800/4B5563/FFF?text=DJI+Mini+3+Pro"]
+    ],
+    "stocks": [
+      {
+        "stockId": "s15",
+        "color": "Gray",
+        "size": "Standard",
+        "price": 759,
+        "quantity": 11,
+        "isMain": true,
+        "url": "https://placehold.co/900x800/4B5563/FFF?text=DJI+Mini+3+Pro",
+        "userName": "DJI",
+        "condition": "new",
+        "productName": "DJI Mini 3 Pro Drone",
+        "cartItemId": 0
+      }
+    ]
+  },
+  {
+    "id": "14",
+    "name": "Google Pixel 8 Pro",
+    "price": 999,
+    "description": "Google's most powerful phone with AI-powered camera, Tensor G3 chip, and 7 years of OS updates.",
+    "category": "Smartphones",
+    "colors": ["Obsidian", "Porcelain", "Bay"],
+    "sizes": ["128GB", "256GB", "512GB"],
+    "numberOfSales": 289,
+    "status": "listed",
+    "createdAt": "2024-01-30T10:45:00Z",
+    "images": [
+      ["https://placehold.co/800x1000/4285F4/FFF?text=Pixel+8+Pro"]
+    ],
+    "stocks": [
+      {
+        "stockId": "s16",
+        "color": "Obsidian",
+        "size": "256GB",
+        "price": 1099,
+        "quantity": 22,
+        "isMain": true,
+        "url": "https://placehold.co/800x1000/4285F4/FFF?text=Pixel+8+Pro",
+        "userName": "GoogleStore",
+        "condition": "new",
+        "productName": "Google Pixel 8 Pro",
+        "cartItemId": 0
+      }
+    ]
+  },
+  {
+    "id": "15",
+    "name": "Nintendo Switch OLED",
+    "price": 349,
+    "description": "Vibrant 7-inch OLED screen, enhanced audio, and 64GB internal storage. Play at home or on the go.",
+    "category": "Gaming",
+    "colors": ["White", "Neon Red/Blue"],
+    "sizes": ["Standard"],
+    "numberOfSales": 445,
+    "status": "listed",
+    "createdAt": "2024-01-14T16:00:00Z",
+    "images": [
+      ["https://placehold.co/900x800/E60012/FFF?text=Nintendo+Switch"]
+    ],
+    "stocks": [
+      {
+        "stockId": "s17",
+        "color": "White",
+        "size": "Standard",
+        "price": 349,
+        "quantity": 30,
+        "isMain": true,
+        "url": "https://placehold.co/900x800/E60012/FFF?text=Nintendo+Switch",
+        "userName": "Nintendo",
+        "condition": "new",
+        "productName": "Nintendo Switch OLED",
+        "cartItemId": 0
+      }
+    ]
+  },
+  {
+    "id": "16",
+    "name": "LG UltraWide Monitor 34\"",
+    "price": 599,
+    "description": "34-inch curved QHD monitor with HDR10, 99% sRGB color gamut, and USB-C connectivity for seamless productivity.",
+    "category": "Monitors",
+    "colors": ["Black"],
+    "sizes": ["34-inch"],
+    "numberOfSales": 178,
+    "status": "listed",
+    "createdAt": "2024-02-07T13:30:00Z",
+    "images": [
+      ["https://placehold.co/1200x600/A50034/FFF?text=LG+UltraWide+34"]
+    ],
+    "stocks": [
+      {
+        "stockId": "s18",
+        "color": "Black",
+        "size": "34-inch",
+        "price": 599,
+        "quantity": 16,
+        "isMain": true,
+        "url": "https://placehold.co/1200x600/A50034/FFF?text=LG+UltraWide+34",
+        "userName": "LGElectronics",
+        "condition": "new",
+        "productName": "LG UltraWide Monitor 34\"",
+        "cartItemId": 0
+      }
+    ]
+  },
+  {
+    "id": "17",
+    "name": "Bose QuietComfort Earbuds II",
+    "price": 299,
+    "description": "World-class noise cancellation with CustomTune technology. Premium sound and all-day comfort.",
+    "category": "Audio",
+    "colors": ["Triple Black", "Soapstone"],
+    "sizes": ["Standard"],
+    "numberOfSales": 334,
+    "status": "listed",
+    "createdAt": "2024-01-19T12:15:00Z",
+    "images": [
+      ["https://placehold.co/800x800/000000/FFF?text=Bose+QC+Earbuds"]
+    ],
+    "stocks": [
+      {
+        "stockId": "s19",
+        "color": "Triple Black",
+        "size": "Standard",
+        "price": 299,
+        "quantity": 27,
+        "isMain": true,
+        "url": "https://placehold.co/800x800/000000/FFF?text=Bose+QC+Earbuds",
+        "userName": "Bose",
+        "condition": "new",
+        "productName": "Bose QuietComfort Earbuds II",
+        "cartItemId": 0
+      }
+    ]
+  },
+  {
+    "id": "18",
+    "name": "Logitech MX Master 3S",
+    "price": 99,
+    "description": "Premium wireless mouse with ultra-fast scrolling, MagSpeed electromagnetic wheel, and 8K DPI sensor.",
+    "category": "Accessories",
+    "colors": ["Graphite", "Pale Gray"],
+    "sizes": ["Standard"],
+    "numberOfSales": 512,
+    "status": "listed",
+    "createdAt": "2024-01-11T10:30:00Z",
+    "images": [
+      ["https://placehold.co/800x800/00B8FC/FFF?text=MX+Master+3S"]
+    ],
+    "stocks": [
+      {
+        "stockId": "s20",
+        "color": "Graphite",
+        "size": "Standard",
+        "price": 99,
+        "quantity": 40,
+        "isMain": true,
+        "url": "https://placehold.co/800x800/00B8FC/FFF?text=MX+Master+3S",
+        "userName": "Logitech",
+        "condition": "new",
+        "productName": "Logitech MX Master 3S",
+        "cartItemId": 0
+      }
+    ]
+  },
+  {
+    "id": "19",
+    "name": "Kindle Paperwhite Signature",
+    "price": 189,
+    "description": "Premium e-reader with 6.8\" glare-free display, auto-adjusting front light, and wireless charging.",
+    "category": "E-Readers",
+    "colors": ["Black"],
+    "sizes": ["32GB"],
+    "numberOfSales": 267,
+    "status": "listed",
+    "createdAt": "2024-02-02T09:45:00Z",
+    "images": [
+      ["https://placehold.co/700x900/232F3E/FFF?text=Kindle+Paperwhite"]
+    ],
+    "stocks": [
+      {
+        "stockId": "s21",
+        "color": "Black",
+        "size": "32GB",
+        "price": 189,
+        "quantity": 33,
+        "isMain": true,
+        "url": "https://placehold.co/700x900/232F3E/FFF?text=Kindle+Paperwhite",
+        "userName": "Amazon",
+        "condition": "new",
+        "productName": "Kindle Paperwhite Signature",
+        "cartItemId": 0
+      }
+    ]
+  },
+  {
+    "id": "20",
+    "name": "GoPro HERO12 Black",
+    "price": 399,
+    "description": "Revolutionary action camera with 5.3K60 video, HyperSmooth 6.0 stabilization, and HDR photo/video.",
+    "category": "Cameras",
+    "colors": ["Black"],
+    "sizes": ["Standard"],
+    "numberOfSales": 198,
+    "status": "listed",
+    "createdAt": "2024-01-26T15:20:00Z",
+    "images": [
+      ["https://placehold.co/800x800/1F2937/FFF?text=GoPro+HERO12"]
+    ],
+    "stocks": [
+      {
+        "stockId": "s22",
+        "color": "Black",
+        "size": "Standard",
+        "price": 399,
+        "quantity": 19,
+        "isMain": true,
+        "url": "https://placehold.co/800x800/1F2937/FFF?text=GoPro+HERO12",
+        "userName": "GoPro",
+        "condition": "new",
+        "productName": "GoPro HERO12 Black",
+        "cartItemId": 0
+      }
+    ]
+  }
+]
+

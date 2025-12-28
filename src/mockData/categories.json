@@ -1,0 +1,58 @@
+[
+  {
+    "id": "1",
+    "name": "Smartphones",
+    "description": "Latest smartphones with cutting-edge technology"
+  },
+  {
+    "id": "2",
+    "name": "Laptops",
+    "description": "Powerful laptops for work and gaming"
+  },
+  {
+    "id": "3",
+    "name": "Tablets",
+    "description": "Portable tablets for entertainment and productivity"
+  },
+  {
+    "id": "4",
+    "name": "Audio",
+    "description": "Premium headphones, earbuds, and speakers"
+  },
+  {
+    "id": "5",
+    "name": "Wearables",
+    "description": "Smartwatches and fitness trackers"
+  },
+  {
+    "id": "6",
+    "name": "Gaming",
+    "description": "Gaming consoles and accessories"
+  },
+  {
+    "id": "7",
+    "name": "Cameras",
+    "description": "Professional cameras and photography equipment"
+  },
+  {
+    "id": "8",
+    "name": "TVs",
+    "description": "Smart TVs and home entertainment systems"
+  },
+  {
+    "id": "9",
+    "name": "Monitors",
+    "description": "High-resolution displays for productivity"
+  },
+  {
+    "id": "10",
+    "name": "Accessories",
+    "description": "Tech accessories and peripherals"
+  },
+  {
+    "id": "11",
+    "name": "E-Readers",
+    "description": "E-readers and digital reading devices"
+  }
+]
+

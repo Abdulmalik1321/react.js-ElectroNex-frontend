@@ -107,6 +107,18 @@ export function ProductDetails() {
     quantity: 0,
     price: 0,
   });
+
+  // Auto-redirect to first color and size if not provided
+  useEffect(() => {
+    if (data && (!params.color || !params.size)) {
+      const firstColor = data.colors?.[0] || data.stocks?.[0]?.color;
+      const firstSize = data.sizes?.[0] || data.stocks?.[0]?.size;
+      if (firstColor && firstSize) {
+        navigate(`/products/${params.productId}/${firstColor}/${firstSize}`, { replace: true });
+      }
+    }
+  }, [data, params.color, params.size, params.productId, navigate]);
+
   useEffect(() => {
     let displayImgTemp: string | undefined;
     const imagesTemp: string[] = [];

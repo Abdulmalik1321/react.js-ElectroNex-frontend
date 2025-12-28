@@ -31,8 +31,8 @@ export function Login({ handelLogin }: LoginProps) {
       return userData.data;
     } catch (error: any) {
       setLoading(false);
-      setError(error.response.data || "Something went wrong");
-      return Promise.reject(new Error("Something went wrong"));
+      setError(error?.response?.data || "Invalid credentials. Try admin/admin");
+      return Promise.reject(new Error("Invalid credentials"));
     }
   };
 
@@ -75,6 +75,9 @@ export function Login({ handelLogin }: LoginProps) {
             <p className="text-balance text-muted-foreground">
               Enter your email below to login to your account
             </p>
+            <Badge className="justify-center" variant="secondary">
+              Demo: Use <strong>admin@admin.com</strong> / <strong>admin</strong>
+            </Badge>
             {error && (
               <Badge className="justify-center" variant="destructive">
                 {error}

@@ -68,12 +68,11 @@ export function ProductCard({
             <CarouselNext className="xxs:mr-6 md:mr-3 transition-opacity !opacity-0 group-hover:!opacity-100" />
           </Carousel>
           <div className="flex justify-center gap-1 mt-2 mb-2">
-            {product.images.map((color, index) => {
+            {product.images.map((image, index) => {
               return (
                 <span
-                  key={`${product.id}-as12e-${color[1] + index}`}
-                  style={{ backgroundColor: `#${color[1]}` }}
-                  className={`h-3 w-3 border border-muted-foreground rounded-full block ${
+                  key={`${product.id}-dot-${index}`}
+                  className={`h-3 w-3 border border-muted-foreground rounded-full block bg-muted ${
                     current === index ? "opacity-100" : "opacity-20"
                   }`}></span>
               );
@@ -94,7 +93,7 @@ export function ProductCard({
               {product.price.toFixed(2).toLocaleString()}
             </p>
             <Link
-              to={`/products/${product.id}/${product.images[current][1]}/${displaySizes[0]}`}>
+              to={`/products/${product.id}/${product.colors[current] || product.colors[0]}/${displaySizes[0]}`}>
               <Button
                 className="border border-[hsl(var(--primary))] font-bold text-xs p-2 h-8"
                 variant="ghost">

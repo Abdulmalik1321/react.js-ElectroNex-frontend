@@ -1,0 +1,73 @@
+[
+  {
+    "id": "1",
+    "name": "Apple",
+    "description": "Premium technology products"
+  },
+  {
+    "id": "2",
+    "name": "Samsung",
+    "description": "Innovative electronics and mobile devices"
+  },
+  {
+    "id": "3",
+    "name": "Sony",
+    "description": "Audio and imaging excellence"
+  },
+  {
+    "id": "4",
+    "name": "Dell",
+    "description": "Reliable computing solutions"
+  },
+  {
+    "id": "5",
+    "name": "Microsoft",
+    "description": "Software and hardware innovation"
+  },
+  {
+    "id": "6",
+    "name": "Google",
+    "description": "AI-powered devices"
+  },
+  {
+    "id": "7",
+    "name": "Nintendo",
+    "description": "Gaming entertainment"
+  },
+  {
+    "id": "8",
+    "name": "LG",
+    "description": "Display and home appliance technology"
+  },
+  {
+    "id": "9",
+    "name": "Bose",
+    "description": "Premium audio equipment"
+  },
+  {
+    "id": "10",
+    "name": "Logitech",
+    "description": "Computer peripherals and accessories"
+  },
+  {
+    "id": "11",
+    "name": "Canon",
+    "description": "Imaging and optical products"
+  },
+  {
+    "id": "12",
+    "name": "GoPro",
+    "description": "Action cameras and accessories"
+  },
+  {
+    "id": "13",
+    "name": "DJI",
+    "description": "Drones and camera stabilizers"
+  },
+  {
+    "id": "14",
+    "name": "Huawei",
+    "description": "Telecommunications equipment"
+  }
+]
+
